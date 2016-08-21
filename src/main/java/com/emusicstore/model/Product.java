@@ -11,9 +11,7 @@ import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Created by Le on 1/2/2016.
- */
+
 
 @Entity
 public class Product implements Serializable{
@@ -37,7 +35,7 @@ public class Product implements Serializable{
 
     @Min(value = 0, message = "The product unit must not be less than zero.")
     private int unitInStock;
-    private String productManufacturer;
+    private String productPublisher;
 
     @Transient
     private MultipartFile productImage;
@@ -111,12 +109,12 @@ public class Product implements Serializable{
         this.unitInStock = unitInStock;
     }
 
-    public String getProductManufacturer() {
-        return productManufacturer;
+    public String getProductPublisher() {
+        return productPublisher;
     }
 
-    public void setProductManufacturer(String productManufacturer) {
-        this.productManufacturer = productManufacturer;
+    public void setProductPublisher(String productManufacturer) {
+        this.productPublisher = productManufacturer;
     }
 
     public MultipartFile getProductImage() {
