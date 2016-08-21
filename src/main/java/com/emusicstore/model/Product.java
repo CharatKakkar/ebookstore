@@ -41,10 +41,6 @@ public class Product implements Serializable{
     private MultipartFile productImage;
 
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonIgnore
-    private List<CartItem> cartItemList;
-
     public int getProductId() {
         return productId;
     }
@@ -125,12 +121,4 @@ public class Product implements Serializable{
         this.productImage = productImage;
     }
 
-
-    public List<CartItem> getCartItemList() {
-        return cartItemList;
-    }
-
-    public void setCartItemList(List<CartItem> cartItemList) {
-        this.cartItemList = cartItemList;
-    }
 }

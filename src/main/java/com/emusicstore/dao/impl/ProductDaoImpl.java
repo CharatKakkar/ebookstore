@@ -39,21 +39,4 @@ public class ProductDaoImpl implements ProductDao {
         return productList;
     }
 
-    public void addProduct (Product product) {
-        Session session = sessionFactory.getCurrentSession();
-        session.saveOrUpdate(product);
-        session.flush();
-    }
-
-    public void editProduct (Product product) {
-        Session session = sessionFactory.getCurrentSession();
-        session.saveOrUpdate(product);
-        session.flush();
-    }
-
-    public void deleteProduct (Product product) {
-        Session session = sessionFactory.getCurrentSession();
-        session.delete(product);
-        session.flush();
-    }
 }
