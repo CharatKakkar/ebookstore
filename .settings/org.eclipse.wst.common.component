@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="emusicstore">
+    <wb-module deploy-name="ebookstore">
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
-        <property name="context-root" value="emusicstore"/>
-        <property name="java-output-path" value="/emusicstore/target/classes"/>
+        <property name="java-output-path" value="/ebookstore/target/classes"/>
+        <property name="context-root" value="ebookstore"/>
     </wb-module>
 </project-modules>

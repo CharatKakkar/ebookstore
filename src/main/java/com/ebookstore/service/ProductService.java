@@ -1,8 +1,8 @@
-package com.emusicstore.service;
-
-import com.emusicstore.model.Product;
+package com.ebookstore.service;
 
 import java.util.List;
+
+import com.ebookstore.model.Product;
 
 
 public interface ProductService {

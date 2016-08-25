@@ -1,4 +1,4 @@
-package com.emusicstore.model;
+package com.ebookstore.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.NotEmpty;

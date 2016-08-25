@@ -1,4 +1,4 @@
-package com.emusicstore.controller;
+package com.ebookstore.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

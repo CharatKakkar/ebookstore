@@ -1,7 +1,8 @@
-package com.emusicstore.dao.impl;
+package com.ebookstore.dao.impl;
 
-import com.emusicstore.dao.ProductDao;
-import com.emusicstore.model.Product;
+import com.ebookstore.dao.ProductDao;
+import com.ebookstore.model.Product;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

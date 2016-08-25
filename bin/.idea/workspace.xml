@@ -22,19 +22,7 @@
   <component name="FavoritesManager">
     <favorites_list name="eMusicStore" />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AdminProduct.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/emusicstore/controller/admin/AdminProduct.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.4669926">
-              <caret line="59" column="69" selection-start-line="59" selection-start-column="44" selection-end-line="59" selection-end-column="69" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+  <component name="FileEditorManager">  
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">

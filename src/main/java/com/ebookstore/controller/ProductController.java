@@ -1,7 +1,8 @@
-package com.emusicstore.controller;
+package com.ebookstore.controller;
 
-import com.emusicstore.model.Product;
-import com.emusicstore.service.ProductService;
+import com.ebookstore.model.Product;
+import com.ebookstore.service.ProductService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

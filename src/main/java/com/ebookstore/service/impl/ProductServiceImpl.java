@@ -1,8 +1,9 @@
-package com.emusicstore.service.impl;
+package com.ebookstore.service.impl;
 
-import com.emusicstore.dao.ProductDao;
-import com.emusicstore.model.Product;
-import com.emusicstore.service.ProductService;
+import com.ebookstore.dao.ProductDao;
+import com.ebookstore.model.Product;
+import com.ebookstore.service.ProductService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,8 +1,8 @@
-package com.emusicstore.dao;
-
-import com.emusicstore.model.Product;
+package com.ebookstore.dao;
 
 import java.util.List;
+
+import com.ebookstore.model.Product;
 
 /**
  * Created by Le on 1/6/2016.
