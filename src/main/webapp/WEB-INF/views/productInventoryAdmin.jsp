@@ -2,15 +2,16 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@include file="/WEB-INF/views/template/header.jsp"%>
 
+
 <div class="container-wrapper">
     <div class="container">
         <div class="page-header">
-            <h1>All Products</h1>
+            <h1>Product Inventory Page</h1>
 
-            <p class="lead">Checkout all the awesome products available now!</p>
+            <p class="lead">This is the product inventory page!</p>
         </div>
 
-        <table class="display nowrap dataTable dtr-inline collapsed" cellspacing="0" width="100%" role="grid" style="width: 100%;">  
+         <table class="display nowrap dataTable dtr-inline collapsed" cellspacing="0" width="100%" role="grid" style="width: 100%;">  
                 <thead>
             <tr class="bg-success">
                 <th>Photo Thumb</th>
@@ -35,23 +36,7 @@
                    
             </c:forEach>
         </table>
-        
-       
-</table>
 
- </div>
-  </div>
-  <menupopup id="m1">
-	<menuitem label="Action" />
-	<menuitem label="Another action" />
-	<menuitem label="Something else here" />
-	<menuseparator />
-	<menuitem label="Separated link" />
-</menupopup>
-<div class="btn-group">
-	<button dir="reverse" class="btn-default dropdown-toggle"
-		popup="m1, after_start" iconSclass="caret">
-		Action
-	</button>
-</div>
-<%@include file="/WEB-INF/views/template/footer.jsp" %>
+        <a href="<spring:url value="/admin/product/addProduct" />" class="btn btn-primary">Add Product</a>
+
+        <%@include file="/WEB-INF/views/template/footer.jsp" %>

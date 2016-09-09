@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Created by Le on 1/24/2016.
- */
 
 @Controller
 @RequestMapping("/product")
@@ -41,11 +38,19 @@ public class ProductController {
     }
 
     @RequestMapping("/productList")
-    public String getProductByCategory(@RequestParam("searchCondition") String searchCondition, Model model) {
+    public String getProductByCategory( Model model) {
         List<Product> products = productService.getProductList();
         model.addAttribute("products", products);
-        model.addAttribute("searchCondition", searchCondition);
-
+      
         return "productList";
     }
+    
+    @RequestMapping("/productInventory")
+    public String getAllProductsAdmin(Model model){    	
+    	List<Product> products = productService.getProductList();
+    	model.addAttribute("products",products);    	
+    	return "productInventory";
+    }
+    
+ 
 }

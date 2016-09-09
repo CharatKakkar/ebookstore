@@ -25,4 +25,10 @@ public class ProductServiceImpl implements ProductService {
         return productDao.getProductList();
     }
 
+	@Override
+	public void addProduct(Product product) {
+		 productDao.addProduct(product);
+		
+	}
+
 }

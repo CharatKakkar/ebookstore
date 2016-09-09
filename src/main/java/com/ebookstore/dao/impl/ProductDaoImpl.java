@@ -12,9 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Created by Le on 1/6/2016.
- */
 
 @Repository
 @Transactional
@@ -40,4 +37,13 @@ public class ProductDaoImpl implements ProductDao {
         return productList;
     }
 
+	@Override
+	public void addProduct(Product product) {
+		Session session = sessionFactory.getCurrentSession();
+		session.saveOrUpdate(product);
+		session.flush();
+		return;
+	}
+
+    
 }
