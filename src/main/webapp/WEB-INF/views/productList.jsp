@@ -2,6 +2,19 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@include file="/WEB-INF/views/template/header.jsp"%>
 
+
+<script>
+$(document).ready(function() {
+	
+	alert("accessed");
+    $('#allProductListTable').DataTable( {
+        "pagingType": "full_numbers",
+    });
+   
+} );
+
+</script>
+
 <div class="container-wrapper">
     <div class="container">
         <div class="page-header">
@@ -10,7 +23,7 @@
             <p class="lead">Checkout all the awesome products available now!</p>
         </div>
 
-        <table class="display nowrap dataTable dtr-inline collapsed" cellspacing="0" width="100%" role="grid" style="width: 100%;">  
+        <table id="allProductListTable" class="display nowrap dataTable dtr-inline collapsed" cellspacing="0" width="100%" role="grid" style="width: 100%;">  
                 <thead>
             <tr class="bg-success">
                 <th>Photo Thumb</th>

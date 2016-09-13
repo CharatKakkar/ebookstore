@@ -2,6 +2,20 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@include file="/WEB-INF/views/template/header.jsp"%>
 
+<script>
+$(document).ready(function() {
+	
+	alert("accessed");
+    $('#adminDataTable').DataTable( {
+        "pagingType": "full_numbers",
+   
+        "scrollY":        "200px",
+        "scrollCollapse": true,	
+        "paging":         false
+    } );
+} );
+
+</script>
 
 <div class="container-wrapper">
     <div class="container">
@@ -11,7 +25,7 @@
             <p class="lead">This is the product inventory page!</p>
         </div>
 
-        <table class="table table-striped table-hover">
+        <table id="productDataTable" class="table table-striped table-hover">
             <thead>
             <tr class="bg-success">
                 <th>Photo Thumb</th>
@@ -25,8 +39,8 @@
             </thead>
             <c:forEach items="${products}" var="product">
                 <tr>
-                    <td><img src="" /> " alt="image"
-                             style="width:100%"/></td>
+                    <td><img src="<c:url value="/resources/productImages/${product.productId}.png" /> " alt="image"
+                             style="width:10%"/></td>
                     <td>${product.productName}</td>
                 
                     <td>${product.productCategory}</td>                    

@@ -3,6 +3,7 @@
 <%@include file="/WEB-INF/views/template/header.jsp"%>
 
 
+
 <div class="container-wrapper">
     <div class="container">
         <div class="page-header">
@@ -15,7 +16,7 @@
         <div class="container" ng-app = "cartApp">
             <div class="row">
                 <div class="col-md-5">
-                    <img src="<c:url value="/resources/images/${product.productId}.png" /> " alt="image"
+                    <img src="<c:url value="/resources/productImages/${product.productId}.png" /> " alt="image"
                              style="width:100%"/>
                 </div>
 
