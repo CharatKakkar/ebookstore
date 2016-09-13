@@ -5,14 +5,10 @@
 
 <script>
 $(document).ready(function() {
-	
-	alert("accessed");
-    $('#allProductListTable').DataTable( {
-        "pagingType": "full_numbers",
-    });
-   
+	   $('#allProductListTable').DataTable( {
+       "pagingType": "full_numbers",
+    });   
 } );
-
 </script>
 
 <div class="container-wrapper">

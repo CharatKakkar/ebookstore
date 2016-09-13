@@ -1,6 +1,7 @@
 package com.ebookstore.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -61,8 +63,20 @@ public class HomeController {
 		model.addAttribute("product", product);
 		return "addProduct";
 	}
-
+	
+	
+	
 	/*
+	 * 
+	 * 
+	 * 
+	 * 
+	 *  @RequestMapping("/product/editProduct/${product.productId}")
+	    public String editProduct(@PathVariable int productId, Model model) throws IOException {
+	        Product product=productService.getProductById(productId);
+	        model.addAttribute("product", product);
+	        return "editProduct";
+	    }
     @RequestMapping(value="/admin/productInventory/addProduct" , method=RequestMethod.POST)
     public String addProductRedirect(@ModelAttribute("product") Product product){
     	productService.addProduct(product);   
@@ -99,6 +113,14 @@ public class HomeController {
 		  
 		  return "redirect:/admin/productInventory";
 	    }
-
-    
+/*
+	  @RequestMapping("/admin/productInventory/editproduct/${product.productId}")
+	  public String editProduct(@PathVariable int productId, Model model) throws IOException {
+	        Product product=productService.getProductById(productId);
+	        model.addAttribute("product", product);
+	        return "editProduct";
+  
+	  }
+	  
+	  */
 }

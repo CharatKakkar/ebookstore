@@ -26,7 +26,9 @@ $(document).ready(function() {
                 <th>Category</th>
                 <th>Condition</th>
                 <th>Price</th>
-                <th></th>
+                <th>Info</th>
+                <th>Edit</th>
+                <th>Remove</th>
             </tr>
             </thead>
             <c:forEach items="${products}" var="product">
@@ -38,7 +40,11 @@ $(document).ready(function() {
                     <td>${product.productCondition}</td>
                     <td>${product.productPrice} CAD</td>
                     <td><a href="<spring:url value="/product/viewProduct/${product.productId}" />"
-                    ><span class="glyphicon glyphicon-info-sign"></span></a></td>
+                    >&nbsp&nbsp&nbsp&nbsp<span class="glyphicon glyphicon-info-sign"></span></a></td>
+                    <td><a href="<spring:url value="/product/editProduct/${product.productId}" />"
+                    >&nbsp&nbsp&nbsp&nbsp&nbsp<span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="<spring:url value="" />"
+                    >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="glyphicon glyphicon-remove-sign"></span></a></td>
                 </tr>
                    
             </c:forEach>
