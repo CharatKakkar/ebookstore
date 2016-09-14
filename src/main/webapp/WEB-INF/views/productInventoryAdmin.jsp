@@ -41,7 +41,7 @@ $(document).ready(function() {
                     <td>${product.productPrice} CAD</td>
                     <td><a href="<spring:url value="/product/viewProduct/${product.productId}" />"
                     >&nbsp&nbsp&nbsp&nbsp<span class="glyphicon glyphicon-info-sign"></span></a></td>
-                    <td><a href="<spring:url value="/product/editProduct/${product.productId}" />"
+                    <td><a href="<spring:url value="/admin/productInventory/editProduct/${product.productId}" />"
                     >&nbsp&nbsp&nbsp&nbsp&nbsp<span class="glyphicon glyphicon-edit"></span></a></td>
                     <td><a href="<spring:url value="" />"
                     >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="glyphicon glyphicon-remove-sign"></span></a></td>

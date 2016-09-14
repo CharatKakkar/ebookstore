@@ -54,7 +54,7 @@ public class HomeController {
     	return "productInventoryAdmin";
     }
     
-	@RequestMapping("/admin/product/addProduct")
+    @RequestMapping("/admin/productInventory/addProduct")
 	public String addProductAdmin(Model model) {
 		Product product = new Product();
 		product.setProductStatus("2");
@@ -64,6 +64,12 @@ public class HomeController {
 		return "addProduct";
 	}
 	
+	@RequestMapping("/admin/productInventory/editProduct/{productId}")
+	public String editProduct(@PathVariable int productId, Model model) throws IOException {
+        Product product=productService.getProductById(productId);
+        model.addAttribute("product", product);
+        return "editProduct";
+    }
 	
 	
 	/*
@@ -113,14 +119,31 @@ public class HomeController {
 		  
 		  return "redirect:/admin/productInventory";
 	    }
-/*
-	  @RequestMapping("/admin/productInventory/editproduct/${product.productId}")
-	  public String editProduct(@PathVariable int productId, Model model) throws IOException {
-	        Product product=productService.getProductById(productId);
-	        model.addAttribute("product", product);
-	        return "editProduct";
-  
-	  }
+
 	  
-	  */
+	  @RequestMapping(value = "/admin/productInventory/updateProduct", method = RequestMethod.POST)
+	    public String updateProduct(@ModelAttribute("product") Product product , HttpServletRequest session) {
+		  productService.addProduct(product);	
+		  MultipartFile productImage = product.getProductImage();
+		  String rootDirectory= session.getSession().getServletContext().getRealPath("/");
+		//  String contextPath = session.getContextPath();
+		 path= Paths.get(rootDirectory + "\\WEB-INF\\resources\\productImages\\" +product.getProductId()+".png" );
+		 path2= Paths.get("C:\\Users\\Charat Kakkar\\git\\20AugLibrary2\\src\\main\\webapp\\WEB-INF\\resources\\productImages\\"
+		 +product.getProductId()+".png");
+		  
+		  if (productImage != null && !productImage.isEmpty())
+		  {
+			  try{
+				  //productImage.transferTo(new File (path.toString()));
+				  productImage.transferTo(new File (path2.toString()));
+			  }
+			  
+			  catch(Exception e){
+				  e.printStackTrace();
+				  
+			  }
+			  
+		  }
+		  return "redirect:/admin/productInventory";
+	    }
 }

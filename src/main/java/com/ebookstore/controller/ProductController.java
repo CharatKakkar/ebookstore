@@ -51,13 +51,9 @@ public class ProductController {
     	model.addAttribute("products",products);    	
     	return "productInventory";
     }
-    
-	 @RequestMapping("/editProduct/{productId}")
-	    public String editProduct(@PathVariable int productId, Model model) throws IOException {
-	        Product product=productService.getProductById(productId);
-	        model.addAttribute("product", product);
-	        return "viewProduct";
-	    }
+   
+	
+	    
 
 	  
 	
