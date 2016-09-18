@@ -22,11 +22,11 @@
         <div class="form-group">
             <label for="category">Category</label>
             <label class="checkbox-inline"><form:radiobutton path="productCategory" id="productCategory"
-                                                             />Encyclopedia</label>
+                                                           value="Fiction" checked="checked" />Fiction</label>
             <label class="checkbox-inline"><form:radiobutton path="productCategory" id="category"
-                                                             value="record" />AutoBiography</label>
+                                                             value="AutoBiography" />AutoBiography</label>
             <label class="checkbox-inline"><form:radiobutton path="productCategory" id="category"
-                                                             value="accessory" />Fiction</label>
+                                                             value="Encyclopedia" />Encyclopedia</label>
         </div>
 
         <div class="form-group">

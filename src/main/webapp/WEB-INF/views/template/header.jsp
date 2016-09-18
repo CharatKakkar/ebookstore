@@ -61,6 +61,8 @@
                         <li><a href="<c:url value="/" /> ">Home</a></li>
                         <li><a href="<c:url value="/product/productList/all" />">Products</a></li>
                         <li><a href="<c:url value="/about" />">About Us</a></li>
+                        <li><a href="<c:url value="/login" />">Login</a></li>
+                        <li><a href="<c:url value="/admin/adminPage" />">Admin</a></li>
                     </ul>
                   
                 </div>
