@@ -18,10 +18,14 @@
 
     <!-- Angular JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js" > </script>
+    
+    
 
     <%--Jquery--%>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
+    
+    
     <%--Data Table--%>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
 
@@ -30,6 +34,11 @@
 
     <!-- Carousel CSS -->
     <link href="<c:url value="/resources/css/carousel.css" />" rel="stylesheet">
+    
+    
+    <!-- Login CSS -->
+    <link href="<c:url value="/resources/css/login.css" />" rel="stylesheet">
+    
 
     <!-- Main CSS -->
     <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">

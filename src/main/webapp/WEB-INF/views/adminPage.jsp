@@ -8,9 +8,10 @@
 		<div class="page-header">
 			<h1>Product Detail</h1>
 
-			<p class="lead">Welcome Admin
-				;</p>
-				
+			<c:if test="${pageContext.request.userPrincipal.name != null }" >
+			<p class="lead">Welcome : ${pageContext.request.userPrincipal.name}</p>
+		</c:if>
+			<a href="<c:url value="/j_spring_security_logout" />"> Logout </a>
 				<a href="<spring:url value="/admin/productInventory" />">  Product Inventory </a>
 		</div>
 

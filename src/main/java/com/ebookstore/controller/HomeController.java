@@ -19,6 +19,11 @@ public class HomeController {
         return "Login";
     }
 
+    @RequestMapping("/registration")
+    public String registration() {
+        return "registration";
+    }
+
     
 
     @RequestMapping("/about")
