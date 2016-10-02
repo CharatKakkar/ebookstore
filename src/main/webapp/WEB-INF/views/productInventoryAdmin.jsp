@@ -5,9 +5,16 @@
 <script>
 $(document).ready(function() {
 	   $('#productInventoryAdmin').DataTable( {
-       "pagingType": "full_numbers",
+	  "lengthMenu": [[5, 10, 25, 50, -1], [5,10, 25, 50, "All"]]
+	  // "pagingType": "full_numbers"
+       ,
     });   
 } );
+
+
+  
+
+
 </script>
 
 <div class="container-wrapper">
@@ -18,7 +25,7 @@ $(document).ready(function() {
             <p class="lead">This is the product inventory admin page!</p>
         </div>
 
-         <table id="productInventoryAdmin"class="display nowrap dataTable dtr-inline collapsed" cellspacing="0" role="grid" style="width:100%;">  
+         <table id="productInventoryAdmin"class="display nowrap dataTable dtr-inline collapsed" cellspacing="0" role="grid" style="width:90%;">  
                 <thead>
             <tr class="bg-success">
                 <th>Photo Thumb</th>

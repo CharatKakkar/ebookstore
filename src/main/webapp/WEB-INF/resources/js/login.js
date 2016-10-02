@@ -26,7 +26,6 @@ jQuery(document).ready(function() {
   $(':password').pwstrength(options);
 });
 
-alert("Hi there");
 (function (jQuery) {
 // Source: src/rules.js
 
