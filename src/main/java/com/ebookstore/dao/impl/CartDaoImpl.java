@@ -3,9 +3,12 @@ package com.ebookstore.dao.impl;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import com.ebookstore.dao.CartDao;
 import com.ebookstore.model.Cart;
 
+@Repository
 public class CartDaoImpl implements CartDao {
 
 	public Map<String, Cart> cartsList;
@@ -18,7 +21,7 @@ public class CartDaoImpl implements CartDao {
 	public Cart createCart(Cart cart) {
 		// TODO Auto-generated method stub
 		String cartId = cart.getCartId();
-		if (cartsList.containsKey(cartId)) {
+		if (cartsList.keySet().contains(cartId)) {
 			throw new IllegalArgumentException(String.format("Cart already exists"));
 		} else {
 			cartsList.put(cart.getCartId(), cart);
@@ -29,22 +32,23 @@ public class CartDaoImpl implements CartDao {
 	@Override
 	public void deleteCart(String cartId) {
 		// TODO Auto-generated method stub
-		if (cartsList.containsKey(cartId)) {
+		if (cartsList.keySet().contains(cartId)) {
 			cartsList.remove(cartId);
 		} else {
 
-			throw new IllegalArgumentException(String.format("Cart already exists"));
+			throw new IllegalArgumentException(String.format("Cart doesn't  exist"));
 		}
 
-	}
+	}	
 
 	@Override
 	public Cart updateCart(String cartId, Cart cart) {
 		// TODO Auto-generated method stub
-		if (!cartsList.containsKey(cartId)) {
-			throw new IllegalArgumentException(String.format("Cart doesn't exist"));
-		} else {
+		if (cartsList.keySet().contains(cartId)) {
 			cartsList.put(cartId, cart);
+			
+		} else {
+			throw new IllegalArgumentException(String.format("Cart doesn't exist"));
 		}
 		return cart;
 	}
@@ -52,13 +56,15 @@ public class CartDaoImpl implements CartDao {
 	@Override
 	public Cart getCart(String cartId) {
 		// TODO Auto-generated method stub
-		Cart myCart;
-		if (cartsList.containsKey(cartId)) {
+		Cart myCart = null;
+		if (cartsList.keySet().contains(cartId))  {
 			myCart = cartsList.get(cartId);
-		} else {
+		} 
+		/*else {
 			throw new IllegalArgumentException(
 					String.format("Invalid Cart Id so cannot return cart from getCart Function"));
 		}
+		*/
 		return myCart;
 	}
 

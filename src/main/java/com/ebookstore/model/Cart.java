@@ -3,19 +3,21 @@ package com.ebookstore.model;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Cart {
 
 	
 	String cartId;
-	Map <Integer, CartItem> cartItems ;
+	Map <Integer, CartItem> cartItems  = new HashMap<Integer,CartItem>();
 	double grandTotal;
 	
 	public Cart(){
-		grandTotal = 0;
-		new HashMap<Integer,CartItem>();
+		grandTotal = 0;		
 	}
 
-	Cart(String cartId){
+	public Cart(String cartId){
 		this.cartId=cartId; 
 	}
 	
@@ -40,20 +42,27 @@ public class Cart {
 
 	public void addCartItem(CartItem item) {
 		int productId = item.getProduct().getProductId();
-		if (cartItems.containsKey(productId)) {
+		
+		if (!(cartItems.keySet().isEmpty())) {
+			if(cartItems.containsKey(productId)){
 			CartItem oldItem = cartItems.get(productId);
-			oldItem.setQty(oldItem.getQty() + item.getQty());
+			if (!oldItem.equals(null)){
+			oldItem.setQty(oldItem.getQty() + item.getQty());}
 			cartItems.put(productId, oldItem);
 			updategrandTotal();
+			}
+			else{cartItems.put(productId, item);
+			updategrandTotal();}
 		} else {
 			cartItems.put(productId, item);
 			updategrandTotal();
 		}
+	
 	}// addCartItem ends
 
 	public void deleteCartItem(CartItem item) {
 		int productId = item.getProduct().getProductId();
-		if (!cartItems.containsKey(productId)) {
+		if (!cartItems.keySet().contains(productId)) {
 			throw new IllegalArgumentException(String.format("Wrong item sent to delete"));
 		} else {
 			cartItems.remove(productId);

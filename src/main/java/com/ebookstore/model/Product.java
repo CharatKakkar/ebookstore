@@ -1,124 +1,137 @@
 package com.ebookstore.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.web.multipart.MultipartFile;
-
-import javax.persistence.*;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+import javax.validation.constraints.Min;
 
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Product implements Serializable{
+public class Product implements Serializable {
+	private static final long serialVersionUID = -6423749643543334160L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int productId;
 
-    private static final long serialVersionUID = -3532377236419382983L;
+	@NotEmpty(message = "The product name must not be null.")
+	private String productName;
+	private String productCategory;
+	private String productDescription;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int productId;
+	@Min(value = 0, message = "The product price must no be less then zero.")
+	private double productPrice;
+	private String productCondition;
+	private String productStatus;
 
-    @NotEmpty (message = "The product name must not be null.")
+	@Min(value = 0, message = "The product unit must not be less than zero.")
+	private int unitInStock;
+	private String productPublisher;
 
-    private String productName;
-    private String productCategory;
-    private String productDescription;
+	@Transient
+	private MultipartFile productImage;
 
-    @Min(value = 0, message = "The product price must no be less then zero.")
-    private double productPrice;
-    private String productCondition;
-    private String productStatus;
+	@JsonIgnore
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<CartItem> cartItems;
 
-    @Min(value = 0, message = "The product unit must not be less than zero.")
-    private int unitInStock;
-    private String productPublisher;
+	public List<CartItem> getCartItems() {
+		return cartItems;
+	}
 
-    @Transient
-    private MultipartFile productImage;
+	public void setCartItems(List<CartItem> cartItems) {
+		this.cartItems = cartItems;
+	}
 
+	public int getProductId() {
+		return productId;
+	}
 
-    public int getProductId() {
-        return productId;
-    }
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
 
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
+	public String getProductName() {
+		return productName;
+	}
 
-    public String getProductName() {
-        return productName;
-    }
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
 
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
+	public String getProductCategory() {
+		return productCategory;
+	}
 
-    public String getProductCategory() {
-        return productCategory;
-    }
+	public void setProductCategory(String productCategory) {
+		this.productCategory = productCategory;
+	}
 
-    public void setProductCategory(String productCategory) {
-        this.productCategory = productCategory;
-    }
+	public String getProductDescription() {
+		return productDescription;
+	}
 
-    public String getProductDescription() {
-        return productDescription;
-    }
+	public void setProductDescription(String productDescription) {
+		this.productDescription = productDescription;
+	}
 
-    public void setProductDescription(String productDescription) {
-        this.productDescription = productDescription;
-    }
+	public double getProductPrice() {
+		return productPrice;
+	}
 
-    public double getProductPrice() {
-        return productPrice;
-    }
+	public void setProductPrice(double productPrice) {
+		this.productPrice = productPrice;
+	}
 
-    public void setProductPrice(double productPrice) {
-        this.productPrice = productPrice;
-    }
+	public String getProductCondition() {
+		return productCondition;
+	}
 
-    public String getProductCondition() {
-        return productCondition;
-    }
+	public void setProductCondition(String productCondition) {
+		this.productCondition = productCondition;
+	}
 
-    public void setProductCondition(String productCondition) {
-        this.productCondition = productCondition;
-    }
+	public String getProductStatus() {
+		return productStatus;
+	}
 
-    public String getProductStatus() {
-        return productStatus;
-    }
+	public void setProductStatus(String productStatus) {
+		this.productStatus = productStatus;
+	}
 
-    public void setProductStatus(String productStatus) {
-        this.productStatus = productStatus;
-    }
+	public int getUnitInStock() {
+		return unitInStock;
+	}
 
-    public int getUnitInStock() {
-        return unitInStock;
-    }
+	public void setUnitInStock(int unitInStock) {
+		this.unitInStock = unitInStock;
+	}
 
-    public void setUnitInStock(int unitInStock) {
-        this.unitInStock = unitInStock;
-    }
+	public String getProductPublisher() {
+		return productPublisher;
+	}
 
-    public String getProductPublisher() {
-        return productPublisher;
-    }
+	public void setProductPublisher(String productManufacturer) {
+		this.productPublisher = productManufacturer;
+	}
 
-    public void setProductPublisher(String productManufacturer) {
-        this.productPublisher = productManufacturer;
-    }
+	public MultipartFile getProductImage() {
+		return productImage;
+	}
 
-    public MultipartFile getProductImage() {
-        return productImage;
-    }
-
-    public void setProductImage(MultipartFile productImage) {
-        this.productImage = productImage;
-    }
+	public void setProductImage(MultipartFile productImage) {
+		this.productImage = productImage;
+	}
 
 }

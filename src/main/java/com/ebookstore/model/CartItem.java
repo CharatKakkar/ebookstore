@@ -1,10 +1,18 @@
 package com.ebookstore.model;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class CartItem {
 	
-	
-
+	@ManyToOne
+	@JoinColumn(name="productId")
 	Product product;
+	@ManyToOne
+	@JoinColumn(name="cartId")
+	private String cartId;
 	int qty;
 	double itemTotal;
 	
@@ -12,8 +20,7 @@ public class CartItem {
 		//Default Constructor
 	}
 	
-	CartItem(Product product){
-	
+	public CartItem(Product product){	
 		this.product= product;
 		qty= 1;
 		itemTotal= product.getProductPrice()*qty;
