@@ -1,18 +1,25 @@
 package com.ebookstore.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
 public class CartItem {
+	@Id
+    @GeneratedValue
+    private int cartItemId;
 	
 	@ManyToOne
 	@JoinColumn(name="productId")
 	Product product;
+	
 	@ManyToOne
 	@JoinColumn(name="cartId")
-	private String cartId;
+	private Cart cart;
+	
 	int qty;
 	double itemTotal;
 	

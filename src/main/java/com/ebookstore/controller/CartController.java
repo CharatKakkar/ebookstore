@@ -58,7 +58,7 @@ public class CartController {
 		if (cart == null) {
 			cart = cartDao.createCart(new Cart(sessionId));
 		}
-		cart.addCartItem(item);
+	//	cart.addCartItem(item);
 		cartDao.updateCart(sessionId, cart);
 
 	}
@@ -77,7 +77,7 @@ public class CartController {
 		if (cart == null) {
 			throw new IllegalArgumentException(String.format("Card doesn't exist" + sessionId));
 		}
-		cart.deleteCartItem(item);
+	//	cart.deleteCartItem(item);
 		cartDao.updateCart(sessionId, cart);
 
 	}
