@@ -1,21 +1,20 @@
 package com.ebookstore.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.ebookstore.model.Product;
 import com.ebookstore.service.ProductService;
@@ -55,8 +54,12 @@ public class AdminController {
 		return "editProduct";
 	}
 
+	//use of @ Valid annotation and @ModelAttribute annotation is new 
 	@RequestMapping(value = "/productInventory/addProduct", method = RequestMethod.POST)
-	public String addProductPost(@ModelAttribute("product") Product product) {
+	public String addProductPost(@Valid @ModelAttribute("product") Product product , BindingResult results) {
+		if (results.hasErrors()) {
+			return "addProduct";
+		}
 		productService.addProduct(product);
 		helper = new Helper();
 		helper.saveNewImage(product.getProductImage(), product.getProductId());
@@ -64,7 +67,10 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "productInventory/updateProduct", method = RequestMethod.POST)
-	public String updateProduct(@ModelAttribute("product") Product product, HttpServletRequest session) {
+	public String updateProduct(@Valid @ModelAttribute("product") Product product , BindingResult results) {
+		if (results.hasErrors()) {
+			return "editProduct";
+		}
 		productService.editProduct(product);
 		helper = new Helper();
 		helper.saveNewImage(product.getProductImage(), product.getProductId());
