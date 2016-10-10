@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Authority {
+public class Authorities {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private int authorityId;
@@ -31,5 +31,4 @@ public class Authority {
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
-	
 }

@@ -1,4 +1,4 @@
-
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@include file="/WEB-INF/views/template/header.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,18 +7,12 @@ $(document).ready(function() {
 	
 $('#unitNumberS,#streetNumberS,#cityS,#provinceS,#countryS,#zipCodeS').hide();
 $('#shipAdd').hide();
-
- 	$('#answerIsYes').click(function(){
-	 	  $('#unitNumberS,#streetNumberS,#cityS,#provinceS,#countryS,#zipCodeS').show();
-	 	  $('#shipAdd').show();
-	 	 copyFields();
-	 	disableFields();
-	  });	
+	/*
   	$('#answerIsNo').click(function(){
-  		$('#unitNumberS,#streetNumberS,#cityS,#provinceS,#countryS,#zipCodeS').show();
-  		$('#shipAdd').show();
-  		enableFields();
+  		
 	  });  
+	
+	*/
 } );
 
 function copyFields(){
@@ -28,6 +22,8 @@ function copyFields(){
 	  $('#provinceS').val($('#provinceB').val());	 
 	  $('#countryS').val($('#countryB').val());	
 	  $('#zipCodeS').val($('#zipCodeB').val()); 
+	  $('#shipAdd').show();
+	  $('#unitNumberS,#streetNumberS,#cityS,#provinceS,#countryS,#zipCodeS').show();
 }
 function disableFields(){
 	  $("#unitNumberS").attr("disabled", "disabled");
@@ -43,7 +39,9 @@ function enableFields(){
 		$("#cityS").removeAttr("disabled"); 
 		$("#provinceS").removeAttr("disabled"); 
 		$("#countryS").removeAttr("disabled"); 
-		$("#zipCodeS").removeAttr("disabled");   
+		$("#zipCodeS").removeAttr("disabled");
+		$('#unitNumberS,#streetNumberS,#cityS,#provinceS,#countryS,#zipCodeS').show();
+  		$('#shipAdd').show();
 }
 </script>
     <head>  
@@ -71,36 +69,37 @@ function enableFields(){
 
 			<div class="col-md-4">
 				<section class="login-form">
-					<form method="post" action="#" role="login">
+					<form:form action="${pageContext.request.contextPath}/registration/registrationData" method="post" commandName="customer" role="login">
 						<img src="<c:url value="/resources/images/bookstore_logo.png" />" class="img-responsive" alt="" /> 
-				<a>User Details :</a>
-				<input type="text" name="name"	placeholder="Username" required class="form-control input-lg" value="" /> 
-				<input type="email" name="email" placeholder="Email" required class="form-control input-lg" value="" />
-				<input name="firstPassword" type="password" class="form-control" id="password" placeholder="Password" required="" />
-				<input type="password" class="form-control input-lg" id="confirm" placeholder="Confirm Password" required="" />
-			<!--  	<div class="pwstrength_viewport_progress" id="pwstrength"></div> -->
+				<a>User Details :</a><br>		
+				<form:input path="userName" type="text" name="name"  placeholder="Username" required="" value=""  class="form-control"/> 
+				<form:input type="email" name="email" path="emailId" placeholder="EmailId" required="" value=""  class="form-control" />
+				<form:input name="firstPassword" type="password" path="password" class="form-control" id="password" placeholder="Password" required="" />
+				<input type="password" class="form-control input-lg" id="confirm" placeholder="Confirm Password" required=""  class="form-control" />
+			<!-- <div class="pwstrength_viewport_progress" id="pwstrength"> </div> -->
 				<a>Billing Address :</a><a class="glyphicon glyphicon-refresh" onclick="copyFields()"></a>
-				<input type="text"id="unitNumberB"  name="unitNumberB" placeholder="Unit #" required class="form-control input-lg" value="" />
-				<input type="text" id="streetNumberB" name="streetNumberB" placeholder="Street #" required class="form-control input-lg" value="" />
-				<input type="text" id="cityB" name="cityB" placeholder="City" required class="form-control input-lg" value="" />
-				<input type="text" id="provinceB" name="provinceB" placeholder="Province" required class="form-control input-lg" value="" />
-				<input type="text" id="countryB"  name="countryB" placeholder="Country" required class="form-control input-lg" value="" />
-				<input type="text" id="zipCodeB" name="zipCodeB" placeholder="Zip Code" required class="form-control input-lg" value="" />				
+				<form:input type="text" id="unitNumberB"  path ="billingAddress.apartmentNumber" name="unitNumberB" placeholder="Unit #" required="" value="" />
+				<form:input type="text" id="streetNumberB" path ="billingAddress.streetAddress" name="streetNumberB" placeholder="Street #" required="" value="" />
+				<form:input type="text" id="cityB" name="cityB" path ="billingAddress.city" placeholder="City" required="" value="" />
+				<form:input type="text" id="provinceB" path ="billingAddress.state" name="provinceB" placeholder="Province" required="" value="" />
+				<form:input type="text" id="countryB"  path ="billingAddress.country" name="countryB" placeholder="Country" required="" value="" />
+				<form:input type="text" id="zipCodeB" path ="billingAddress.zipCode" name="zipCodeB" placeholder="Zip Code" required="" value="" />	<br>			
 				<a>Are your Shipping & Billing address same? </a>
-				<a id="answerIsYes" class="glyphicon glyphicon-thumbs-up" onclick="copyFields() disableFields()"></a>
-				<a id="answerIsNo" class="glyphicon glyphicon-thumbs-down" onclick="enableFields()"></a>
+				<a id="answerIsYes" class="glyphicon glyphicon-thumbs-up" onclick="copyFields()"></a>
+				<a id="answerIsNo" class="glyphicon glyphicon-thumbs-down" ></a>
 			 <!--    <input id="answerIsYes" type="radio" name="answer" value="Yes"> Yes <input type="radio" id="answerIsNo" name="answer" value="No"> No<br>--> 
-			    <a id="shipAdd">Shipping Address :</a>
-				<input type="text" id="unitNumberS" name="unitNumberS" placeholder="Unit #" required class="form-control input-lg" value="" />
-				<input type="text" id="streetNumberS" name="streetNumberS" placeholder="Street #" required class="form-control input-lg" value="" />
-				<input type="text" id="cityS" name="cityS" placeholder="City" required class="form-control input-lg" value="" />
-				<input type="text" id="provinceS" name="provinceS" placeholder="Province" required class="form-control input-lg" value="" />
-				<input type="text" id="countryS" name="countryS" placeholder="Country" required class="form-control input-lg" value="" />
-				<input type="text" id="zipCodeS" name="zipCodeS" placeholder="Zip Code" required class="form-control input-lg" value="" />
+			    <a id="shipAdd">Shipping Address :</a><br>
+				<form:input type="text" id="unitNumberS" path ="shippingAddress.apartmentNumber" name="unitNumberS" placeholder="Unit #" required="" value="" />
+				<form:input type="text" id="streetNumberS" path ="shippingAddress.streetAddress" name="streetNumberS" placeholder="Street #" required="" value="" />
+				<form:input type="text" id="cityS" path ="shippingAddress.city" name="cityS" placeholder="City" required="" value="" />
+				<form:input type="text" id="provinceS" path ="shippingAddress.state" name="provinceS" placeholder="Province" required="" value="" />
+				<form:input type="text" id="countryS" path ="shippingAddress.country" name="countryS" placeholder="Country" required="" value="" />
+				<form:input type="text" id="zipCodeS" path ="shippingAddress.zipCode" name="zipCodeS" placeholder="Zip Code" required="" value="" />
 				
 				<button type="submit" name="go"	class="btn btn-lg btn-primary btn-block">Sign Up</button>
 				<div><a href="<c:url value="/registration" />">Create account</a> or <a	href="#">reset password</a> </div>
-				</form>
+				</form:form>
+
 				</section>
 			</div>
 

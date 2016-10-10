@@ -16,24 +16,35 @@ public class BillingAddress {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int billingAddressId;
 	
-	@NotEmpty(message="streetAddress cannot be null")
-	private String streetAddress;
 	
-	@NotEmpty(message="apartmentNumber cannot be null")
+	private String streetAddress;
+
 	private int apartmentNumber;
 	
-	@NotEmpty(message="zipCode cannot be null")
+	
 	private String zipCode;
 	
-	@NotEmpty(message="State cannot be null")
-	private String State;
 	
-	@NotEmpty(message="Country cannot be null")
+	private String city;
+	
+	
+	private String state;
+	
+	
 	private String Country;
 	
 	
 	@OneToOne
 	private Customer customer;
+	
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
 	int getBillingAddressId() {
 		return billingAddressId;
 	}
@@ -67,11 +78,19 @@ public class BillingAddress {
 	}
 
 	public String getState() {
-		return State;
+		return state;
 	}
 
 	public void setState(String state) {
-		State = state;
+		this.state = state;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 	public String getCountry() {
@@ -86,7 +105,7 @@ public class BillingAddress {
 	@Override
 	public String toString() {
 		return "BillingAddress [billingAddressId=" + billingAddressId + ", streetAddress=" + streetAddress
-				+ ", apartmentNumber=" + apartmentNumber + ", zipCode=" + zipCode + ", State=" + State + ", Country="
+				+ ", apartmentNumber=" + apartmentNumber + ", zipCode=" + zipCode + ", State=" + city + ", Country="
 				+ Country + "]";
 	}
 	

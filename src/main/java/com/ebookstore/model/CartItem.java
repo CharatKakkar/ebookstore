@@ -6,6 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class CartItem {
 	@Id
@@ -18,6 +20,7 @@ public class CartItem {
 	
 	@ManyToOne
 	@JoinColumn(name="cartId")
+	 @JsonIgnore
 	private Cart cart;
 	
 	int qty;

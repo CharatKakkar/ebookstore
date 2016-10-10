@@ -1,11 +1,9 @@
 package com.ebookstore.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -14,24 +12,29 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class ShippingAddress {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	String shippingAddressId;
-	
+	String shippingAddressId;	
 	
 
-	@NotEmpty(message="streetAddress cannot be null")
 	String streetAddress;
-	
-	@NotEmpty(message="apartmentNumber cannot be null")
+
 	int apartmentNumber;
-	
-	@NotEmpty(message="zipCode cannot be null")
+
 	String zipCode;
 	
-	@NotEmpty(message="State cannot be null")
-	String State;
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	private String city;
 	
-	@NotEmpty(message="Country cannot be null")
-	String Country;
+	
+	String state;
+	
+	String country;
 	
 	@OneToOne
 	Customer customer;
@@ -69,19 +72,19 @@ public class ShippingAddress {
 	}
 
 	public String getState() {
-		return State;
+		return state;
 	}
 
 	public void setState(String state) {
-		State = state;
+	this.state = state;
 	}
 
 	public String getCountry() {
-		return Country;
+		return country;
 	}
 
 	public void setCountry(String country) {
-		Country = country;
+		this.country = country;
 	}
 
 	public Customer getCustomer() {
@@ -95,8 +98,8 @@ public class ShippingAddress {
 	@Override
 	public String toString() {
 		return "BillingAddress [shippingAddressId=" + shippingAddressId + ", streetAddress=" + streetAddress
-				+ ", apartmentNumber=" + apartmentNumber + ", zipCode=" + zipCode + ", State=" + State + ", Country="
-				+ Country + "]";
+				+ ", apartmentNumber=" + apartmentNumber + ", zipCode=" + zipCode + ", State=" + state + ", Country="
+				+ country + "]";
 	}
 
 }

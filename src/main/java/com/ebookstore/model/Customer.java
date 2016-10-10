@@ -1,5 +1,7 @@
 package com.ebookstore.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +14,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Customer {
+public class Customer implements Serializable{
+
+	private static final long serialVersionUID = -3730131383483092726L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -27,11 +31,8 @@ public class Customer {
 	@NotEmpty(message="EmailId cannot be null")
 	private String emailId;
 	
-	@NotEmpty(message="PhoneNumber cannot be null")
-	private int phoneNumber;
 	
-	@NotEmpty(message="IsActive must be specified")
-	private Boolean isActive;
+	private boolean isActive;
 	
 	@OneToOne
 	@JoinColumn(name= "billingAddressId")
@@ -79,19 +80,11 @@ public class Customer {
 		this.emailId = emailId;
 	}
 
-	public int getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(int phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-
-	public Boolean getIsActive() {
+	public boolean getIsActive() {
 		return isActive;
 	}
 
-	public void setIsActive(Boolean isActive) {
+	public void setIsActive(boolean isActive) {
 		this.isActive = isActive;
 	}
 
