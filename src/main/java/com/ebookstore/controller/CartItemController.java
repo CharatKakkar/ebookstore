@@ -17,14 +17,12 @@ import com.ebookstore.service.CustomerService;
 public class CartItemController {
 	
 	@Autowired
-	CustomerService customerService;
-	
+	CustomerService customerService;	
 	@RequestMapping
-	public String get (@AuthenticationPrincipal User activeUser)
-	{
-		Customer customer = (Customer)customerService.getCustomerByuserName(activeUser.getUsername());
-		String cartId = customer.getCart().getCartId();		
-		return "redirect:/cart/"+cartId;
+	public String get(@AuthenticationPrincipal User activeUser) {
+		Customer customer = (Customer) customerService.getCustomerByuserName(activeUser.getUsername());
+		int cartId = customer.getCart().getCartId();
+		return "redirect:/cart/" + cartId;
 	}
 
 	@RequestMapping(value = "/{cartId}", method = RequestMethod.GET)

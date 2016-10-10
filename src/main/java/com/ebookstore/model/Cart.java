@@ -19,7 +19,7 @@ public class Cart {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	String cartId;
+	int cartId;
 	@OneToMany(mappedBy="cart", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	List<CartItem> cartItems;
 	@OneToOne
@@ -33,14 +33,14 @@ public class Cart {
 		grandTotal = 0;		
 	}
 
-	public Cart(String cartId){
+	public Cart(int cartId){
 		this.cartId=cartId; 
 	}
 	
-	public String getCartId() {
+	public int getCartId() {
 		return cartId;
 	}
-	public void setCartId(String cartId) {
+	public void setCartId(int cartId) {
 		this.cartId = cartId;
 	}
 

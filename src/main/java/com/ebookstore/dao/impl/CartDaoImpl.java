@@ -20,17 +20,17 @@ public class CartDaoImpl implements CartDao {
 	@Override
 	public Cart createCart(Cart cart) {
 		// TODO Auto-generated method stub
-		String cartId = cart.getCartId();
+		int cartId = cart.getCartId();
 		if (cartsList.keySet().contains(cartId)) {
 			throw new IllegalArgumentException(String.format("Cart already exists"));
 		} else {
-			cartsList.put(cart.getCartId(), cart);
+		//	cartsList.put(cart.getCartId(), cart);
 		}
 		return cart;
 	}
 
 	@Override
-	public void deleteCart(String cartId) {
+	public void deleteCart(int cartId) {
 		// TODO Auto-generated method stub
 		if (cartsList.keySet().contains(cartId)) {
 			cartsList.remove(cartId);
@@ -42,10 +42,10 @@ public class CartDaoImpl implements CartDao {
 	}	
 
 	@Override
-	public Cart updateCart(String cartId, Cart cart) {
+	public Cart updateCart(int cartId, Cart cart) {
 		// TODO Auto-generated method stub
 		if (cartsList.keySet().contains(cartId)) {
-			cartsList.put(cartId, cart);
+			//cartsList.put(cartId, cart);
 			
 		} else {
 			throw new IllegalArgumentException(String.format("Cart doesn't exist"));
@@ -54,7 +54,7 @@ public class CartDaoImpl implements CartDao {
 	}
 
 	@Override
-	public Cart getCart(String cartId) {
+	public Cart getCartById(int cartId) {
 		// TODO Auto-generated method stub
 		Cart myCart = null;
 		if (cartsList.keySet().contains(cartId))  {

@@ -5,7 +5,7 @@ import com.ebookstore.model.Cart;
 public interface CartDao {
 
 public Cart createCart(Cart cart);
-public void deleteCart(String cartId);
-public Cart updateCart(String cartId, Cart cart);
-public Cart getCart(String cartId);
+public Cart getCartById(int cartId);
+public Cart updateCart(int cartId, Cart cart);
+public void deleteCart(int cartId);
 }

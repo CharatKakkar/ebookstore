@@ -29,57 +29,34 @@ public class CartController {
 	private CartDao cartDao;
 	
 	@RequestMapping(value="{cartId}", method=RequestMethod.GET) 
-	public @ResponseBody Cart getCart(@PathVariable(value="cartId") String cartId){		
-		return cartDao.getCart(cartId);
+	public @ResponseBody Cart getCart(@PathVariable(value="cartId") int cartId){		
+		return cartDao.getCartById(cartId);
 	}
 	
 	@RequestMapping(value="{cardId}" , method=RequestMethod.PUT)
 	@ResponseStatus(value=HttpStatus.NO_CONTENT)
-	public Cart updateCart(@PathVariable(value="cartId") String cartId, @RequestBody Cart cart){
+	public Cart updateCart(@PathVariable(value="cartId") int cartId, @RequestBody Cart cart){
 		return cartDao.updateCart(cartId, cart);
 	}
 	
 	@RequestMapping(value="{cartId}" , method=RequestMethod.DELETE)
 	@ResponseStatus(value=HttpStatus.NO_CONTENT)
-	public void deleteCart(@PathVariable (value="{cartId}") String cartId){
+	public void deleteCart(@PathVariable (value="{cartId}") int cartId){
 		cartDao.deleteCart(cartId);		
 	}
 
 	@RequestMapping(value = "/add/{productId}", method = RequestMethod.PUT)
 	public void addItem(@PathVariable(value = "productId") int productId, HttpServletRequest session) {
 		CartItem item = null;
-		String sessionId = session.getSession(true).getId();
-		Cart cart = cartDao.getCart(sessionId);
-		if (!(productDao.getProductById(productId) == null)) {
-			item = new CartItem(productDao.getProductById(productId));
-		} else {
-			throw new IllegalArgumentException(String.format("Invalid productId" + productId));
-		}
-		if (cart == null) {
-			cart = cartDao.createCart(new Cart(sessionId));
-		}
-	//	cart.addCartItem(item);
-		cartDao.updateCart(sessionId, cart);
+
 
 	}
 
 	@RequestMapping(value = "/delete/{productId}", method = RequestMethod.PUT)
 	@ResponseStatus(value=HttpStatus.NO_CONTENT)
 	public void deleteItem(@PathVariable(value = "{productId})") int productId, HttpServletRequest session) {
-		CartItem item = null;
-		String sessionId = session.getSession(true).getId();
-		Cart cart = cartDao.getCart(sessionId);
-		if (!(productDao.getProductById(productId) == null)) {
-			item = new CartItem(productDao.getProductById(productId));
-		} else {
-			throw new IllegalArgumentException(String.format("Invalid productId" + productId));
-		}
-		if (cart == null) {
-			throw new IllegalArgumentException(String.format("Card doesn't exist" + sessionId));
-		}
-	//	cart.deleteCartItem(item);
-		cartDao.updateCart(sessionId, cart);
 
+		
 	}
 	
 //Add exception handlers
