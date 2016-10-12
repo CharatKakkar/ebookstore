@@ -1,19 +1,17 @@
 package com.ebookstore.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.ebookstore.dao.CartDao;
 import com.ebookstore.model.Cart;
 import com.ebookstore.service.CartService;
 
+@Service
 public class CartServiceImpl implements CartService{
 
+	@Autowired
 	CartDao cartDao;
-	
-	@Override
-	public Cart createCart(Cart cart) {
-		// TODO Auto-generated method stub
-		cartDao.createCart(cart);
-		return null;
-	}
 
 	@Override
 	public void deleteCart(int cartId) {
@@ -31,8 +29,8 @@ public class CartServiceImpl implements CartService{
 	@Override
 	public Cart getCartById(int cartId) {
 		// TODO Auto-generated method stub
-		cartDao.getCartById(cartId);
-		return null;
+		Cart myCart = cartDao.getCartById(cartId);
+		return myCart;
 	}
 
 }

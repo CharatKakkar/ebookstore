@@ -26,7 +26,7 @@ public class CartItem {
 	int qty;
 	double itemTotal;
 	
-	CartItem(){
+	public CartItem(){
 		//Default Constructor
 	}
 	
@@ -44,6 +44,22 @@ public class CartItem {
 		this.product = product;
 	}
 
+	public int getCartItemId() {
+		return cartItemId;
+	}
+
+	public void setCartItemId(int cartItemId) {
+		this.cartItemId = cartItemId;
+	}
+
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
 	public int getQty() {
 		return qty;
 	}
@@ -59,5 +75,6 @@ public class CartItem {
 	public void setItemTotal(double itemTotal) {
 		this.itemTotal = itemTotal;
 	}
+
 
 }

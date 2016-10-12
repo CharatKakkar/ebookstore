@@ -1,71 +1,46 @@
 package com.ebookstore.dao.impl;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ebookstore.dao.CartDao;
 import com.ebookstore.model.Cart;
 
 @Repository
+@Transactional
 public class CartDaoImpl implements CartDao {
 
-	public Map<String, Cart> cartsList;
-
-	public CartDaoImpl() {
-		cartsList = new HashMap<String, Cart>();
-	}
-
-	@Override
-	public Cart createCart(Cart cart) {
-		// TODO Auto-generated method stub
-		int cartId = cart.getCartId();
-		if (cartsList.keySet().contains(cartId)) {
-			throw new IllegalArgumentException(String.format("Cart already exists"));
-		} else {
-		//	cartsList.put(cart.getCartId(), cart);
-		}
-		return cart;
-	}
+	@Autowired
+	SessionFactory sessionFactory;
+	
 
 	@Override
 	public void deleteCart(int cartId) {
 		// TODO Auto-generated method stub
-		if (cartsList.keySet().contains(cartId)) {
-			cartsList.remove(cartId);
-		} else {
-
-			throw new IllegalArgumentException(String.format("Cart doesn't  exist"));
-		}
-
+		Session session = sessionFactory.getCurrentSession();
+		Cart cart = (Cart) session.get(Cart.class, cartId);
+		session.delete(cart);
 	}	
 
 	@Override
 	public Cart updateCart(int cartId, Cart cart) {
-		// TODO Auto-generated method stub
-		if (cartsList.keySet().contains(cartId)) {
-			//cartsList.put(cartId, cart);
-			
-		} else {
-			throw new IllegalArgumentException(String.format("Cart doesn't exist"));
-		}
 		return cart;
+		// TODO Auto-generated method stub
+	
 	}
 
 	@Override
 	public Cart getCartById(int cartId) {
 		// TODO Auto-generated method stub
-		Cart myCart = null;
-		if (cartsList.keySet().contains(cartId))  {
-			myCart = cartsList.get(cartId);
-		} 
-		/*else {
-			throw new IllegalArgumentException(
-					String.format("Invalid Cart Id so cannot return cart from getCart Function"));
-		}
-		*/
+
+		Session session = sessionFactory.getCurrentSession();
+		Cart myCart = (Cart) session.get(Cart.class, cartId);
 		return myCart;
 	}
+
+	
 
 }

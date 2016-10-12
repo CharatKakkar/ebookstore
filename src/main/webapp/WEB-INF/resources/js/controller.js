@@ -11,7 +11,13 @@ cartApp.controller("cartCtrl", function ($scope, $http){
     };
 
     $scope.clearCart = function () {
-        $http.delete('/ebookstore/rest/cart/'+$scope.cartId).success($scope.refreshCart());
+        $http.delete('/ebookstore/rest/cart/'+$scope.cartId).success(function (){
+        	
+        	alert("All the products have been removed from your cart!")
+        	$scope.refreshCart()     	
+        	
+        });
+        
     };
 
     $scope.initCartId = function (cartId) {
@@ -26,16 +32,16 @@ cartApp.controller("cartCtrl", function ($scope, $http){
     };
 
     $scope.removeFromCart = function (productId) {
-        $http.put('/ebookstore/rest/cart/delete/'+productId).success(function (data) {
+        $http.put('/ebookstore/rest/cart/remove/'+productId).success(function (data) {
             $scope.refreshCart();
         });
     };
 
-    $scope.calGrandTotal = function () {
+    $scope.grandTotal = function () {
         var grandTotal=0;
 
         for (var i=0; i<$scope.cart.cartItems.length; i++) {
-            grandTotal+=$scope.cart.cartItems[i].totalPrice;
+            grandTotal+=$scope.cart.cartItems[i].itemTotal;
         }
 
         return grandTotal;

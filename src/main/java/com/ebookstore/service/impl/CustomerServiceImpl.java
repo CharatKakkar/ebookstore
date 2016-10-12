@@ -11,12 +11,13 @@ import com.ebookstore.service.CustomerService;
 public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
-	CustomerDao customerDao;
+	CustomerDao customerDao;	
 	
 	@Override
 	public Customer getCustomerById(int id) {
 		
-		return null;
+		Customer customer = customerDao.getCustomerById(id);
+		return customer;
 	}
 
 	@Override
@@ -40,7 +41,8 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public Customer getCustomerByuserName(String userName) {
 		// TODO Auto-generated method stub
-		return null;
+		Customer customer = customerDao.getCustomerByuserName(userName);
+		return customer;
 	}
 
 	

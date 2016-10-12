@@ -1,5 +1,6 @@
 package com.ebookstore.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,7 +16,12 @@ import javax.persistence.OneToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Cart {
+public class Cart implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2593472262783432104L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

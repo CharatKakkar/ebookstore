@@ -1,5 +1,6 @@
 package com.ebookstore.dao.impl;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,12 +8,12 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ebookstore.dao.CustomerDao;
+import com.ebookstore.model.Authorities;
 import com.ebookstore.model.BillingAddress;
 import com.ebookstore.model.Cart;
 import com.ebookstore.model.Customer;
 import com.ebookstore.model.ShippingAddress;
 import com.ebookstore.model.Users;
-import com.ebookstore.model.Authorities;
 @Repository
 @Transactional
 public class CustomerDaoImpl implements CustomerDao {
@@ -98,8 +99,8 @@ public class CustomerDaoImpl implements CustomerDao {
 	public Customer getCustomerByuserName(String userName) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
-		Customer customer = (Customer)session.createQuery("from Customer where username = ?").setString(0, userName);
-		return customer;
+		Query query = session.createQuery("from Customer where username = ?").setString(0, userName);
+		return (Customer) query.uniqueResult();
 	}
 
 }
