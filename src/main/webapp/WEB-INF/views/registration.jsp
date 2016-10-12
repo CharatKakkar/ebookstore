@@ -15,7 +15,14 @@ $('#unitNumberB').val("");
 	
 	*/
 } );
-
+function clearBFields(){
+	  $('#unitNumberB').val("");
+	  $('#streetNumberB').val("");
+	  $('#cityB').val("");	 
+	  $('#provinceB').val("");	 
+	  $('#countryB').val("");	
+	  $('#zipCodeB').val(""); 	  
+}
 function copyFields(){
 	  $('#unitNumberS').val($('#unitNumberB').val());
 	  $('#streetNumberS').val($('#streetNumberB').val());
@@ -26,7 +33,7 @@ function copyFields(){
 	  $('#shipAdd').show();
 	  $('#unitNumberS,#streetNumberS,#cityS,#provinceS,#countryS,#zipCodeS').show();
 }
-function clearFields(){
+function clearSFields(){
 	  $('#unitNumberS').val("");
 	  $('#streetNumberS').val("");
 	  $('#cityS').val("");	 
@@ -88,7 +95,7 @@ function enableFields(){
 				<form:input name="firstPassword" type="password" path="password" class="form-control" id="password" placeholder="Password" required="" />
 				<input type="password" class="form-control input-lg" id="confirm" placeholder="Confirm Password" required=""  class="form-control" />
 			<!-- <div class="pwstrength_viewport_progress" id="pwstrength"> </div> -->
-				<a>Billing Address :</a><a class="glyphicon glyphicon-scissors" onclick="copyFields()"></a>
+				<a>Billing Address :</a><a class="glyphicon glyphicon-scissors" onclick="clearBFields()"></a>
 				<form:input type="text" id="unitNumberB"  path ="billingAddress.apartmentNumber" name="unitNumberB" placeholder="Unit #" required="" value="" />
 				<form:input type="text" id="streetNumberB" path ="billingAddress.streetAddress" name="streetNumberB" placeholder="Street #" required="" value="" />
 				<form:input type="text" id="cityB" name="cityB" path ="billingAddress.city" placeholder="City" required="" value="" />
@@ -97,7 +104,7 @@ function enableFields(){
 				<form:input type="text" id="zipCodeB" path ="billingAddress.zipCode" name="zipCodeB" placeholder="Zip Code" required="" value="" />	<br>			
 				<a>Are your Shipping & Billing address same? </a>
 				<a id="answerIsYes" class="glyphicon glyphicon-thumbs-up" onclick="copyFields()"></a>
-				<a id="answerIsNo" class="glyphicon glyphicon-thumbs-down" onclick="clearFields()" ></a>
+				<a id="answerIsNo" class="glyphicon glyphicon-thumbs-down" onclick="clearSFields()" ></a>
 			 <!--    <input id="answerIsYes" type="radio" name="answer" value="Yes"> Yes <input type="radio" id="answerIsNo" name="answer" value="No"> No<br>--> 
 			    <a id="shipAdd">Shipping Address :</a><br>
 				<form:input type="text" id="unitNumberS" path ="shippingAddress.apartmentNumber" name="unitNumberS" placeholder="Unit #" required="" value="" />
