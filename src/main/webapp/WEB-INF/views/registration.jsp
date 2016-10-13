@@ -84,38 +84,41 @@ function enableFields(){
 
 	<div class="row" id="pwd-container">
 		<div class="col-md-4"></div>
-
+			
 			<div class="col-md-4">
+			
 				<section class="login-form">
+				<c:if test="${not empty error}">
+						<div class="error">${error}</div>
+					</c:if>
 					<form:form action="${pageContext.request.contextPath}/registration/registrationData" method="post" commandName="customer" role="login">
 						<img src="<c:url value="/resources/images/bookstore_logo.png" />" class="img-responsive" alt="" /> 
 				<a>User Details :</a><br>		
-				<form:input path="userName" type="text" name="name"  placeholder="Username" required="" value=""  class="form-control"/> 
+				<form:input path="userName" type="text" name="name"  placeholder="Username"  value=""  required="" class="form-control" /> 
 				<form:input type="email" name="email" path="emailId" placeholder="EmailId" required="" value=""  class="form-control" />
-				<form:input name="firstPassword" type="password" path="password" class="form-control" id="password" placeholder="Password" required="" />
+				<form:input name="firstPassword" type="password" path="password"  id="password" placeholder="Password" required="" class="form-control"/>
 				<input type="password" class="form-control input-lg" id="confirm" placeholder="Confirm Password" required=""  class="form-control" />
 			<!-- <div class="pwstrength_viewport_progress" id="pwstrength"> </div> -->
 				<a>Billing Address :</a><a class="glyphicon glyphicon-scissors" onclick="clearBFields()"></a>
-				<form:input type="text" id="unitNumberB"  path ="billingAddress.apartmentNumber" name="unitNumberB" placeholder="Unit #" required="" value="" />
-				<form:input type="text" id="streetNumberB" path ="billingAddress.streetAddress" name="streetNumberB" placeholder="Street #" required="" value="" />
-				<form:input type="text" id="cityB" name="cityB" path ="billingAddress.city" placeholder="City" required="" value="" />
-				<form:input type="text" id="provinceB" path ="billingAddress.state" name="provinceB" placeholder="Province" required="" value="" />
-				<form:input type="text" id="countryB"  path ="billingAddress.country" name="countryB" placeholder="Country" required="" value="" />
-				<form:input type="text" id="zipCodeB" path ="billingAddress.zipCode" name="zipCodeB" placeholder="Zip Code" required="" value="" />	<br>			
+				<form:input type="text" id="unitNumberB"  path ="billingAddress.apartmentNumber" name="unitNumberB" placeholder="Unit #" class="form-control" required="" value="" />
+				<form:input type="text" id="streetNumberB" path ="billingAddress.streetAddress" name="streetNumberB" placeholder="Street #" class="form-control" required="" value="" />
+				<form:input type="text" id="cityB" name="cityB" path ="billingAddress.city" placeholder="City" class="form-control" required="" value="" />
+				<form:input type="text" id="provinceB" path ="billingAddress.state" name="provinceB" placeholder="Province" class="form-control" required="" value="" />
+				<form:input type="text" id="countryB"  path ="billingAddress.country" name="countryB" placeholder="Country" class="form-control" required="" value="" />
+				<form:input type="text" id="zipCodeB" path ="billingAddress.zipCode" name="zipCodeB" placeholder="Zip Code" class="form-control" required="" value="" />	<br>			
 				<a>Are your Shipping & Billing address same? </a>
 				<a id="answerIsYes" class="glyphicon glyphicon-thumbs-up" onclick="copyFields()"></a>
 				<a id="answerIsNo" class="glyphicon glyphicon-thumbs-down" onclick="clearSFields()" ></a>
 			 <!--    <input id="answerIsYes" type="radio" name="answer" value="Yes"> Yes <input type="radio" id="answerIsNo" name="answer" value="No"> No<br>--> 
 			    <a id="shipAdd">Shipping Address :</a><br>
-				<form:input type="text" id="unitNumberS" path ="shippingAddress.apartmentNumber" name="unitNumberS" placeholder="Unit #" required="" value="" />
-				<form:input type="text" id="streetNumberS" path ="shippingAddress.streetAddress" name="streetNumberS" placeholder="Street #" required="" value="" />
-				<form:input type="text" id="cityS" path ="shippingAddress.city" name="cityS" placeholder="City" required="" value="" />
-				<form:input type="text" id="provinceS" path ="shippingAddress.state" name="provinceS" placeholder="Province" required="" value="" />
-				<form:input type="text" id="countryS" path ="shippingAddress.country" name="countryS" placeholder="Country" required="" value="" />
-				<form:input type="text" id="zipCodeS" path ="shippingAddress.zipCode" name="zipCodeS" placeholder="Zip Code" required="" value="" />
+				<form:input type="text" id="unitNumberS" path ="shippingAddress.apartmentNumber" name="unitNumberS" placeholder="Unit #" class="form-control" required="" value="" />
+				<form:input type="text" id="streetNumberS" path ="shippingAddress.streetAddress" name="streetNumberS" placeholder="Street #" class="form-control" required="" value="" />
+				<form:input type="text" id="cityS" path ="shippingAddress.city" name="cityS" placeholder="City" required="" class="form-control" value="" />
+				<form:input type="text" id="provinceS" path ="shippingAddress.state" name="provinceS" placeholder="Province" class="form-control" required="" value="" />
+				<form:input type="text" id="countryS" path ="shippingAddress.country" name="countryS" placeholder="Country" class="form-control" required="" value="" />
+				<form:input type="text" id="zipCodeS" path ="shippingAddress.zipCode" name="zipCodeS" placeholder="Zip Code" class="form-control" required="" value="" />
 				
 				<button type="submit" name="go"	class="btn btn-lg btn-primary btn-block">Sign Up</button>
-				<div><a href="<c:url value="/registration" />">Create account</a> or <a	href="#">reset password</a> </div>
 				</form:form>
 
 				</section>

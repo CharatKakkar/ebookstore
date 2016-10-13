@@ -6,6 +6,37 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+<style>
+.error {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	color: #a94442;
+	background-color: #f2dede;
+	border-color: #ebccd1;
+}
+
+.msg {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	color: #31708f;
+	background-color: #d9edf7;
+	border-color: #bce8f1;
+}
+
+#login-box {
+	width: 300px;
+	padding: 20px;
+	margin: 100px auto;
+	background: #fff;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border: 1px solid #000;
+}
+</style>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -81,15 +112,17 @@
 						</ul>
 
 						<ul class="nav navbar-nav pull-right">
+						
 							<c:if test="${pageContext.request.userPrincipal.name != null}">
 								<li><a> Hi ${pageContext.request.userPrincipal.name }</a></li>
+								<c:if test="${pageContext.request.userPrincipal.name =='admin'}">
+								<li><a href="<c:url value="/admin/productInventory" />">Modify Inventory</a></li>
+							</c:if>
+								<c:if test="${pageContext.request.userPrincipal.name !='admin'}">
 								<li><a href=" <c:url value="/cart"/>">Cart </a></li>
-								<li><a href="<c:url value="/j_spring_security_logout"/>">Logout</a></li>
-							</c:if>
-							<c:if test="${pageContext.request.userPrincipal.name =='Admin'}">
-								<li><a href="<c:url value="/admin/adminPage" />">Admin</a></li>
-								<li><a href="<c:url value="/j_spring_security_logout"/>"></a></li>
-							</c:if>
+								</c:if>
+								<li><a href="<c:url value="/j_spring_security_logout"/>">Logout</a></li>								
+							</c:if>							
 							<c:if test="${pageContext.request.userPrincipal.name == null}">
 								<li><a href="<c:url value="/login" />">Login</a></li>
 								<li><a href="<c:url value="/registration/register" />">Register</a></li>

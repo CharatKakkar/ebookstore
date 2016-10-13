@@ -1,5 +1,7 @@
 package com.ebookstore.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,11 +34,19 @@ public class RegistrationController {
 	}
 
 	@RequestMapping(value = "/registrationData", method = RequestMethod.POST)
-	public String registrationData(@ModelAttribute("customer") Customer customer) {
+	public String registrationData(@ModelAttribute("customer") Customer customer, Model model) {
+		String enteredUsername = customer.getUserName();
+		List<Customer> listOfCustomer = customerService.getAllCustomers();
+		for (Customer myCustomer : listOfCustomer) {
+			if (enteredUsername.equalsIgnoreCase(myCustomer.getUserName())) {
+				String msg = ("Username " + enteredUsername + " already exists");
+				model.addAttribute("error", msg);
+				return "registration";
+			}
+		}
 		customerService.addCustomer(customer);
+		String msg = ("Registration successful Please login with " + enteredUsername);
+		model.addAttribute("error", msg);
 		return "login";
 	}
-	
-	
-	
 }

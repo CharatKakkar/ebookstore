@@ -5,10 +5,13 @@
 
 <script>
 $(document).ready(function() {
-	   $('#allProductListTable').DataTable( {
-       "pagingType": "full_numbers",
+	   $('#productList').DataTable( {
+	  "lengthMenu": [[5, 10, 25, 50, -1], [5,10, 25, 50, "All"]]
+	  // "pagingType": "full_numbers"
+       ,
     });   
 } );
+
 </script>
 
 <div class="container-wrapper">
@@ -18,39 +21,36 @@ $(document).ready(function() {
 
             <p class="lead">Checkout all the awesome products available now!</p>
         </div>
-
-        <table id="allProductListTable" class="display nowrap dataTable dtr-inline collapsed" cellspacing="0" role="grid" style="width:100%;">  
+  <table id="productList" class="display nowrap dataTable dtr-inline collapsed" cellspacing="0" role="grid" style="width:85%;">  
                 <thead>
             <tr class="bg-success">
                 <th>Photo Thumb</th>
                 <th>Product Name</th>
                 <th>Category</th>
                 <th>Condition</th>
-                <th>Price(CAD)</th>
+                <th>Price</th>
                 <th>Info</th>
-                <th></th>
             </tr>
             </thead>
             <c:forEach items="${products}" var="product">
                 <tr>
-                   <td ><a href="<spring:url value="/product/viewProduct/${product.productId}" />"
+                    <td ><a href="<spring:url value="/product/viewProduct/${product.productId}" />"
                     > <img src="<c:url value="/resources/productImages/${product.productId}.png"  />" alt="image"
-                             style="width:20%"/> </a></td>
+                             style="width:30%"/> </a></td>
                     <td>${product.productName}</td>
                     <td>${product.productCategory}</td>
                     <td>${product.productCondition}</td>
                     <td>${product.productPrice}</td>
                     <td><a href="<spring:url value="/product/viewProduct/${product.productId}" />"
-                    ><span class="glyphicon glyphicon-info-sign"></span></a></td>
-                </tr>
-                   
+                    >&nbsp&nbsp&nbsp&nbsp<span class="glyphicon glyphicon-info-sign"></span></a></td>
+                </tr>                   
             </c:forEach>
-        </table>
         
        
 </table>
 
- </div>
-  </div>
 
 <%@include file="/WEB-INF/views/template/footer.jsp" %>
+ </div>
+ 
+ </div>

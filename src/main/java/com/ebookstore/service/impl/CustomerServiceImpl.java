@@ -1,5 +1,7 @@
 package com.ebookstore.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +45,13 @@ public class CustomerServiceImpl implements CustomerService {
 		// TODO Auto-generated method stub
 		Customer customer = customerDao.getCustomerByuserName(userName);
 		return customer;
+	}
+
+	@Override
+	public List<Customer> getAllCustomers() {
+		// TODO Auto-generated method stub
+		List<Customer> listOfCustomers = customerDao.getAllCustomers();
+		return listOfCustomers;
 	}
 
 	

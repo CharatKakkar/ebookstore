@@ -47,11 +47,12 @@ public class CartController {
 
 	@RequestMapping(value = "/add/{productId}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
-	public void addItem(@PathVariable(value = "productId") int productId, @AuthenticationPrincipal User activeUser) {
+	public void addItem(@PathVariable(value = "productId") int productId,@AuthenticationPrincipal User activeUser) {
 
 		Customer customer = customerService.getCustomerByuserName(activeUser.getUsername());
 		Cart cart = customer.getCart();
 		Product product = productService.getProductById(productId);
+
 		List<CartItem> cartItems = cart.getCartItems();
 
 		for (int i = 0; i < cartItems.size(); i++) {

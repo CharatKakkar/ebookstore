@@ -1,5 +1,7 @@
 package com.ebookstore.service;
 
+import java.util.List;
+
 import com.ebookstore.model.Customer;
 
 public interface CustomerService {
@@ -13,5 +15,7 @@ public interface CustomerService {
 	void modifyCustomer(Customer customer);
 
 	Customer getCustomerByuserName(String userName);
+	
+	List <Customer> getAllCustomers();
     
    }

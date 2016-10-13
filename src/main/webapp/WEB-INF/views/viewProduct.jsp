@@ -33,16 +33,25 @@
 					<p>
 						<strong>Condition</strong> : ${product.productCondition}
 					</p>
-					<h4>${product.productPrice}CAD</h4>
-
+					<p>
+						<strong>Unit Price</strong> :${product.productPrice}CAD
+					</p>
+					<p>
+						<strong>Quantity</strong> :<select id="qty" name="qty" ng-controller="cartCtrl" data-ng-model="qty">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+						</select>
+					</p>
 					<br>
 
  <c:set var="role" scope="page" value="${param.role}" />
                     <c:set var="url" scope="page" value="/product/productList" />
-                  <!--   <c:if test="${role='admin'}">
+                  <c:if test="${role='admin'}">
                         <c:set var="url" scope="page" value="/admin/productInventory" />
                     </c:if>
---> 
+
                     <p ng-controller="cartCtrl">
                         <a href="<c:url value="${url}" />" class="btn btn-default">Back</a>
                         <a href="#" class="btn btn-warning btn-large"
@@ -56,6 +65,8 @@
 				</div>
 			</div>
 		</div>
+	</div>
+</div>
 
 
 

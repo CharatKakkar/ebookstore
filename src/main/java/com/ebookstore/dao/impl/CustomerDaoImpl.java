@@ -1,5 +1,7 @@
 package com.ebookstore.dao.impl;
 
+import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -100,7 +102,18 @@ public class CustomerDaoImpl implements CustomerDao {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery("from Customer where username = ?").setString(0, userName);
-		return (Customer) query.uniqueResult();
+		Customer customer = (Customer) query.uniqueResult();
+		session.flush();
+		return customer ;		
+	}
+
+	@Override
+	public List<Customer> getAllCustomers() {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from Customer");
+		List<Customer> listOfCustomers = query.list();
+		return listOfCustomers;
 	}
 
 }
