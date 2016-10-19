@@ -34,9 +34,9 @@ $(document).ready(function() {
             </thead>
             <c:forEach items="${products}" var="product">
                 <tr>
-                    <td ><a href="<spring:url value="/product/viewProduct/${product.productId}" />"
+                    <td align="center" ><a href="<spring:url value="/product/viewProduct/${product.productId}" />"
                     > <img src="<c:url value="/resources/productImages/${product.productId}.png"  />" alt="image"
-                             style="width:30%"/> </a></td>
+                             height="130" width="114"/> </a></td>
                     <td>${product.productName}</td>
                     <td>${product.productCategory}</td>
                     <td>${product.productCondition}</td>

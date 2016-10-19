@@ -9,7 +9,7 @@
                 music instruments and stuff. We are determined to provide the best products and services.</p>
         </div>
 
-        <img src="<c:url value="/resources/images/showroom.jpg" />" alt="showroom" >
+        <img src="<c:url value="/resources/images/back11.jpg" />" alt="showroom" >
 
 
 <%@include file="/WEB-INF/views/template/footer.jsp" %>

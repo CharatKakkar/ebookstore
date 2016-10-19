@@ -79,9 +79,8 @@
         <div class="col-lg-4">
             
 
-            <h2>Instrument</h2>
-            <p>Well crafted and delicate instruments.</p>
-
+            <h2>Encyclopedia</h2>
+            
         </div><!-- /.col-lg-4 -->
 
 
@@ -90,8 +89,8 @@
         <div class="col-lg-4">
            
 
-            <h2>Discography</h2>
-            <p>An exceptional collections of music records in favor of the traditional and modern genre of jazz.</p>
+            <h2>Autobiography</h2>
+            
 
         </div><!-- /.col-lg-4 -->
 
@@ -99,8 +98,8 @@
         <div class="col-lg-4">
           
 
-            <h2>Accessories</h2>
-            <p>All musical and related geeky goods..</p>
+            <h2>Others</h2>
+           
 
         </div><!-- /.col-lg-4 -->
 

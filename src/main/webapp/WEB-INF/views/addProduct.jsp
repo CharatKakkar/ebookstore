@@ -61,8 +61,8 @@
         </div>
 
         <br><br>
-          <input type="submit" value="submit" class="btn btn-default">
-        <a href="<c:url value="/admin/productInventory" />" class="btn btn-default">Cancel</a>
+          <input type="submit" value="Submit" class="btn btn-success">
+        <a href="<c:url value="/admin/productInventory" />" class="btn btn-warning">Cancel</a>
         </form:form>
                 <%@include file="/WEB-INF/views/template/footer.jsp" %>
 </div>

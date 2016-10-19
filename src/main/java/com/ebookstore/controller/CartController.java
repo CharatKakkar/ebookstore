@@ -45,10 +45,11 @@ public class CartController {
 	}
 
 
-	@RequestMapping(value = "/add/{productId}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/add/{productId}/c/{qty}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
-	public void addItem(@PathVariable(value = "productId") int productId,@AuthenticationPrincipal User activeUser) {
-
+	public void addItem(@PathVariable(value="productId") int productId,  @PathVariable(value="qty") int qty,@AuthenticationPrincipal User activeUser) {
+		System.out.println("Quantity entered is " + qty);
+		System.out.println("Product Id is " + productId);
 		Customer customer = customerService.getCustomerByuserName(activeUser.getUsername());
 		Cart cart = customer.getCart();
 		Product product = productService.getProductById(productId);
@@ -58,7 +59,7 @@ public class CartController {
 		for (int i = 0; i < cartItems.size(); i++) {
 			if (product.getProductId() == cartItems.get(i).getProduct().getProductId()) {
 				CartItem cartItem = cartItems.get(i);
-				cartItem.setQty(cartItem.getQty() + 1);
+				cartItem.setQty(cartItem.getQty() + qty);
 				cartItem.setItemTotal(product.getProductPrice() * cartItem.getQty());
 				cartItemService.addCartItem(cartItem);
 				return;
@@ -66,7 +67,7 @@ public class CartController {
 		}
 		CartItem cartItem = new CartItem();
 		cartItem.setProduct(product);
-		cartItem.setQty(1);
+		cartItem.setQty(qty);
 		cartItem.setItemTotal(product.getProductPrice() * cartItem.getQty());
 		cartItem.setCart(cart);
 		cartItemService.addCartItem(cartItem);
@@ -75,6 +76,7 @@ public class CartController {
 	@RequestMapping(value = "/remove/{productId}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
 	public void removeItem(@PathVariable(value = "productId") int productId) {
+		System.out.println("--------------- remove function called ---------------------");
 		CartItem cartItem = cartItemService.getCartItemByProductId(productId);
 		cartItemService.removeCartItem(cartItem);
 	}
@@ -86,11 +88,5 @@ public class CartController {
 		cartItemService.removeAllCartItems(cart);
 	}
 
-    @ExceptionHandler(IllegalArgumentException.class)
-    @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Illegal request, please verify your payload.")
-    public void handleClientErrors (Exception e) {}
-
-    @ExceptionHandler(Exception.class)
-    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason = "Internal Server Error.")
-    public void handleServerErrors (Exception e) {}
+  
 }

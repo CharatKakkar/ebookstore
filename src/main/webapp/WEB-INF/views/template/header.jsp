@@ -114,7 +114,7 @@
 						<ul class="nav navbar-nav pull-right">
 						
 							<c:if test="${pageContext.request.userPrincipal.name != null}">
-								<li><a> Hi ${pageContext.request.userPrincipal.name }</a></li>
+								<li><a> Hello ${pageContext.request.userPrincipal.name }</a></li>
 								<c:if test="${pageContext.request.userPrincipal.name =='admin'}">
 								<li><a href="<c:url value="/admin/productInventory" />">Modify Inventory</a></li>
 							</c:if>
