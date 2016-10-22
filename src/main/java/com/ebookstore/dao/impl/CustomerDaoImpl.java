@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import com.ebookstore.dao.CustomerDao;
 import com.ebookstore.model.Authorities;
 import com.ebookstore.model.BillingAddress;
@@ -22,6 +24,8 @@ public class CustomerDaoImpl implements CustomerDao {
 
 	@Autowired
 	SessionFactory sessionFactory;
+	@Autowired
+	PasswordEncoder passwordEncoder;
 	
 	@Override
 	public Customer getCustomerById(int id) {
@@ -35,30 +39,22 @@ public class CustomerDaoImpl implements CustomerDao {
 	@Override
 	public void addCustomer(Customer customer) {
 		// TODO Auto-generated method stub
-		Session session= sessionFactory.getCurrentSession();
-		
-		//Setting the customer Object
-		/*
-		Customer customerInfo= new Customer();
-		customerInfo.setCustomerId(customer.getCustomerId());
-		customerInfo.setEmailId(customer.getEmailId());
-		customerInfo.setIsActive(true);
-		customerInfo.setPassword(customer.getPassword());
-		customerInfo.setUserName(customer.getUserName());	
-		*/
-		
-		//Setting the billingAddress
-		BillingAddress billingAddress = (BillingAddress)customer.getBillingAddress();
-		billingAddress.setCustomer(customer);		
+		Session session = sessionFactory.getCurrentSession();
+
+		// Hashing the password
+		customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+
+		// Setting the billingAddress
+		BillingAddress billingAddress = (BillingAddress) customer.getBillingAddress();
+		billingAddress.setCustomer(customer);
 		session.saveOrUpdate(billingAddress);
-		
-		//Setting the shippingAddress		 
-		ShippingAddress shippingAddress = (ShippingAddress)customer.getShippingAddress();
+
+		// Setting the shippingAddress
+		ShippingAddress shippingAddress = (ShippingAddress) customer.getShippingAddress();
 		shippingAddress.setCustomer(customer);
 		session.saveOrUpdate(shippingAddress);
 		session.saveOrUpdate(customer);
-		
-	
+
 		// Saving the userObject
 		Users newUser = new Users();
 		newUser.setUsername(customer.getUserName());
@@ -67,7 +63,7 @@ public class CustomerDaoImpl implements CustomerDao {
 		newUser.setCustomerId(customer.getCustomerId());
 		session.saveOrUpdate(newUser);
 
-		// Saving the Authrories
+		// Saving the Authorities
 		Authorities newAuthority = new Authorities();
 		newAuthority.setUserName(customer.getUserName());
 		newAuthority.setAuthority("ROLE_USER");
@@ -79,7 +75,7 @@ public class CustomerDaoImpl implements CustomerDao {
 		myCart.setCustomer(customer);
 		customer.setCart(myCart);
 		session.saveOrUpdate(myCart);
-		
+
 	}
 
 	@Override

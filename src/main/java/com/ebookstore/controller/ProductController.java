@@ -44,18 +44,4 @@ public class ProductController {
         return "productList";
     }
     
-    @RequestMapping("/productInventory")
-    public String getAllProductsAdmin(Model model){    	
-    	List<Product> products = productService.getProductList();
-    	model.addAttribute("products",products);    	
-    	return "productInventory";
-    }
-   
-	
-	    
-
-	  
-	
-  
- 
-}
+ }

@@ -14,16 +14,15 @@ public class LoginController {
 	@RequestMapping("/login")
 	String login(@RequestParam(value="error" , required= false) String error , 
 			@RequestParam (value="logout" , required= false) String logout, 
-					
 			Model model){
 
 		if (error != null)		{
-		model.addAttribute("error", "Invalid Credentials");	
+		model.addAttribute("error", "Invalid Credentials");
+		System.out.println("error");
 		}
 		if(logout !=null){
 		model.addAttribute("logout", "You have been logout Successfully,Thanks");
 		}
-	//System.out.println("username"+username );
 		
 		return "login";
 	}
