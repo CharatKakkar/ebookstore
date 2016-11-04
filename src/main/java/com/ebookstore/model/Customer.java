@@ -8,10 +8,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 
 @Entity
 public class Customer implements Serializable{
@@ -22,12 +26,15 @@ public class Customer implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int customerId;
 	
-	@NotEmpty(message="Username cannot be null")
+	@NotEmpty
+	@Min(value = 4, message = "The username that you have entered is less than 4 Characters. Please enter a username with at least 4 Characters")
 	private String userName;
 	
-	@NotEmpty(message="Password cannot be null")
+	@NotEmpty
+	@Min(value = 4, message = "The password that you have entered is less than 6 Characters. Please enter a password with at least 6 Characters")
 	private String password;
 	
+	@NotNull
 	@NotEmpty(message="EmailId cannot be null")
 	private String emailId;
 	

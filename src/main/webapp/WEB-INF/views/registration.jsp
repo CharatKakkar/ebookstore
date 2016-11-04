@@ -72,7 +72,7 @@ function enableFields(){
 		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>   
 		<title>Registration</title>
 	</head>
-	<body>
+	<body onload='document.registerForm.name.focus();'>
 		<div class="container">
 	<div class="row" id="pwd-container">
 		<div class="col-md-4"></div>
@@ -81,16 +81,17 @@ function enableFields(){
 				<c:if test="${not empty error}">
 						<div class="error">${error}</div>
 					</c:if>
-					<form:form action="${pageContext.request.contextPath}/registration/registrationData" method="post" commandName="customer" role="login">
+					<form:form action="${pageContext.request.contextPath}/registration/registrationData" name="registerForm" method="post" commandName="customer" role="login">
 						<img src="<c:url value="/resources/images/bookstore_logo.png" />" class="img-responsive" alt="" /> 
 				<a>User Details :</a><br>		
 				<form:input path="userName" type="text" name="name"  placeholder="Username"  value=""  required="" class="form-control" /> <span style="color: #ff0000">${userError}</span><form:errors
                 path="userName" cssStyle="color: #ff0000"/>
 				<form:input type="email" name="email" path="emailId" placeholder="EmailId" required="" value=""  class="form-control" /><span style="color: #ff0000">${emailError}</span><form:errors
                 path="emailId" cssStyle="color: #ff0000"/>
-				<form:input name="firstPassword" type="password" path="password"  id="password" placeholder="Password" required="" class="form-control"/>
+				<form:input name="firstPassword" type="password" path="password"  id="password" placeholder="Password" required="" class="form-control"/><span style="color: #ff0000">${userError}</span><form:errors
+                path="password" cssStyle="color: #ff0000"/>
 				<input type="password" class="form-control input-lg" id="confirm" placeholder="Confirm Password" required=""  class="form-control" />
-			<!-- <div class="pwstrength_viewport_progress" id="pwstrength"> </div> -->
+		       	<!-- <div class="pwstrength_viewport_progress" id="pwstrength"> </div> -->
 				<a>Billing Address :</a><a class="glyphicon glyphicon-scissors" onclick="clearBFields()"></a>
 				<form:input type="text" id="unitNumberB"  path ="billingAddress.apartmentNumber" name="unitNumberB" placeholder="Unit #" class="form-control" required="" value="" />
 				<form:input type="text" id="streetNumberB" path ="billingAddress.streetAddress" name="streetNumberB" placeholder="Street #" class="form-control" required="" value="" />

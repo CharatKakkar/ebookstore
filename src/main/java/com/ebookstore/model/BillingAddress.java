@@ -16,7 +16,7 @@ public class BillingAddress {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int billingAddressId;
 	
-	
+	@NotEmpty(message="cannot be empty")
 	private String streetAddress;
 
 	private int apartmentNumber;

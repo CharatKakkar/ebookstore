@@ -37,7 +37,7 @@ public class RegistrationController {
 	}
 
 	@RequestMapping(value = "/registrationData", method = RequestMethod.POST)
-	public String registrationData(@Valid @ModelAttribute("customer") Customer customer, Model model, BindingResult result) {
+	public String registrationData(@Valid @ModelAttribute("customer") Customer customer, BindingResult result,  Model model) {
 		if (result.hasErrors()){
 			return "registration";
 		}

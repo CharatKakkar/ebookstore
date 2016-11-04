@@ -41,6 +41,9 @@ public class CustomerDaoImpl implements CustomerDao {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
 
+		//Setting the user active to be true
+		customer.setIsActive(true);
+		
 		// Hashing the password
 		customer.setPassword(passwordEncoder.encode(customer.getPassword()));
 
