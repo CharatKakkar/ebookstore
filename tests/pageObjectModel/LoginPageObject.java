@@ -3,6 +3,7 @@
  */
 package pageObjectModel;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,26 +26,36 @@ public class LoginPageObject {
 	@FindBy(name = "username")
 	WebElement username;
 
-	@FindBy(name = "password")
-	WebElement password;
-
-	@FindBy(how=How.XPATH, using="//*[@type='submit']")
-	WebElement login;
-
 	public void enterUsername(String user) {
 		username.clear();
 		username.sendKeys(user);
-		
 	}
+
+	@FindBy(name = "password")
+	WebElement password;
 
 	public void enterPassword(String pass) {
 		password.clear();
 		password.sendKeys(pass);
-
 	}
+
+	@FindBy(how = How.XPATH, using = "//*[@type='submit']")
+	WebElement login;
 
 	public void clickLogin() {
 		login.click();
 	}
 
+	@FindBy(how = How.XPATH, using = "//*[@class='error']")
+	WebElement error;
+
+	public String errorMessage() {
+		String msg = "";
+		try {
+			msg = error.getAttribute("innerHTML");
+			return msg;
+		} catch (NoSuchElementException e) {
+			return msg;
+		}
+	}
 }

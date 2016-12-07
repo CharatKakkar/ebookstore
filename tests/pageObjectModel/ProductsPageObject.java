@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class ProductsPageObject {
 
@@ -17,8 +18,6 @@ public class ProductsPageObject {
 		PageFactory.initElements(driver, this);
 	}
 	
-	
-	
 	@FindBy(id="productList")
 	WebElement productTable;
 	
@@ -26,12 +25,13 @@ public class ProductsPageObject {
 		productTable.findElement(By.xpath("//*[@id='productList']/tbody//tr[1]//td[6]//a")).click();
 	}
 
-	@FindBy(how=How.XPATH, using="//*[@id='productList_length']/label/select")
+	@FindBy(how=How.XPATH, using= "//*[@id='productList_length']/label/select")
 	WebElement productTableDropdown;
 	
 	public void selectProductTableDropdown(String valueDrop){
-		String path= "/option[@value=" + valueDrop + "]" ;
-		productTableDropdown.findElement(By.xpath(path));
+		Select dropdown = new Select(productTableDropdown);
+		dropdown.selectByValue(valueDrop);
 	}
+	
 	
 }

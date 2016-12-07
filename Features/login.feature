@@ -5,23 +5,22 @@ Feature: Title of your feature
     Given Login URL
     And Login Credentials "<username>" and "<password>"
     When I click Login Button
-    Then the login credentials will be validated
+    Then the login credentials should be valid
     And Products tab should be clicked
     And Logout should be clicked
 
     Examples: 
       | username |  | password |
       | charat   |  | charat   |
+      | charat   |  | charat13 |
 
   Scenario Outline: Login should fail
     Given Login URL
     And Login Credentials "<username>" and "<password>"
     When I click Login Button
-    Then the login credentials will be validated
-    And invalid credentials message should be passed
+    Then invalid credentials message should be passed
 
     Examples: 
       | username |  | password |
       | charat   |  | charat13 |
-      
-    
+      | charat   |  | charat   |
