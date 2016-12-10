@@ -30,7 +30,7 @@ public class TestLogin {
 	
 	@Before
 	public void setUp(){
-		System.setProperty("webdriver.chrome.driver", "/I:/Project/Selenium/chromedriver/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "/I:/aroject/Selenium/chromedriver/chromedriver.exe");
 		driver = new ChromeDriver();
 		loginPageObject = new LoginPageObject(driver);
 		productsPageObject = new ProductsPageObject(driver);
