@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="8" passed="8">
+<testng-results skipped="0" failed="0" ignored="0" total="9" passed="9">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="54217" started-at="2016-12-11T04:45:05Z" finished-at="2016-12-11T04:45:59Z">
+  <suite name="Default suite" duration-ms="58041" started-at="2016-12-11T19:38:32Z" finished-at="2016-12-11T19:39:30Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="54217" started-at="2016-12-11T04:45:05Z" finished-at="2016-12-11T04:45:59Z">
-      <class name="com.example.test.WeatherKlipWithLocations">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.example.test.WeatherKlipWithLocations@68bbe345]" name="setUp" is-config="true" duration-ms="10641" started-at="2016-12-10T23:44:54Z" finished-at="2016-12-10T23:45:05Z">
+    <test name="Default test" duration-ms="58041" started-at="2016-12-11T19:38:32Z" finished-at="2016-12-11T19:39:30Z">
+      <class name="com.example.test.TestKlips">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.example.test.TestKlips@68bbe345]" name="setUp" is-config="true" duration-ms="15342" started-at="2016-12-11T14:38:17Z" finished-at="2016-12-11T14:38:32Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="AddingWeatherKlipWithLocations(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.example.test.WeatherKlipWithLocations@68bbe345]" name="AddingWeatherKlipWithLocations" duration-ms="8869" started-at="2016-12-10T23:45:05Z" data-provider="fieldsInputs" finished-at="2016-12-10T23:45:14Z">
+        <test-method status="PASS" signature="AddingWeatherKlipWithLocations(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.example.test.TestKlips@68bbe345]" name="AddingWeatherKlipWithLocations" duration-ms="9126" started-at="2016-12-11T14:38:32Z" data-provider="locationData" finished-at="2016-12-11T14:38:41Z">
           <params>
             <param index="0">
               <value>
@@ -32,7 +32,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- AddingWeatherKlipWithLocations -->
-        <test-method status="PASS" signature="AddingWeatherKlipWithLocations(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.example.test.WeatherKlipWithLocations@68bbe345]" name="AddingWeatherKlipWithLocations" duration-ms="2316" started-at="2016-12-10T23:45:14Z" data-provider="fieldsInputs" finished-at="2016-12-10T23:45:16Z">
+        <test-method status="PASS" signature="AddingWeatherKlipWithLocations(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.example.test.TestKlips@68bbe345]" name="AddingWeatherKlipWithLocations" duration-ms="3103" started-at="2016-12-11T14:38:41Z" data-provider="locationData" finished-at="2016-12-11T14:38:44Z">
           <params>
             <param index="0">
               <value>
@@ -53,7 +53,28 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- AddingWeatherKlipWithLocations -->
-        <test-method status="PASS" signature="googleKlips(java.lang.String)[pri:0, instance:com.example.test.WeatherKlipWithLocations@68bbe345]" name="googleKlips" duration-ms="7072" started-at="2016-12-10T23:45:16Z" data-provider="googleKlips" finished-at="2016-12-10T23:45:23Z">
+        <test-method status="PASS" signature="AddingWeatherKlipWithLocations(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.example.test.TestKlips@68bbe345]" name="AddingWeatherKlipWithLocations" duration-ms="2772" started-at="2016-12-11T14:38:44Z" data-provider="locationData" finished-at="2016-12-11T14:38:47Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Montreal]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Canada]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Weather]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AddingWeatherKlipWithLocations -->
+        <test-method status="PASS" signature="googleKlips(java.lang.String)[pri:0, instance:com.example.test.TestKlips@68bbe345]" name="googleKlips" duration-ms="6583" started-at="2016-12-11T14:38:47Z" data-provider="googleKlips" finished-at="2016-12-11T14:38:54Z">
           <params>
             <param index="0">
               <value>
@@ -64,7 +85,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- googleKlips -->
-        <test-method status="PASS" signature="googleKlips(java.lang.String)[pri:0, instance:com.example.test.WeatherKlipWithLocations@68bbe345]" name="googleKlips" duration-ms="7405" started-at="2016-12-10T23:45:23Z" data-provider="googleKlips" finished-at="2016-12-10T23:45:30Z">
+        <test-method status="PASS" signature="googleKlips(java.lang.String)[pri:0, instance:com.example.test.TestKlips@68bbe345]" name="googleKlips" duration-ms="7609" started-at="2016-12-11T14:38:54Z" data-provider="googleKlips" finished-at="2016-12-11T14:39:01Z">
           <params>
             <param index="0">
               <value>
@@ -75,7 +96,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- googleKlips -->
-        <test-method status="PASS" signature="googleKlips(java.lang.String)[pri:0, instance:com.example.test.WeatherKlipWithLocations@68bbe345]" name="googleKlips" duration-ms="7022" started-at="2016-12-10T23:45:30Z" data-provider="googleKlips" finished-at="2016-12-10T23:45:37Z">
+        <test-method status="PASS" signature="googleKlips(java.lang.String)[pri:0, instance:com.example.test.TestKlips@68bbe345]" name="googleKlips" duration-ms="6814" started-at="2016-12-11T14:39:01Z" data-provider="googleKlips" finished-at="2016-12-11T14:39:08Z">
           <params>
             <param index="0">
               <value>
@@ -86,7 +107,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- googleKlips -->
-        <test-method status="PASS" signature="googleKlips(java.lang.String)[pri:0, instance:com.example.test.WeatherKlipWithLocations@68bbe345]" name="googleKlips" duration-ms="7048" started-at="2016-12-10T23:45:37Z" data-provider="googleKlips" finished-at="2016-12-10T23:45:44Z">
+        <test-method status="PASS" signature="googleKlips(java.lang.String)[pri:0, instance:com.example.test.TestKlips@68bbe345]" name="googleKlips" duration-ms="7162" started-at="2016-12-11T14:39:08Z" data-provider="googleKlips" finished-at="2016-12-11T14:39:15Z">
           <params>
             <param index="0">
               <value>
@@ -97,7 +118,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- googleKlips -->
-        <test-method status="PASS" signature="moreKlips(java.lang.String)[pri:0, instance:com.example.test.WeatherKlipWithLocations@68bbe345]" name="moreKlips" duration-ms="6931" started-at="2016-12-10T23:45:44Z" data-provider="otherKlips" finished-at="2016-12-10T23:45:51Z">
+        <test-method status="PASS" signature="moreKlips(java.lang.String)[pri:0, instance:com.example.test.TestKlips@68bbe345]" name="moreKlips" duration-ms="7317" started-at="2016-12-11T14:39:15Z" data-provider="otherKlips" finished-at="2016-12-11T14:39:23Z">
           <params>
             <param index="0">
               <value>
@@ -108,7 +129,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- moreKlips -->
-        <test-method status="PASS" signature="moreKlips(java.lang.String)[pri:0, instance:com.example.test.WeatherKlipWithLocations@68bbe345]" name="moreKlips" duration-ms="7514" started-at="2016-12-10T23:45:51Z" data-provider="otherKlips" finished-at="2016-12-10T23:45:59Z">
+        <test-method status="PASS" signature="moreKlips(java.lang.String)[pri:0, instance:com.example.test.TestKlips@68bbe345]" name="moreKlips" duration-ms="7510" started-at="2016-12-11T14:39:23Z" data-provider="otherKlips" finished-at="2016-12-11T14:39:30Z">
           <params>
             <param index="0">
               <value>
@@ -119,11 +140,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- moreKlips -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.example.test.WeatherKlipWithLocations@68bbe345]" name="tearDown" is-config="true" duration-ms="2500" started-at="2016-12-10T23:45:59Z" finished-at="2016-12-10T23:46:01Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.example.test.TestKlips@68bbe345]" name="tearDown" is-config="true" duration-ms="2263" started-at="2016-12-11T14:39:30Z" finished-at="2016-12-11T14:39:32Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.example.test.WeatherKlipWithLocations -->
+      </class> <!-- com.example.test.TestKlips -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -3,35 +3,35 @@
 <suite name="Failed suite [Suite]">
   <test name="Adding Weather Klip with Location(failed)">
     <classes>
-      <class name="com.example.test.WeatherKlipWithLocations">
+      <class name="com.example.test.TestKlips">
         <methods>
           <include name="tearDown"/>
           <include name="setUp"/>
           <include name="AddingWeatherKlipWithLocations" invocation-numbers="0 1"/>
         </methods>
-      </class> <!-- com.example.test.WeatherKlipWithLocations -->
+      </class> <!-- com.example.test.TestKlips -->
     </classes>
   </test> <!-- Adding Weather Klip with Location(failed) -->
   <test name="Adding Other Klips(failed)">
     <classes>
-      <class name="com.example.test.WeatherKlipWithLocations">
+      <class name="com.example.test.TestKlips">
         <methods>
           <include name="tearDown"/>
           <include name="setUp"/>
           <include name="moreKlips" invocation-numbers="0 1"/>
         </methods>
-      </class> <!-- com.example.test.WeatherKlipWithLocations -->
+      </class> <!-- com.example.test.TestKlips -->
     </classes>
   </test> <!-- Adding Other Klips(failed) -->
   <test name="Adding Google and other Klips(failed)">
     <classes>
-      <class name="com.example.test.WeatherKlipWithLocations">
+      <class name="com.example.test.TestKlips">
         <methods>
           <include name="tearDown"/>
           <include name="setUp"/>
           <include name="googleKlips" invocation-numbers="2 3"/>
         </methods>
-      </class> <!-- com.example.test.WeatherKlipWithLocations -->
+      </class> <!-- com.example.test.TestKlips -->
     </classes>
   </test> <!-- Adding Google and other Klips(failed) -->
 </suite> <!-- Failed suite [Suite] -->

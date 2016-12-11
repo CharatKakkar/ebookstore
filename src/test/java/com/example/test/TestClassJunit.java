@@ -7,16 +7,17 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import PageObjects.HomePageObject;
-import PageObjects.LoginPageObject;
+import PageObjects.HomePageClass;
+import PageObjects.LoginPageClass;
+import utilities.Helper;
 
 public class TestClassJunit {
 
 	private WebDriver driver;
 
-	private LoginPageObject loginObject;
+	private LoginPageClass loginObject;
 
-	private HomePageObject homeObject;
+	private HomePageClass homeObject;
 
 	private String baseUrl;
 
@@ -32,9 +33,9 @@ public class TestClassJunit {
 		driver = new ChromeDriver();
 		baseUrl = "https://app.klipfolio.com/login";
 		driver.get(baseUrl);
-		loginObject = new LoginPageObject(driver);
-		homeObject = new HomePageObject(driver);
-		obj= Helper.getInfo();
+		loginObject = new LoginPageClass(driver);
+		homeObject = new HomePageClass(driver);
+		obj= Helper.createUser();
 		System.out.println("User Id" + obj.getUserId());
 		System.out.println("user Name " +obj.getUsername());
 	}
@@ -49,20 +50,11 @@ public class TestClassJunit {
 			homeObject.AddDashBoardButton();
 			homeObject.addBlankDashBoardButton();
 		}
-		homeObject.addAKlipButton();
-		homeObject.klipGalleryTab();
-		homeObject.getKlip("Weather");
-		homeObject.dashboardButton();
-		homeObject.locationTextBox("Toronto", "Canada");
-		homeObject.addKlipButton();
-		if (homeObject.confirmationMessage()) {
-			homeObject.finishedButton();
-		} else {
-			error = true;
+		error = true;
 			errstr = "There was an issue in adding the Klip";
 		}
-		Assert.assertTrue(errstr, !error);
-	}
+	
+
 
 	@After
 	public void tearDown() {
