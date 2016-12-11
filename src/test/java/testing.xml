@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" >
+	<test name="Adding Weather Klip with Location" preserve-order="true">
+		<classes>
+			<class name="com.example.test.WeatherKlipWithLocations">
+				<methods>
+					<include name="AddingWeatherKlipWithLocations" />
+				</methods>
+			</class>
+		</classes>
+	</test> <!-- Test -->
+
+	<test name="Adding Other Klips" preserve-order="true">
+		<classes>
+			<class name="com.example.test.WeatherKlipWithLocations">
+				<methods>
+					<include name="moreKlips" />
+				</methods>
+			</class>
+		</classes>
+	</test> <!-- Test -->
+	
+		<test name="Adding Google and other Klips" preserve-order="true">
+		<classes>
+			<class name="com.example.test.WeatherKlipWithLocations">
+				<methods>
+					<include name="googleKlips" />
+				</methods>
+			</class>
+		</classes>
+	</test> <!-- Test -->
+	
+
+</suite> <!-- Suite -->

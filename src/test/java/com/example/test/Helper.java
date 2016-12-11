@@ -6,6 +6,7 @@ import java.net.URLEncoder;
 import javax.ws.rs.core.MediaType;
 
 import org.apache.commons.lang3.RandomStringUtils;
+import org.testng.annotations.DataProvider;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
@@ -30,6 +31,8 @@ public class Helper {
 		return userId;
 	}
 
+
+	
 	public static Helper getInfo() {
 
 		String username = "testuser" + RandomStringUtils.randomAlphabetic(4);
@@ -74,23 +77,16 @@ public class Helper {
 		Client client = Client.create();
 		WebResource webResourceDel;
 
-		try {
-			webResourceDel = client
-					.resource("https://app.klipfolio.com/api/1/users/" + URLEncoder.encode(userId, "UTF-8"));
+		//webResourceDel = client.resource("https://app.klipfolio.com/api/1/users/" + URLEncoder.encode(userId, "UTF-8"));
+		webResourceDel = client.resource("https://app.klipfolio.com/api/1/users/" + userId);
 
-			WebResource.Builder delBuilder = webResourceDel.accept(MediaType.APPLICATION_JSON);
-			delBuilder.type(MediaType.APPLICATION_JSON_TYPE);
-			delBuilder.header("kf-api-key", "75d015295fc8e278552a4b150deec07e85cf8dc7");
-			ClientResponse delResponse = delBuilder.delete(ClientResponse.class);
-			System.out.println(delResponse);
-			if (delResponse.getStatus() == 200) {
-				System.out.println("User has been deleted ");
-			}
-		}
-
-		catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		WebResource.Builder delBuilder = webResourceDel.accept(MediaType.APPLICATION_JSON);
+		delBuilder.type(MediaType.APPLICATION_JSON_TYPE);
+		delBuilder.header("kf-api-key", "75d015295fc8e278552a4b150deec07e85cf8dc7");
+		ClientResponse delResponse = delBuilder.delete(ClientResponse.class);
+		System.out.println(delResponse);
+		if (delResponse.getStatus() == 200) {
+			System.out.println("User has been deleted ");
 		}
 
 		// WebResource webResourceDel =

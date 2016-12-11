@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import PageObjects.HomePageObject;
 import PageObjects.LoginPageObject;
 
-public class TestClass {
+public class TestClassJunit {
 
 	private WebDriver driver;
 
@@ -26,8 +26,6 @@ public class TestClass {
 		
 	Helper obj;
 	
-	
-
 	@Before
 	public void setUp() {
 		System.setProperty("webdriver.chrome.driver", "/I:/project/Selenium/chromedriver/chromedriver.exe");
@@ -51,7 +49,7 @@ public class TestClass {
 			homeObject.AddDashBoardButton();
 			homeObject.addBlankDashBoardButton();
 		}
-		homeObject.addToKlipButton();
+		homeObject.addAKlipButton();
 		homeObject.klipGalleryTab();
 		homeObject.getKlip("Weather");
 		homeObject.dashboardButton();

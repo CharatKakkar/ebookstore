@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]">
+  <test name="Adding Weather Klip with Location(failed)">
+    <classes>
+      <class name="com.example.test.WeatherKlipWithLocations">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="AddingWeatherKlipWithLocations" invocation-numbers="0 1"/>
+        </methods>
+      </class> <!-- com.example.test.WeatherKlipWithLocations -->
+    </classes>
+  </test> <!-- Adding Weather Klip with Location(failed) -->
+  <test name="Adding Other Klips(failed)">
+    <classes>
+      <class name="com.example.test.WeatherKlipWithLocations">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="moreKlips" invocation-numbers="0 1"/>
+        </methods>
+      </class> <!-- com.example.test.WeatherKlipWithLocations -->
+    </classes>
+  </test> <!-- Adding Other Klips(failed) -->
+  <test name="Adding Google and other Klips(failed)">
+    <classes>
+      <class name="com.example.test.WeatherKlipWithLocations">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="googleKlips" invocation-numbers="2 3"/>
+        </methods>
+      </class> <!-- com.example.test.WeatherKlipWithLocations -->
+    </classes>
+  </test> <!-- Adding Google and other Klips(failed) -->
+</suite> <!-- Failed suite [Suite] -->
