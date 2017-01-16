@@ -38,6 +38,7 @@ public class RegistrationController {
 
 	@RequestMapping(value = "/registrationData", method = RequestMethod.POST)
 	public String registrationData(@Valid @ModelAttribute("customer") Customer customer, BindingResult result,  Model model) {
+		System.out.println(customer.getUserName());
 		if (result.hasErrors()){
 			return "registration";
 		}

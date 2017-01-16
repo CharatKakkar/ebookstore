@@ -16,21 +16,23 @@ public class BillingAddress {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int billingAddressId;
 	
-	@NotEmpty(message="cannot be empty")
+	@NotEmpty(message="Please enter your Street number")
 	private String streetAddress;
 
-	private int apartmentNumber;
+	@NotEmpty(message="Please enter your Apartment number")
+	//change from int to Integer since int will be initialized to 0
+	private Integer apartmentNumber;
 	
-	
+	@NotEmpty(message="Please enter your Zip code")
 	private String zipCode;
 	
-	
+	@NotEmpty(message="Please enter your city")
 	private String city;
 	
-	
+	@NotEmpty(message="Please enter your State")
 	private String state;
 	
-	
+	@NotEmpty(message="Please enter your Country")
 	private String Country;
 	
 	
@@ -61,11 +63,11 @@ public class BillingAddress {
 		this.streetAddress = streetAddress;
 	}
 
-	public int getApartmentNumber() {
+	public Integer getApartmentNumber() {
 		return apartmentNumber;
 	}
 
-	public void setApartmentNumber(int apartmentNumber) {
+	public void setApartmentNumber(Integer apartmentNumber) {
 		this.apartmentNumber = apartmentNumber;
 	}
 

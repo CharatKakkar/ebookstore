@@ -7,7 +7,7 @@ $(document).ready(function() {
 	
 $('#unitNumberS,#streetNumberS,#cityS,#provinceS,#countryS,#zipCodeS').hide();
 $('#shipAdd').hide();
-$('#unitNumberB').val("");
+//$('#unitNumberB').val("");
 } );
 function clearBFields(){
 	  $('#unitNumberB').val("");
@@ -88,18 +88,19 @@ function enableFields(){
                 path="userName" cssStyle="color: #ff0000"/>
 				<form:input type="email" name="email" path="emailId" placeholder="EmailId" required="" value=""  class="form-control" /><span style="color: #ff0000">${emailError}</span><form:errors
                 path="emailId" cssStyle="color: #ff0000"/>
-				<form:input name="firstPassword" type="password" path="password"  id="password" placeholder="Password" required="" class="form-control"/><span style="color: #ff0000">${userError}</span><form:errors
-                path="password" cssStyle="color: #ff0000"/>
-				<input type="password" class="form-control input-lg" id="confirm" placeholder="Confirm Password" required=""  class="form-control" />
+				<form:input name="firstPassword" type="password" path="password"  id="password" placeholder="Password" class="form-control"/><span style="color: #ff0000">${passwordError}</span><form:errors
+                path="password" cssStyle="color: #ff0000"/><form:errors  path= "containsUsername" cssStyle="color: #ff0000"/>
+				<form:input type="password" path="confirmPassword"  id="confirm" placeholder="Confirm Password"  class="form-control" /> <span style="color: #ff0000">${passwordError}</span><form:errors
+                path="conditionTrue" cssStyle="color: #ff0000"/>
 		       	<!-- <div class="pwstrength_viewport_progress" id="pwstrength"> </div> -->
 				<a>Billing Address :</a><a class="glyphicon glyphicon-scissors" onclick="clearBFields()"></a>
-				<form:input type="text" id="unitNumberB"  path ="billingAddress.apartmentNumber" name="unitNumberB" placeholder="Unit #" class="form-control" required="" value="" />
+				<form:input type="text" id="unitNumberB"  path ="billingAddress.apartmentNumber" name="unitNumberB" placeholder="Unit #" class="form-control" />
 				<form:input type="text" id="streetNumberB" path ="billingAddress.streetAddress" name="streetNumberB" placeholder="Street #" class="form-control" required="" value="" />
 				<form:input type="text" id="cityB" name="cityB" path ="billingAddress.city" placeholder="City" class="form-control" required="" value="" />
 				<form:input type="text" id="provinceB" path ="billingAddress.state" name="provinceB" placeholder="Province" class="form-control" required="" value="" />
 				<form:input type="text" id="countryB"  path ="billingAddress.country" name="countryB" placeholder="Country" class="form-control" required="" value="" />
 				<form:input type="text" id="zipCodeB" path ="billingAddress.zipCode" name="zipCodeB" placeholder="Zip Code" class="form-control" required="" value="" />	<br>			
-				<a>Are your Shipping & Billing address same? </a>
+				<a>Is your Shipping & Billing address the same? </a>
 				<a id="answerIsYes" class="glyphicon glyphicon-thumbs-up" onclick="copyFields(), disableFields()"></a>
 				<a id="answerIsNo" class="glyphicon glyphicon-thumbs-down" onclick="clearSFields(), enableFields()" ></a>
 			 <!--    <input id="answerIsYes" type="radio" name="answer" value="Yes"> Yes <input type="radio" id="answerIsNo" name="answer" value="No"> No<br>--> 

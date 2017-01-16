@@ -45,6 +45,7 @@ public class CustomerDaoImpl implements CustomerDao {
 		customer.setIsActive(true);
 		
 		// Hashing the password
+		
 		customer.setPassword(passwordEncoder.encode(customer.getPassword()));
 
 		// Setting the billingAddress
