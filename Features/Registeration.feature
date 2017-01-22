@@ -1,25 +1,15 @@
-Feature: Login Functionality
+Feature: Registeration  Functionality
 
-  Scenario Outline: Title of your scenario
-    Given Login URL
-    And Login Credentials "<username>" and "<password>"
-    When I click Login Button
-    Then the login credentials should be valid
-    And Products tab should be clicked
-    And Logout should be clicked
-
-    Examples: 
-      | username |  | password |
-      | charat   |  | charat   |
-      | charat   |  | charat13 |
-
-  Scenario Outline: Login should fail
-    Given Login URL
-    And Login Credentials "<username>" and "<password>"
-    When I click Login Button
-    Then invalid credentials message should be passed
+@Register
+  Scenario Outline: Successfully Register a user
+    Given Registeration URl
+    And User Details"<username>" "<password>" "<EmailId>" "<unitNumberBilling>" "<streetNumberBilling>" "<cityBilling>" "<provinceBilling>" "<countryBilling>" "<zipCodeBilling>" "<shippingBillingSame>"
+    When I click on Go Button
+    Then should get the successful message
+    And should be able to login with the credentials "<username>" "<password>"
+    
+ 
 
     Examples: 
-      | username |  | password |
-      | charat   |  | charat13 |
-      | charat   |  | charat   |
+      | username |  | password | |EmailId| |unitNumberBilling| |streetNumberBilling| |cityBilling| |provinceBilling| |countryBilling| |zipCodeBilling|
+      | charat1290   |  |password| |ck@gmail.com| |90| |carling| |ottawa| |on| |Canada| |k1g3r4|

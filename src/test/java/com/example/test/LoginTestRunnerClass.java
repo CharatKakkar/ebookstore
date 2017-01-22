@@ -1,17 +1,20 @@
-
 package com.example.test;
 
 import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
+
 import com.utility.TestHelper;
 
 import cucumber.api.CucumberOptions;
-import cucumber.api.junit.Cucumber;
+import cucumber.api.junit.*;;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "Features" ,glue= "stepDefinition")
-public class RunnerClass {
+@CucumberOptions(features = "Features" ,glue= "stepDefinition" , tags={"@Login"})
+public class LoginTestRunnerClass {
+	
+	
 
 //	private static  WebDriver driver;
 //	//private static String baseUrl;
@@ -21,13 +24,7 @@ public class RunnerClass {
 //		driver= TestHelper.getSetUp().getDriver();		
 //		return driver;
 //	}
-//	
-//	@AfterClass
-//	public  static void tearDown(){
-//	//	driver.quit();
-//		System.out.println("Tear down of Runner Class is now being executed");
-//		
-//	}
+
 	@AfterClass
 	public static void tearDown() {
 	//	driver.quit();
@@ -37,7 +34,6 @@ public class RunnerClass {
 
 	}
 	
-
 	
 
 }

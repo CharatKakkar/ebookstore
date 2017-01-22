@@ -19,7 +19,6 @@ public class BillingAddress {
 	@NotEmpty(message="Please enter your Street number")
 	private String streetAddress;
 
-	@NotEmpty(message="Please enter your Apartment number")
 	//change from int to Integer since int will be initialized to 0
 	private Integer apartmentNumber;
 	

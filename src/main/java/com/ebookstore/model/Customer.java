@@ -42,19 +42,18 @@ public class Customer implements Serializable {
 	
 	@AssertTrue(message="Password containing username is not allowed")
 	public Boolean isContainsUsername(){
-		if(this.password.contains(this.userName)){
-			containsUsername= Boolean.TRUE;
+		if(this.password.toLowerCase().contains(this.userName.toLowerCase())){
+			containsUsername= Boolean.FALSE;
 		}
-		
 		return containsUsername;
 	}
 
-	private Boolean containsUsername= Boolean.FALSE;
+	private Boolean containsUsername= Boolean.TRUE;
 	
 	public Boolean getContainsUsername() {
 		return containsUsername;
 	}
-
+	
 	public void setContainsUsername(Boolean containsUsername) {
 		this.containsUsername = containsUsername;
 	}

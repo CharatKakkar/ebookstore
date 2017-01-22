@@ -1,9 +1,12 @@
 package stepDefinition;
 
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+
+
+import com.utility.TestHelper;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -17,7 +20,6 @@ import pageObjectModel.ProductsPageObject;
 public class TestLogin {
 
 	private WebDriver driver;
-
 	private String baseUrl;
 
 	private boolean error = false;
@@ -30,20 +32,26 @@ public class TestLogin {
 	
 	@Before
 	public void setUp(){
-		System.setProperty("webdriver.chrome.driver", "F:/Project/Selenium/chromedriver/chromedriver.exe");
-		driver = new ChromeDriver();
+		System.out.println("In stepup of TestLogin");
+		//System.setProperty("webdriver.chrome.driver", "F:/Project/Selenium/chromedriver/chromedriver.exe");
+		//driver = new ChromeDriver();
+		driver=TestHelper.getSetUp().getDriver();
+//		
+			//driver = TestHelper.getFetchBrowser().getDriver();
+
 		loginPageObject = new LoginPageObject(driver);
 		productsPageObject = new ProductsPageObject(driver);
 		homePageObject = new HomePageObject(driver);
-		baseUrl = "http://localhost:8080/";
-		driver.get(baseUrl + "/ebookstore/");
+//		baseUrl = "http://localhost:8080/";
+//		driver.get(baseUrl + "/ebookstore/");
+		System.out.println("Setup of Login is now being executed");}
 
-	}
 
 	@Given("^Login URL$")
 	public void loginURL() throws Throwable {
 		// Write code here that turns the phrase above into concrete actions
-				driver.findElement(By.linkText("Login")).click();
+			//	driver.findElement(By.linkText("Login")).click();
+		homePageObject.loginLink();
 	}
 
 	@Given("^Login Credentials \"([^\"]*)\" and \"([^\"]*)\"$")
@@ -86,15 +94,11 @@ public class TestLogin {
 	public void invalid_credentials_message_should_be_passed() throws Throwable {
 		if (loginPageObject.errorMessage() == ""){
 			error=true;
-			errstr="Credentials were accepted";
+			errstr="Invalid Credentials were accepted";
 		}
 		Assert.assertTrue(errstr, !error);
 	}
-	
-	@After
-	public void tearDown(){
-		driver.quit();
-		
-	}
+
+
 
 }
