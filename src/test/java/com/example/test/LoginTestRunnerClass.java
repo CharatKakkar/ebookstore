@@ -14,21 +14,8 @@ import cucumber.api.junit.*;;
 @CucumberOptions(features = "Features" ,glue= "stepDefinition" , tags={"@Login"})
 public class LoginTestRunnerClass {
 	
-	
-
-//	private static  WebDriver driver;
-//	//private static String baseUrl;
-//	
-//	
-//	public static WebDriver setUp(){
-//		driver= TestHelper.getSetUp().getDriver();		
-//		return driver;
-//	}
-
 	@AfterClass
-	public static void tearDown() {
-	//	driver.quit();
-		
+	public static void tearDown() {	
 		System.out.println("Tear down of Login Class is now being executed");
 		TestHelper.tearDown();
 

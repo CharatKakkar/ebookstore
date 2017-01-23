@@ -1,20 +1,15 @@
 package stepDefinition;
 
-import org.junit.AfterClass;
-import org.junit.runners.model.RunnerBuilder;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import com.example.test.RunnerClass;
-import com.example.test.LoginTestRunnerClass;
 import com.utility.TestHelper;
 
-import cucumber.api.PendingException;
-import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+
+import org.junit.Assert;
 import pageObjectModel.HomePageObject;
 import pageObjectModel.LoginPageObject;
 import pageObjectModel.ProductsPageObject;
@@ -24,6 +19,9 @@ public class TestRegisteration {
 
 	private WebDriver driver;
 
+	private Boolean error = Boolean.FALSE;
+
+	private String errstr = "";
 	private LoginPageObject loginPageObject;
 	private ProductsPageObject productsPageObject;
 	private HomePageObject homePageObject;
@@ -31,63 +29,78 @@ public class TestRegisteration {
 
 	@Before
 	public void setUp() {
-		// System.setProperty("webdriver.chrome.driver",
-		// "F:/Project/Selenium/chromedriver/chromedriver.exe");
-		// driver = new ChromeDriver();
-		driver=TestHelper.getSetUp().getDriver();
-		//driver = TestHelper.getFetchBrowser().getDriver();
-		//driver= RunnerClass.setUp();
+		driver = TestHelper.getSetUp().getDriver();
 		loginPageObject = new LoginPageObject(driver);
-		productsPageObject = new ProductsPageObject(driver);
 		homePageObject = new HomePageObject(driver);
 		registerPageObject = new RegisterPageObject(driver);
-		// baseUrl = "http://localhost:8080//";
-		// driver.get(baseUrl + "/ebookstore/");
-		// System.out.println("Setup of Registeration is now being executed");
-
 	}
 
 	@Given("^Registeration URl$")
 	public void registeration_URl() throws Throwable {
 		// Write code here that turns the phrase above into concrete actions
-		
-		System.out.println("IN Registration :(");
-		driver.findElement(By.id("register")).click();
-		// homePageObject.registerButton();
+		homePageObject.registerButton();
 	}
 
 	@Given("^User Details\"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\"$")
 	public void user_Details(String arg1, String arg2, String arg3, String arg4, String arg5, String arg6, String arg7,
 			String arg8, String arg9, String arg10) throws Throwable {
 		// Write code here that turns the phrase above into concrete actions
-		registerPageObject.streetNumberBilling(arg2);
-		registerPageObject.unitNumberBilling(arg1);
+		registerPageObject.userName(arg1);
+		registerPageObject.password(arg2);
+		registerPageObject.confirmPassword(arg2);
+		registerPageObject.emailId(arg3);
+		registerPageObject.unitNumberBilling(arg4);
+		//registerPageObject.unitNumberShipping(arg4);
+		registerPageObject.streetNumberBilling(arg5);
+		//registerPageObject.streetNumberShipping(arg5);
+		registerPageObject.cityB(arg6);
+		//registerPageObject.cityS(arg6);
+		registerPageObject.provinceBilling(arg7);
+		//registerPageObject.provinceShipping(arg7);
+		registerPageObject.countryBilling(arg8);
+		//registerPageObject.countryShipping(arg8);
+		registerPageObject.zipCodeBilling(arg9);
 	}
 
+	@Given("^user Response on Shipping/Billing Address$")
+	public void user_Response_on_Shipping_Billing_Address() throws Throwable {
+		// Write code here that turns the phrase above into concrete actions
+		registerPageObject.answerIsNoButton();
+	}
+
+	@Given("^user Response on Shipping/Billing Address \"([^\"]*)\"$")
+	public void user_Response_on_Shipping_Billing_Address(String arg1) throws Throwable {
+		if (arg1.contains("Yes")) {
+			registerPageObject.answerIsYesButton();
+		} else {
+			registerPageObject.answerIsNoButton();
+		}
+
+	}
+	
 	@When("^I click on Go Button$")
 	public void i_click_on_Go_Button() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		//throw new PendingException();
+		registerPageObject.signUp();
 	}
+
 
 	@Then("^should get the successful message$")
 	public void should_get_the_successful_message() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		//throw new PendingException();
+		
+		if (!registerPageObject.getMessage().contains("successful")){
+			errstr="Registeration was unsuccessful";
+			error=Boolean.TRUE;
+		}
+		Assert.assertTrue(errstr, !error);
 	}
 
 	@Then("^should be able to login with the credentials \"([^\"]*)\" \"([^\"]*)\"$")
 	public void should_be_able_to_login_with_the_credentials(String arg1, String arg2) throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		//throw new PendingException();
+		loginPageObject.enterUsername(arg1);
+		loginPageObject.enterPassword(arg2);
+		loginPageObject.clickLogin();
+		
 	}
 
-
-	@AfterClass
-	public static void tearDown() {
-		System.out.println("Tear down of REgisteration  Class is now being executed");
-		TestHelper.tearDown();
-
-	}
 
 }

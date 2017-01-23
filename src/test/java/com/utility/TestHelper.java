@@ -29,7 +29,7 @@ public class TestHelper {
 	}
 
 	public void setDriver(WebDriver driver) {
-		this.driver = driver;
+		TestHelper.driver = driver;
 	}
 
 	public static TestHelper getSetUp() {

@@ -1,14 +1,11 @@
 package stepDefinition;
 
-import org.junit.AfterClass;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-
 import com.utility.TestHelper;
 
-import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -20,37 +17,27 @@ import pageObjectModel.ProductsPageObject;
 public class TestLogin {
 
 	private WebDriver driver;
-	private String baseUrl;
 
-	private boolean error = false;
+	private Boolean error = Boolean.FALSE;
 
 	private String errstr = "";
 
 	private LoginPageObject loginPageObject;
 	private ProductsPageObject productsPageObject;
 	private HomePageObject homePageObject;
-	
-	@Before
-	public void setUp(){
-		System.out.println("In stepup of TestLogin");
-		//System.setProperty("webdriver.chrome.driver", "F:/Project/Selenium/chromedriver/chromedriver.exe");
-		//driver = new ChromeDriver();
-		driver=TestHelper.getSetUp().getDriver();
-//		
-			//driver = TestHelper.getFetchBrowser().getDriver();
 
+	@Before
+	public void setUp() {
+		driver = TestHelper.getSetUp().getDriver();
 		loginPageObject = new LoginPageObject(driver);
 		productsPageObject = new ProductsPageObject(driver);
 		homePageObject = new HomePageObject(driver);
-//		baseUrl = "http://localhost:8080/";
-//		driver.get(baseUrl + "/ebookstore/");
-		System.out.println("Setup of Login is now being executed");}
-
+	}
 
 	@Given("^Login URL$")
 	public void loginURL() throws Throwable {
 		// Write code here that turns the phrase above into concrete actions
-			//	driver.findElement(By.linkText("Login")).click();
+		// driver.findElement(By.linkText("Login")).click();
 		homePageObject.loginLink();
 	}
 
@@ -69,9 +56,9 @@ public class TestLogin {
 
 	@Then("^the login credentials should be valid$")
 	public void the_login_credentials_should_be_validated() throws Throwable {
-		if (loginPageObject.errorMessage().contains("Invalid Credentials")){
-			error=true;
-			errstr="Invalid credentials have been passed";
+		if (loginPageObject.errorMessage().contains("Invalid Credentials")) {
+			error = true;
+			errstr = "Invalid credentials have been passed";
 		}
 		Assert.assertTrue(errstr, !error);
 	}
@@ -87,18 +74,16 @@ public class TestLogin {
 	public void logout_should_be_clicked() throws Throwable {
 		// Write code here that turns the phrase above into concrete actions
 		driver.findElement(By.linkText("Logout")).click();
-		
+
 	}
 
 	@Then("^invalid credentials message should be passed$")
 	public void invalid_credentials_message_should_be_passed() throws Throwable {
-		if (loginPageObject.errorMessage() == ""){
-			error=true;
-			errstr="Invalid Credentials were accepted";
+		if (loginPageObject.errorMessage() == "") {
+			error = Boolean.TRUE;
+			errstr = "Invalid Credentials were accepted";
 		}
 		Assert.assertTrue(errstr, !error);
 	}
-
-
 
 }
