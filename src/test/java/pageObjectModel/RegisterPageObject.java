@@ -3,15 +3,13 @@ package pageObjectModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class RegisterPageObject {
+public class RegisterPageObject extends BaseClass {
 
 	WebDriver driver;
 
 	public RegisterPageObject(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
+		super(driver);
 	}
 
 	@FindBy(id = "userName")
@@ -46,10 +44,10 @@ public class RegisterPageObject {
 
 	@FindBy(id = "cityB")
 	WebElement cityB;
-	
+
 	@FindBy(id = "cityS")
 	WebElement cityS;
-	
+
 	@FindBy(id = "answerIsNo")
 	WebElement answerIsNo;
 
@@ -70,11 +68,14 @@ public class RegisterPageObject {
 
 	@FindBy(name = "go")
 	WebElement signUp;
-	
-	@FindBy(className="error")
+
+	@FindBy(className = "error")
 	WebElement message;
 	
-	public String getMessage(){
+	@FindBy(id="securityPhrase")
+	WebElement securityPhrase;
+
+	public String getMessage() {
 		return message.getAttribute("innerHTML");
 	}
 
@@ -96,12 +97,11 @@ public class RegisterPageObject {
 		cityB.clear();
 		cityB.sendKeys(city);
 	}
-	
+
 	public void cityS(String city) {
 		cityS.clear();
 		cityS.sendKeys(city);
 	}
-	
 
 	public void userName(String user) {
 		userName.clear();
@@ -171,5 +171,9 @@ public class RegisterPageObject {
 		confirmPassword.sendKeys(cPass);
 	}
 	
+	public void securityPhrase(String sPhrase){
+		securityPhrase.clear();
+		securityPhrase.sendKeys(sPhrase);
+	}
 
 }

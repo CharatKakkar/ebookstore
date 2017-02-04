@@ -17,14 +17,13 @@ import com.ebookstore.model.Customer;
 import com.ebookstore.model.ShippingAddress;
 import com.ebookstore.service.CustomerService;
 
-
 @Controller
 @RequestMapping("/registration")
 public class RegistrationController {
-	
+
 	@Autowired
 	CustomerService customerService;
-	
+
 	@RequestMapping("/register")
 	public String registration(Model model) {
 		Customer customer = new Customer();
@@ -37,12 +36,12 @@ public class RegistrationController {
 	}
 
 	@RequestMapping(value = "/registrationData", method = RequestMethod.POST)
-	public String registrationData(@Valid @ModelAttribute("customer") Customer customer, BindingResult result,  Model model) {
-		//System.out.println(customer.getUserName());
-		if (result.hasErrors()){
+	public String registrationData(@Valid @ModelAttribute("customer") Customer customer, BindingResult result,
+			Model model) {
+		if (result.hasErrors()) {
 			return "registration";
 		}
-		
+
 		String enteredUsername = customer.getUserName();
 		List<Customer> listOfCustomer = customerService.getAllCustomers();
 		for (Customer myCustomer : listOfCustomer) {

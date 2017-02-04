@@ -17,4 +17,6 @@ public interface CustomerDao {
 	Customer getCustomerByuserName(String userName);
 	
 	List <Customer> getAllCustomers();
+	
+	boolean isCustomerExists(String userName);
 }

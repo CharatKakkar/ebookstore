@@ -2,7 +2,7 @@ Feature: Login Feature
 
 
 @Login
-  Scenario Outline: Title of your scenario
+  Scenario Outline: Successful Login
     Given Login URL
     And Login Credentials "<username>" and "<password>"
     When I click Login Button
@@ -12,6 +12,6 @@ Feature: Login Feature
 
     Examples: 
       | username |  | password |
-      | charat   |  | charat   |
-      | charat   |  | charat13 |
+      | Charat13   |  |password|
+      | Charat13   |  |password|
 

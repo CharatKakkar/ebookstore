@@ -20,8 +20,7 @@
 <form:input path="userName" type="text" name="name"  placeholder="Username"  value=""  required="" class="form-control" /> <span style="color: #ff0000">${userError}</span><form:errors
                 path="userName" cssStyle="color: #ff0000"/>
 <form:input name="firstPassword" type="password" path="password"  id="password" placeholder="Password" required="" class="form-control"/><span style="color: #ff0000">${userError}</span><form:errors
-                path="password" cssStyle="color: #ff0000"/>
-                
+                path="password" cssStyle="color: #ff0000"/>                
 </form:form>
 			</section>
 			</div>

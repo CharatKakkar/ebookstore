@@ -3,59 +3,60 @@
  */
 package pageObjectModel;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.FindBys;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * @author Charat Kakkar
  *
  */
-public class LoginPageObject {
+public class LoginPageObject extends BaseClass {
 
 	WebDriver driver;
+	WebDriverWait wait;
 
 	public LoginPageObject(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
+		super(driver);
+		wait = new WebDriverWait(driver, 20);
 	}
 
 	@FindBy(name = "username")
 	WebElement username;
+
+	@FindBy(name = "password")
+	WebElement password;
+
+	@FindBys(value = { @FindBy(xpath = "//*[@class='error']") })
+	WebElement error;
+
+	@FindBy(xpath = "//*[@type='submit']")
+	WebElement login;
 
 	public void enterUsername(String user) {
 		username.clear();
 		username.sendKeys(user);
 	}
 
-	@FindBy(name = "password")
-	WebElement password;
-
 	public void enterPassword(String pass) {
 		password.clear();
 		password.sendKeys(pass);
 	}
 
-	@FindBy(how = How.XPATH, using = "//*[@type='submit']")
-	WebElement login;
-
 	public void clickLogin() {
 		login.click();
 	}
 
-	@FindBy(how = How.XPATH, using = "//*[@class='error']")
-	WebElement error;
-
 	public String errorMessage() {
-		String msg = "";
-		try {
-			msg = error.getAttribute("innerHTML");
-			return msg;
-		} catch (NoSuchElementException e) {
-			return msg;
+		String rtn = "";
+		if (wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.xpath("//*[@class='error']"), 0)) != null) {
+			rtn = error.getAttribute("innerHTML");
 		}
+		return rtn;
 	}
 }

@@ -32,27 +32,29 @@
         <property name="packagesToScan">
             <list>
                 <value>com.ebookstore</value>
+                <value>stepDefinition</value>
             </list>
         </property>
     </bean>
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="maxUploadSize" value="1024000" />
     </bean>
+    
+    <!-- <bean id = "driver" class="org.openqa.selenium.firefox.FirefoxDriver"></bean> -->
+    
+    <bean id = "driver" class="org.openqa.selenium.chrome.ChromeDriver" ></bean>
 
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-    <security:http auto-config="true">
-        <security:intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
-        <security:form-login
-            login-page="/login"
-            default-target-url="/"
-            authentication-failure-url="/login?error"
-            username-parameter="username"
-            password-parameter="password" />
-        <security:logout
-            logout-success-url="/login?logout" />
-    </security:http>
+	<security:http auto-config="true">
+		<security:intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/passwordValidator" access="ROLE_USER" />
+		<security:form-login login-page="/login" default-target-url="/" authentication-failure-url="/login?error"
+		username-parameter="username" password-parameter="password" />
+		<security:logout logout-success-url="/login?logout" />
+
+	</security:http>
     <security:authentication-manager>
        <security:authentication-provider>
        <security:password-encoder ref="passwordEncoder" />

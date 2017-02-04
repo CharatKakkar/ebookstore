@@ -17,7 +17,7 @@ public class ShippingAddress {
 
 	String streetAddress;
 
-	int apartmentNumber;
+	Integer apartmentNumber;
 
 	String zipCode;
 	
@@ -55,11 +55,11 @@ public class ShippingAddress {
 		this.streetAddress = streetAddress;
 	}
 
-	public int getApartmentNumber() {
+	public Integer getApartmentNumber() {
 		return apartmentNumber;
 	}
 
-	public void setApartmentNumber(int apartmentNumber) {
+	public void setApartmentNumber(Integer apartmentNumber) {
 		this.apartmentNumber = apartmentNumber;
 	}
 

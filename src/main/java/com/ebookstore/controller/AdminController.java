@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 
+import org.eclipse.core.resources.IResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,10 +21,13 @@ import com.ebookstore.service.ProductService;
 public class AdminController {
 
 	Path path, path2;
+	
+	@Autowired
 	Helper helper;
+	
 	@Autowired
 	ProductService productService;
-
+	
 	@RequestMapping("/adminPage")
 	public String admin() {
 		return "adminPage";
@@ -54,7 +58,7 @@ public class AdminController {
 	@RequestMapping(value = "/productInventory/addProduct", method = RequestMethod.POST)
 	public String addProductPost(@ModelAttribute("product") Product product) {
 		productService.addProduct(product);
-		helper = new Helper();
+		//helper = new Helper();
 		helper.saveNewImage(product.getProductImage(), product.getProductId());
 		return "redirect:/admin/productInventory";
 	}
@@ -62,7 +66,7 @@ public class AdminController {
 	@RequestMapping(value = "productInventory/updateProduct", method = RequestMethod.POST)
 	public String updateProduct( @ModelAttribute("product") Product product ) {	
 		productService.editProduct(product);
-		helper = new Helper();
+		//helper = new Helper();
 		helper.saveNewImage(product.getProductImage(), product.getProductId());
 		return "redirect:/admin/productInventory";
 	}

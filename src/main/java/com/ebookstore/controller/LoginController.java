@@ -18,7 +18,6 @@ public class LoginController {
 
 		if (error != null)		{
 		model.addAttribute("error", "Invalid Credentials");
-		System.out.println("error");
 		}
 		if(logout !=null){
 		model.addAttribute("logout", "You have been logout Successfully,Thanks");

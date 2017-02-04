@@ -12,21 +12,30 @@
 
        <form:form action="${pageContext.request.contextPath}/admin/productInventory/addProduct" method="post"
                    commandName="product" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="name">Name</label>
-            <form:input path="productName" id="productName" class="form-Control"/>
-        </div>
+			<div class="form-group">
+				<label for="name">Name</label>
+				<form:input path="productName" id="productName" class="form-Control" />
+			</div>
 
-        <div class="form-group">
-            <label for="category">Category</label>
-            <label class="checkbox-inline"><form:radiobutton path="productCategory" id="productCategory"
-                                                            value="Fiction" checked="checked"/>Fiction</label>
-            <label class="checkbox-inline"><form:radiobutton path="productCategory" id="productCategory"
-                                                          value="AutoBiography" />AutoBiography</label>
-            <label class="checkbox-inline"><form:radiobutton path="productCategory" id="productCategory"
-                                                           value="Encyclopedia" />Encyclopedia</label>
-        </div>
+			<div class="form-group">
+				<label for="author">Author</label>
+				<form:input path="author" id="author" class="form-Control" />
+			</div>
 
+<!-- 			<div class="form-group"> -->
+<!--             <label for="category">Category</label> -->
+<%--             <label class="checkbox-inline"><form:radiobutton path="productCategory" id="productCategory" --%>
+<%--                                                             value="Fiction" checked="checked"/>Fiction</label> --%>
+<%--             <label class="checkbox-inline"><form:radiobutton path="productCategory" id="productCategory" --%>
+<%--                                                           value="AutoBiography" />AutoBiography</label> --%>
+<%--             <label class="checkbox-inline"><form:radiobutton path="productCategory" id="productCategory" --%>
+<%--                                                            value="Encyclopedia" />Encyclopedia</label> --%>
+<!--         </div> -->
+
+ 
+<br>
+
+        
         <div class="form-group">
             <label for="description">Description</label>
             <form:textarea path="productDescription" id="description" class="form-Control"/>
@@ -45,13 +54,13 @@
                                                              value="used" />Used</label>
         </div>
 
-        <div class="form-group">
-            <label for="status">Status</label>
-            <label class="checkbox-inline"><form:radiobutton path="productStatus" id="status"
-                                                             value="active" checked="checked" />Active</label>
-            <label class="checkbox-inline"><form:radiobutton path="productStatus" id="status"
-                                                             value="inactive" />Inactive</label>
-        </div>
+<!--         <div class="form-group"> -->
+<!--             <label for="status">Status</label> -->
+<%--             <label class="checkbox-inline"><form:radiobutton path="productStatus" id="status" --%>
+<%--                                                              value="active" checked="checked" />Active</label> --%>
+<%--             <label class="checkbox-inline"><form:radiobutton path="productStatus" id="status" --%>
+<%--                                                              value="inactive" />Inactive</label> --%>
+<!--         </div> -->
 
        
 

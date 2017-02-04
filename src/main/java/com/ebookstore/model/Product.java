@@ -33,11 +33,14 @@ public class Product implements Serializable {
 	@Min(value = 0, message = "The product price must no be less then zero.")
 	private double productPrice;
 	private String productCondition;
-	private String productStatus;
-
-	@Min(value = 0, message = "The product unit must not be less than zero.")
-	private int unitInStock;
-	private String productPublisher;
+	
+//	
+//	private String productStatus;
+//
+//	@Min(value = 0, message = "The product unit must not be less than zero.")
+//	private int unitInStock;
+	
+	private String author;
 
 	@Transient
 	private MultipartFile productImage;
@@ -102,32 +105,40 @@ public class Product implements Serializable {
 		this.productCondition = productCondition;
 	}
 
-	public String getProductStatus() {
-		return productStatus;
-	}
-
-	public void setProductStatus(String productStatus) {
-		this.productStatus = productStatus;
-	}
-
-	public int getUnitInStock() {
-		return unitInStock;
-	}
-
-	public void setUnitInStock(int unitInStock) {
-		this.unitInStock = unitInStock;
-	}
-
-	public String getProductPublisher() {
-		return productPublisher;
-	}
-
-	public void setProductPublisher(String productManufacturer) {
-		this.productPublisher = productManufacturer;
-	}
+//	public String getProductStatus() {
+//		return productStatus;
+//	}
+//
+//	public void setProductStatus(String productStatus) {
+//		this.productStatus = productStatus;
+//	}
+//
+//	public int getUnitInStock() {
+//		return unitInStock;
+//	}
+//
+//	public void setUnitInStock(int unitInStock) {
+//		this.unitInStock = unitInStock;
+//	}
+//
+//	public String getProductPublisher() {
+//		return author;
+//	}
+//
+//	public void setProductPublisher(String productManufacturer) {
+//		this.author = productManufacturer;
+//	}
 
 	public MultipartFile getProductImage() {
 		return productImage;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 
 	public void setProductImage(MultipartFile productImage) {

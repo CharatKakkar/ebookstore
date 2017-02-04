@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ebookstore.dao.CartDao;
 import com.ebookstore.model.Cart;
+import com.ebookstore.model.CartItem;
 
 @Repository
 @Transactional
@@ -26,10 +27,14 @@ public class CartDaoImpl implements CartDao {
 	}	
 
 	@Override
-	public Cart updateCart(int cartId, Cart cart) {
-		return cart;
-		// TODO Auto-generated method stub
-	
+	public void updateCart(int cartId, Cart cart) {
+		Session session = sessionFactory.getCurrentSession();		
+		double grandTotal = 0;
+		for (CartItem item : cart.getCartItems()) {
+			grandTotal += item.getQty() * item.getProduct().getProductPrice();
+		}
+		cart.setGrandTotal(grandTotal);
+		session.saveOrUpdate(cart);
 	}
 
 	@Override

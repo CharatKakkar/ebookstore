@@ -92,6 +92,8 @@ function enableFields(){
                 path="password" cssStyle="color: #ff0000"/><form:errors  path= "containsUsername" cssStyle="color: #ff0000"/>
 				<form:input type="password" path="confirmPassword"  id="confirm" placeholder="Confirm Password"  class="form-control" /> <span style="color: #ff0000">${passwordError}</span><form:errors
                 path="conditionTrue" cssStyle="color: #ff0000"/>
+                <form:input type="password" path="securityPhrase"  id="securityPhrase" placeholder="Enter your Security Phrase"  class="form-control" /> <span style="color: #ff0000">${passwordError}</span><form:errors
+                path="securityPhrase" cssStyle="color: #ff0000"/>
 		       	<!-- <div class="pwstrength_viewport_progress" id="pwstrength"> </div> -->
 				<a>Billing Address :</a><a class="glyphicon glyphicon-scissors" onclick="clearBFields()"></a>
 				<form:input type="text" id="unitNumberB"  path ="billingAddress.apartmentNumber" name="unitNumberB" placeholder="Unit #" class="form-control" />

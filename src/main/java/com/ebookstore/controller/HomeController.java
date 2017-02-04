@@ -1,14 +1,14 @@
 package com.ebookstore.controller;
 
-import java.nio.file.attribute.UserPrincipal;
 import java.security.Principal;
 
+import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ebookstore.dao.ProductDao;
 import com.ebookstore.model.Customer;
 import com.ebookstore.service.CustomerService;
 
@@ -17,21 +17,32 @@ public class HomeController {
 	
 	@Autowired
 	CustomerService customerService;
+	
+	@Autowired
+	ProductDao productDao;
+	
+	@Autowired
+	WebDriver drivers;
+	
+	@Autowired
+	Helper helper;
+	
+	WebDriver driver;
+	 /**
+	 * 
+	 */
 
     @RequestMapping("/")
     public String home() {
+    	       
         return "home";
     }
-
-    @RequestMapping("/Login")
-    public String login() {
-        return "Login";
-    }
-
-    @RequestMapping("/registration")
-    public String registration() {
-        return "registration";
-    }
+//
+//
+//    @RequestMapping("/registration")
+//    public String registration() {
+//        return "registration";
+//    }
 
     @RequestMapping("/passwordValidator")
     public String passwordValidator(Model model, Principal principal) {

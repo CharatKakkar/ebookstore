@@ -24,17 +24,18 @@ public class CartItem {
 	private Cart cart;
 	
 	int qty;
+	
 	double itemTotal;
 	
 	public CartItem(){
 		//Default Constructor
 	}
 	
-	public CartItem(Product product){	
-		this.product= product;
-		qty= 1;
-		itemTotal= product.getProductPrice()*qty;
-	}
+//	public CartItem(Product product){	
+//		this.product= product;
+//		qty= 1;
+//		itemTotal= product.getProductPrice()*qty;
+//	}
 	
 	public Product getProduct() {
 		return product;

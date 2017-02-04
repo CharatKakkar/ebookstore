@@ -60,6 +60,19 @@ public class ProductDaoImpl implements ProductDao {
 		session.flush();
 		
 	}
+
+	/* (non-Javadoc)
+	 * @see com.ebookstore.dao.ProductDao#getAllCategories()
+	 */
+	@Override
+	public List<String> getAllCategories() {
+		Session session = sessionFactory.getCurrentSession();
+		Query query =session.createQuery("select distinct productCategory from Product");
+		List<String> result = (List<String>) query.list();
+		return result;
+	}
+	
+	
 	
 	
 

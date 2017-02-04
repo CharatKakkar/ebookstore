@@ -18,11 +18,13 @@ public class ProductsPageObject {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(id="productList")
+	@FindBy (xpath="//*[@id='productList']/tbody//tr[1]//td[7]//a")
+	//@FindBy(id="productList")
 	WebElement productTable;
 	
 	public void productTable(){
-		productTable.findElement(By.xpath("//*[@id='productList']/tbody//tr[1]//td[6]//a")).click();
+		productTable.click();
+		//productTable.findElement(By.xpath("//*[@id='productList']/tbody//tr[1]//td[7]//a")).click();
 	}
 
 	@FindBy(how=How.XPATH, using= "//*[@id='productList_length']/label/select")

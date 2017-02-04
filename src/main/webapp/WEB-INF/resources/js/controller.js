@@ -29,7 +29,7 @@ cartApp.controller("cartCtrl", function ($scope, $http){
     		});    		
     	}
     	else{
-    		$http.put('/ebookstore/rest/cart/add/'+productId +'/conf/'+ $scope.qty).success(function () {
+    		$http.put('/ebookstore/rest/cart/add/'+productId +'/c/'+ $scope.qty).success(function () {
         		alert($scope.qty + " copies of " +productName + " has been successfully added to the cart!")
         		}); 
     		}   

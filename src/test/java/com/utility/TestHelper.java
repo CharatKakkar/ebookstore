@@ -5,20 +5,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class TestHelper {
 
-	
 	private static WebDriver driver;
 	private static TestHelper setUp;
-
-	public static void tearDown(){
-		if (driver!=null){
-			driver.quit();
-		}
-	}
-	
 	private String baseUrl;
-	
-	public TestHelper(){
-		System.setProperty("webdriver.chrome.driver", "F:/Project/Selenium/chromedriver/chromedriver.exe");
+
+	public TestHelper() {
 		driver = new ChromeDriver();
 		baseUrl = "http://localhost:8080/";
 		driver.get(baseUrl + "/ebookstore/");
@@ -33,16 +24,10 @@ public class TestHelper {
 	}
 
 	public static TestHelper getSetUp() {
-		if(setUp== null){
-			setUp= new TestHelper();
+		if (setUp == null) {
+			setUp = new TestHelper();
 		}
 		return setUp;
 	}
 
-	
-	
-	
-//	public void setFetchBrowser(TestHelper fetchBrowser) {
-//		this.fetchBrowser = fetchBrowser;
-//	}
 }

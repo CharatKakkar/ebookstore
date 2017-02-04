@@ -32,6 +32,13 @@ public class TestLogin {
 		loginPageObject = new LoginPageObject(driver);
 		productsPageObject = new ProductsPageObject(driver);
 		homePageObject = new HomePageObject(driver);
+//
+//		Runtime.getRuntime().addShutdownHook(new Thread() {
+//			public void run() {
+//				driver.quit();
+//			}
+//		});
+		
 	}
 
 	@Given("^Login URL$")

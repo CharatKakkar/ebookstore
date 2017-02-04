@@ -16,6 +16,8 @@ public interface CustomerService {
 
 	Customer getCustomerByuserName(String userName);
 	
+	boolean isCustomerExists(String userName);
+	
 	List <Customer> getAllCustomers();
     
    }

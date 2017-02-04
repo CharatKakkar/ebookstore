@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Orders {
-	
+
 	public int getOrderId() {
 		return orderId;
 	}
@@ -20,12 +20,12 @@ public class Orders {
 		this.orderId = orderId;
 	}
 
-	public Cart getCarId() {
-		return carId;
+	public Cart getCart() {
+		return cart;
 	}
 
-	public void setCarId(Cart carId) {
-		this.carId = carId;
+	public void setCart(Cart cart) {
+		this.cart = cart;
 	}
 
 	public Customer getCustomer() {
@@ -53,25 +53,24 @@ public class Orders {
 	}
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int orderId;
-	
+
 	@OneToOne
-	@JoinColumn(name="cardId")
+	@JoinColumn(name = "cartId")
 	@JsonIgnore
-	private Cart carId;
-	
+	private Cart cart;
+
 	@OneToOne
-	@JoinColumn(name="customerId")
+	@JoinColumn(name = "customerId")
 	private Customer customer;
-	
+
 	@OneToOne
-	@JoinColumn(name= "BillingAddress")
+	@JoinColumn(name = "billingAddressId")
 	private BillingAddress billingAddress;
-	
+
 	@OneToOne
-	@JoinColumn(name= "shippingAddressId")
+	@JoinColumn(name = "shippingAddressId")
 	private ShippingAddress shippingAddress;
-	
 
 }

@@ -28,6 +28,7 @@ $(document).ready(function() {
             <tr class="bg-success">
                 <th>Photo Thumb</th>
                 <th>Product Name</th>
+                <th>Author</th>
                 <th>Category</th>
                 <th>Condition</th>
                 <th>Price</th>
@@ -42,6 +43,7 @@ $(document).ready(function() {
                     > <img src="<c:url value="/resources/productImages/${product.productId}.png"  />" alt="image"
                              height="130" width="114"/> </a></td>
                     <td>${product.productName}</td>
+                    <td>${product.author}</td>
                     <td>${product.productCategory}</td>
                     <td>${product.productCondition}</td>
                     <td>${product.productPrice}</td>

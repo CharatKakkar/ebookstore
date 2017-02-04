@@ -6,18 +6,19 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
-
 import com.ebookstore.dao.CustomerDao;
+import com.ebookstore.dao.UserDao;
 import com.ebookstore.model.Authorities;
 import com.ebookstore.model.BillingAddress;
 import com.ebookstore.model.Cart;
 import com.ebookstore.model.Customer;
 import com.ebookstore.model.ShippingAddress;
 import com.ebookstore.model.Users;
+
 @Repository
 @Transactional
 public class CustomerDaoImpl implements CustomerDao {
@@ -26,13 +27,16 @@ public class CustomerDaoImpl implements CustomerDao {
 	SessionFactory sessionFactory;
 	@Autowired
 	PasswordEncoder passwordEncoder;
-	
+
+	@Autowired
+	UserDao userDao;
+
 	@Override
 	public Customer getCustomerById(int id) {
 		// TODO Auto-generated method stub
-		Session session= sessionFactory.getCurrentSession();	
-		Customer customer = (Customer)session.get(Customer.class, id);
-		session.flush();		
+		Session session = sessionFactory.getCurrentSession();
+		Customer customer = (Customer) session.get(Customer.class, id);
+		session.flush();
 		return customer;
 	}
 
@@ -41,11 +45,11 @@ public class CustomerDaoImpl implements CustomerDao {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
 
-		//Setting the user active to be true
+		// Setting the user active to be true
 		customer.setIsActive(true);
-		
+
 		// Hashing the password
-		
+
 		customer.setPassword(passwordEncoder.encode(customer.getPassword()));
 
 		// Setting the billingAddress
@@ -55,6 +59,15 @@ public class CustomerDaoImpl implements CustomerDao {
 
 		// Setting the shippingAddress
 		ShippingAddress shippingAddress = (ShippingAddress) customer.getShippingAddress();
+		if (shippingAddress.getState().equals("") || shippingAddress.getCountry().equals("")) {
+			System.out.println("Setting shipping address from billing address");
+			shippingAddress.setApartmentNumber(billingAddress.getApartmentNumber());
+			shippingAddress.setStreetAddress(billingAddress.getStreetAddress());
+			shippingAddress.setCity(billingAddress.getCity());
+			shippingAddress.setState(billingAddress.getState());
+			shippingAddress.setCountry(billingAddress.getCountry());
+			shippingAddress.setZipCode(billingAddress.getZipCode());
+		}
 		shippingAddress.setCustomer(customer);
 		session.saveOrUpdate(shippingAddress);
 		session.saveOrUpdate(customer);
@@ -86,15 +99,21 @@ public class CustomerDaoImpl implements CustomerDao {
 	public void deleteCustomer(int id) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
-		Customer customer=(Customer)session.get(Customer.class, id);
+		Customer customer = (Customer) session.get(Customer.class, id);
 		session.delete(customer);
-		session.flush();		
+		session.flush();
 	}
 
 	@Override
 	public void modifyCustomer(Customer customer) {
 		// TODO Auto-generated method stub
-		
+		Session session = sessionFactory.getCurrentSession();
+		session.saveOrUpdate(customer);
+		Users myUser = userDao.getUserbyUsername(customer.getUserName());
+		myUser.setPassword(customer.getPassword());
+		session.saveOrUpdate(myUser);
+		session.flush();
+
 	}
 
 	@Override
@@ -104,7 +123,7 @@ public class CustomerDaoImpl implements CustomerDao {
 		Query query = session.createQuery("from Customer where username = ?").setString(0, userName);
 		Customer customer = (Customer) query.uniqueResult();
 		session.flush();
-		return customer ;		
+		return customer;
 	}
 
 	@Override
@@ -114,6 +133,20 @@ public class CustomerDaoImpl implements CustomerDao {
 		Query query = session.createQuery("from Customer");
 		List<Customer> listOfCustomers = query.list();
 		return listOfCustomers;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.ebookstore.dao.CustomerDao#isCustomerExists(java.lang.String)
+	 */
+	@Override
+	public boolean isCustomerExists(String userName) {
+		boolean isUsernameValid = false;
+		if (getCustomerByuserName(userName) != null) {
+			isUsernameValid = true;
+		}
+		return isUsernameValid;
 	}
 
 }

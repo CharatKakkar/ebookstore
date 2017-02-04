@@ -13,31 +13,31 @@ import com.ebookstore.service.CustomerService;
 public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
-	CustomerDao customerDao;	
-	
+	CustomerDao customerDao;
+
 	@Override
 	public Customer getCustomerById(int id) {
-		
+
 		Customer customer = customerDao.getCustomerById(id);
 		return customer;
 	}
 
 	@Override
-	public void addCustomer(Customer customer) {	
+	public void addCustomer(Customer customer) {
 		// TODO Auto-generated method stub
-		customerDao.addCustomer(customer);		
+		customerDao.addCustomer(customer);
 	}
 
 	@Override
 	public void deleteCustomer(int id) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void modifyCustomer(Customer customer) {
-		// TODO Auto-generated method stub
-		
+		customerDao.modifyCustomer(customer);
+
 	}
 
 	@Override
@@ -54,5 +54,16 @@ public class CustomerServiceImpl implements CustomerService {
 		return listOfCustomers;
 	}
 
-	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.ebookstore.service.CustomerService#isCustomerExists(java.lang.String)
+	 */
+	@Override
+	public boolean isCustomerExists(String userName) {
+
+		return customerDao.isCustomerExists(userName);
+	}
+
 }

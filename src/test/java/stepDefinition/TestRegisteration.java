@@ -1,5 +1,6 @@
 package stepDefinition;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
 import com.utility.TestHelper;
@@ -8,19 +9,15 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-
-import org.junit.Assert;
 import pageObjectModel.HomePageObject;
 import pageObjectModel.LoginPageObject;
 import pageObjectModel.ProductsPageObject;
 import pageObjectModel.RegisterPageObject;
 
 public class TestRegisteration {
-
+	
 	private WebDriver driver;
-
 	private Boolean error = Boolean.FALSE;
-
 	private String errstr = "";
 	private LoginPageObject loginPageObject;
 	private ProductsPageObject productsPageObject;
@@ -33,6 +30,13 @@ public class TestRegisteration {
 		loginPageObject = new LoginPageObject(driver);
 		homePageObject = new HomePageObject(driver);
 		registerPageObject = new RegisterPageObject(driver);
+
+		// Runtime.getRuntime().addShutdownHook(new Thread() {
+		// public void run() {
+		// driver.quit();
+		// }
+		// });
+
 	}
 
 	@Given("^Registeration URl$")
@@ -40,27 +44,24 @@ public class TestRegisteration {
 		// Write code here that turns the phrase above into concrete actions
 		homePageObject.registerButton();
 	}
-
-	@Given("^User Details\"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\"$")
-	public void user_Details(String arg1, String arg2, String arg3, String arg4, String arg5, String arg6, String arg7,
-			String arg8, String arg9, String arg10) throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
+	
+	@Given("^User Details \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\"$")
+	public void user_Details(String arg1, String arg2, String arg3, String arg4, String arg5, String arg6, String arg7, String arg8, String arg9, String arg10) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
 		registerPageObject.userName(arg1);
 		registerPageObject.password(arg2);
 		registerPageObject.confirmPassword(arg2);
 		registerPageObject.emailId(arg3);
-		registerPageObject.unitNumberBilling(arg4);
-		//registerPageObject.unitNumberShipping(arg4);
-		registerPageObject.streetNumberBilling(arg5);
-		//registerPageObject.streetNumberShipping(arg5);
-		registerPageObject.cityB(arg6);
-		//registerPageObject.cityS(arg6);
-		registerPageObject.provinceBilling(arg7);
-		//registerPageObject.provinceShipping(arg7);
-		registerPageObject.countryBilling(arg8);
-		//registerPageObject.countryShipping(arg8);
-		registerPageObject.zipCodeBilling(arg9);
+		registerPageObject.securityPhrase(arg4);
+		registerPageObject.unitNumberBilling(arg5);
+		registerPageObject.streetNumberBilling(arg6);
+		registerPageObject.cityB(arg7);
+		registerPageObject.provinceBilling(arg8);
+		registerPageObject.countryBilling(arg9);
+		registerPageObject.zipCodeBilling(arg10);
 	}
+
+
 
 	@Given("^user Response on Shipping/Billing Address$")
 	public void user_Response_on_Shipping_Billing_Address() throws Throwable {
@@ -68,28 +69,27 @@ public class TestRegisteration {
 		registerPageObject.answerIsNoButton();
 	}
 
-	@Given("^user Response on Shipping/Billing Address \"([^\"]*)\"$")
-	public void user_Response_on_Shipping_Billing_Address(String arg1) throws Throwable {
-		if (arg1.contains("Yes")) {
-			registerPageObject.answerIsYesButton();
-		} else {
-			registerPageObject.answerIsNoButton();
-		}
+//	@Given("^user Response on Shipping/Billing Address \"([^\"]*)\"$")
+//	public void user_Response_on_Shipping_Billing_Address(String arg1) throws Throwable {
+//		if (arg1.contains("Yes")) {
+//			registerPageObject.answerIsYesButton();
+//		} else {
+//			registerPageObject.answerIsNoButton();
+//		}
+//
+//	}
 
-	}
-	
 	@When("^I click on Go Button$")
 	public void i_click_on_Go_Button() throws Throwable {
 		registerPageObject.signUp();
 	}
 
-
 	@Then("^should get the successful message$")
 	public void should_get_the_successful_message() throws Throwable {
-		
-		if (!registerPageObject.getMessage().contains("successful")){
-			errstr="Registeration was unsuccessful";
-			error=Boolean.TRUE;
+
+		if (!registerPageObject.getMessage().contains("successful")) {
+			errstr = "Registeration was unsuccessful";
+			error = Boolean.TRUE;
 		}
 		Assert.assertTrue(errstr, !error);
 	}
@@ -99,8 +99,7 @@ public class TestRegisteration {
 		loginPageObject.enterUsername(arg1);
 		loginPageObject.enterPassword(arg2);
 		loginPageObject.clickLogin();
-		
+
 	}
-
-
+		
 }
