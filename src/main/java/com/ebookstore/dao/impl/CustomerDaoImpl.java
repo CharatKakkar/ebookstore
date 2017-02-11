@@ -37,7 +37,9 @@ public class CustomerDaoImpl implements CustomerDao {
 		Session session = sessionFactory.getCurrentSession();
 		Customer customer = (Customer) session.get(Customer.class, id);
 		session.flush();
+		System.out.println("Get Customerby Id is being called");
 		return customer;
+
 	}
 
 	@Override
@@ -108,12 +110,15 @@ public class CustomerDaoImpl implements CustomerDao {
 	public void modifyCustomer(Customer customer) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
-		session.saveOrUpdate(customer);
 		Users myUser = userDao.getUserbyUsername(customer.getUserName());
 		myUser.setPassword(customer.getPassword());
+		// BillingAddress billingAddress = (BillingAddress)
+		// customer.getBillingAddress();
+		// billingAddress.setCustomer(customer);
+		// session.saveOrUpdate(billingAddress);
 		session.saveOrUpdate(myUser);
+		session.saveOrUpdate(customer);
 		session.flush();
-
 	}
 
 	@Override
@@ -123,6 +128,8 @@ public class CustomerDaoImpl implements CustomerDao {
 		Query query = session.createQuery("from Customer where username = ?").setString(0, userName);
 		Customer customer = (Customer) query.uniqueResult();
 		session.flush();
+		System.out.println("From Save new details");
+		System.out.println(customer.getUserName());
 		return customer;
 	}
 
@@ -147,6 +154,48 @@ public class CustomerDaoImpl implements CustomerDao {
 			isUsernameValid = true;
 		}
 		return isUsernameValid;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.ebookstore.dao.CustomerDao#updateCustomerInfo(com.ebookstore.model.
+	 * Customer)
+	 */
+	@Override
+	public Customer updateCustomerInfo(Customer customer) {
+		Session session = sessionFactory.getCurrentSession();
+		Customer myCustomer = getCustomerByuserName(customer.getUserName());
+		myCustomer.setConfirmPassword(myCustomer.getPassword());
+		//myCustomer.getBillingAddress().setState(customer.getBillingAddress().getState());
+		BillingAddress billingAddress = (BillingAddress) myCustomer.getBillingAddress();
+		
+		billingAddress.setApartmentNumber(customer.getBillingAddress().getApartmentNumber());
+		billingAddress.setStreetAddress(customer.getBillingAddress().getStreetAddress());
+		billingAddress.setCity(customer.getBillingAddress().getCity());
+		billingAddress.setState(customer.getBillingAddress().getState());
+		billingAddress.setCountry(customer.getBillingAddress().getCountry());
+		billingAddress.setZipCode(customer.getBillingAddress().getZipCode());		
+		
+		
+		ShippingAddress shippingAddress = (ShippingAddress) myCustomer.getShippingAddress();
+		
+		
+		shippingAddress.setApartmentNumber(customer.getShippingAddress().getApartmentNumber());
+		shippingAddress.setStreetAddress(customer.getShippingAddress().getStreetAddress());
+		shippingAddress.setCity(customer.getShippingAddress().getCity());
+		shippingAddress.setState(customer.getShippingAddress().getState());
+		shippingAddress.setCountry(customer.getShippingAddress().getCountry());
+		shippingAddress.setZipCode(customer.getShippingAddress().getZipCode());
+//		myCustomer.setBillingAddress(billingAddress);
+//		myCustomer.setShippingAddress(shippingAddress);
+		//billingAddress.setCustomer(myCustomer);
+		session.saveOrUpdate(billingAddress);
+//		shippingAddress.setCustomer(myCustomer);
+		session.saveOrUpdate(shippingAddress);
+
+		return myCustomer;
 	}
 
 }

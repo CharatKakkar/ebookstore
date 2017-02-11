@@ -1,5 +1,7 @@
 package com.ebookstore.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,8 +11,13 @@ import javax.persistence.OneToOne;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-public class BillingAddress {
+public class BillingAddress  implements Serializable {
 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5752116599151480177L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

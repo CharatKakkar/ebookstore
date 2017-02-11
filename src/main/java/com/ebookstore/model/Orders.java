@@ -1,5 +1,7 @@
 package com.ebookstore.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +12,12 @@ import javax.persistence.OneToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Orders {
+public class Orders  implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6245500546100941063L;
 
 	public int getOrderId() {
 		return orderId;

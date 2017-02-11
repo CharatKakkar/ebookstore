@@ -32,7 +32,7 @@ public class LoginPageObject extends BaseClass {
 	@FindBy(name = "password")
 	WebElement password;
 
-	@FindBys(value = { @FindBy(xpath = "//*[@class='error']") })
+	@FindBys(value = { @FindBy(className = "error") })
 	WebElement error;
 
 	@FindBy(xpath = "//*[@type='submit']")
@@ -54,7 +54,7 @@ public class LoginPageObject extends BaseClass {
 
 	public String errorMessage() {
 		String rtn = "";
-		if (wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.xpath("//*[@class='error']"), 0)) != null) {
+		if (wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.className("error"), 0)) != null) {
 			rtn = error.getAttribute("innerHTML");
 		}
 		return rtn;

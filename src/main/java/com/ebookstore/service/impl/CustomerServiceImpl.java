@@ -66,4 +66,13 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerDao.isCustomerExists(userName);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.ebookstore.service.CustomerService#updateCustomerInfo(com.ebookstore.model.Customer)
+	 */
+	@Override
+	public Customer updateCustomerInfo(Customer customer) {
+		
+		return customerDao.updateCustomerInfo(customer);
+	}
+
 }

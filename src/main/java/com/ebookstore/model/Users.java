@@ -1,12 +1,18 @@
 package com.ebookstore.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Users {
+public class Users implements Serializable {
+		/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3783925728113303486L;
 		@Id
 		@GeneratedValue(strategy= GenerationType.AUTO)
 		private int usersId;		

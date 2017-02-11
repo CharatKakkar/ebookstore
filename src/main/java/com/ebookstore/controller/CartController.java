@@ -70,6 +70,7 @@ public class CartController {
 		cartItem.setQty(qty);
 		cartItem.setItemTotal(product.getProductPrice() * cartItem.getQty());
 		cartItem.setCart(cart);
+	//	cartService.updateCart(cart.getCartId(), cart);
 		cartItemService.addCartItem(cartItem);
 	}
 
@@ -78,6 +79,7 @@ public class CartController {
 	public void removeItem(@PathVariable(value = "productId") int productId) {
 		System.out.println("--------------- remove function called ---------------------");
 		CartItem cartItem = cartItemService.getCartItemByProductId(productId);
+	//	cartService.updateCart(cart.getCartId(), cart);
 		cartItemService.removeCartItem(cartItem);
 	}
 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+<var name="customer" class="com.ebookstore.model.Customer" />
+
+<var name= "order" class="com.ebookstore.model.Orders" />
+
+
+<action-state id="getCustomerInfo">
+<evaluate expression="customerDaoImpl.getCustomerById(requestParameters.customerId)" result="customer" /> 
+<transition to ="showCustomerInfo"></transition>
+</action-state>
+
+<view-state id="showCustomerInfo" view="showCustomerInfo.jsp" model="customer">
+<transition on="next" to="getCart"></transition>
+<transition on="edit" to="editCustomerInfo"></transition>
+</view-state>
+
+<view-state id="editCustomerInfo" view="editCustomerInfo3.jsp" model="customer">
+</view-state>
+
+<action-state id="getCart">
+<evaluate expression="cartDaoImpl.getCartById(customer.cart.cartId)" result="order.cart" /> 
+<transition to ="orderSummary"></transition>
+</action-state>
+
+<!-- <action-state id="saveNewDeatils"> -->
+<!-- <evaluate expression="customerDaoImpl.getCustomerByuserName(order.cart.customer.userName)" result="customer" />  -->
+<!-- <transition to ="showCustomerInfo2"></transition> -->
+<!-- </action-state> -->
+
+
+
+<view-state id="orderSummary"  model="order">
+<transition on="next"></transition>
+<transition on="backToShowCustomerInfo" to ="showCustomerInfo"></transition>
+</view-state>
+
+
+</flow>

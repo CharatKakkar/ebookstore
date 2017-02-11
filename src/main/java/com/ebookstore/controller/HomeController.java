@@ -20,9 +20,7 @@ public class HomeController {
 	
 	@Autowired
 	ProductDao productDao;
-	
-	@Autowired
-	WebDriver drivers;
+
 	
 	@Autowired
 	Helper helper;

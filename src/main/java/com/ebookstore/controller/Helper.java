@@ -10,14 +10,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.utility.TestHelper;
+
 
 @Component
 public class Helper {
 
 	Path path;
 
-	@Autowired
 	WebDriver driver;	
 	
 	//private static Helper setUp1;

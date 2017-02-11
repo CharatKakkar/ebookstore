@@ -46,7 +46,7 @@ public class CartItemDaoImpl implements CartItemDao {
 	        Query query = session.createQuery("from CartItem where productId = ?");
 	        query.setInteger(0, productId);
 	        session.flush();
-
+	        
 	        return (CartItem) query.uniqueResult();
 	    }
 	    

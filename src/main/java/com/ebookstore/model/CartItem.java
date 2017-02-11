@@ -1,5 +1,7 @@
 package com.ebookstore.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -9,7 +11,12 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class CartItem {
+public class CartItem  implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5612530293964898473L;
+
 	@Id
     @GeneratedValue
     private int cartItemId;
@@ -31,11 +38,6 @@ public class CartItem {
 		//Default Constructor
 	}
 	
-//	public CartItem(Product product){	
-//		this.product= product;
-//		qty= 1;
-//		itemTotal= product.getProductPrice()*qty;
-//	}
 	
 	public Product getProduct() {
 		return product;

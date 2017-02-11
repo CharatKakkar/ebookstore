@@ -13,6 +13,8 @@ public interface CustomerService {
 	void deleteCustomer(int id);
 
 	void modifyCustomer(Customer customer);
+	
+	Customer updateCustomerInfo(Customer customer);
 
 	Customer getCustomerByuserName(String userName);
 	

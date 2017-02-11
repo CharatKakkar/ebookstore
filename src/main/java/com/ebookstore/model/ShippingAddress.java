@@ -1,4 +1,6 @@
-package com.ebookstore.model;
+                                      package com.ebookstore.model;
+
+import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +11,13 @@ import javax.persistence.OneToOne;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-public class ShippingAddress {
+public class ShippingAddress implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7481658725182025102L;
+
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	String shippingAddressId;	
