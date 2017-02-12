@@ -27,8 +27,9 @@ public class CartDaoImpl implements CartDao {
 	}	
 
 	@Override
-	public void updateCart(int cartId, Cart cart) {
-		Session session = sessionFactory.getCurrentSession();		
+	public void updateCart(int cartId) {
+		Session session = sessionFactory.getCurrentSession();
+		Cart cart = getCartById(cartId);
 		double grandTotal = 0;
 		for (CartItem item : cart.getCartItems()) {
 			grandTotal += item.getQty() * item.getProduct().getProductPrice();

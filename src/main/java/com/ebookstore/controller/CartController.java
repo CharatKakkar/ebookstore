@@ -62,7 +62,7 @@ public class CartController {
 				cartItem.setQty(cartItem.getQty() + qty);
 				cartItem.setItemTotal(product.getProductPrice() * cartItem.getQty());
 				cartItemService.addCartItem(cartItem);
-				cartService.updateCart(cart.getCartId(), cart);
+				cartService.updateCart(cart.getCartId());
 				return;
 			}
 		}
@@ -72,7 +72,7 @@ public class CartController {
 		cartItem.setItemTotal(product.getProductPrice() * cartItem.getQty());
 		cartItem.setCart(cart);
 		cartItemService.addCartItem(cartItem);
-		cartService.updateCart(cart.getCartId(), customer.getCart());
+		cartService.updateCart(cart.getCartId());
 	}
 
 	@RequestMapping(value = "/remove/{productId}", method = RequestMethod.PUT)
@@ -84,7 +84,7 @@ public class CartController {
 		CartItem cartItem = cartItemService.getCartItemByProductId(productId, cartId);
 
 		cartItemService.removeCartItem(cartItem);
-		// cartService.updateCart(cartId, customer.getCart());
+		cartService.updateCart(cartId);
 	}
 
 	@RequestMapping(value = "/{cartId}", method = RequestMethod.DELETE)

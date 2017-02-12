@@ -20,9 +20,9 @@ public class CartServiceImpl implements CartService{
 	}
 
 	@Override
-	public Cart updateCart(int cartId, Cart cart) {
+	public Cart updateCart(int cartId) {
 		// TODO Auto-generated method stub
-		cartDao.updateCart(cartId, cart);
+		cartDao.updateCart(cartId);
 		return null;
 	}
 
