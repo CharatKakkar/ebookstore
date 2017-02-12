@@ -45,7 +45,7 @@ public class OrderController {
 		myOrder.setCustomer(myCart.getCustomer());
 		myOrder.setBillingAddress(myCart.getCustomer().getBillingAddress());
 		myOrder.setShippingAddress(myCart.getCustomer().getShippingAddress());
-		orderService.saveOrder(myOrder);
+		//orderService.saveOrder(myOrder);
 		// model.addAttribute("myOrder", myOrder);
 		// return "customerDetails";
 		System.out.println("Customer id that is being passed" + myCart.getCustomer().getCustomerId());

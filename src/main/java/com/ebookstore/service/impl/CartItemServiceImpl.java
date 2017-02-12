@@ -34,9 +34,9 @@ public class CartItemServiceImpl implements CartItemService{
 	}
 
 	@Override
-	public CartItem getCartItemByProductId(int productId) {
+	public CartItem getCartItemByProductId(int productId, int cartId) {
 		// TODO Auto-generated method stub
-		CartItem myItem = cartItemDao.getCartItemByProductId(productId);
+		CartItem myItem = cartItemDao.getCartItemByProductId(productId, cartId);
 		return myItem;
 	}
 

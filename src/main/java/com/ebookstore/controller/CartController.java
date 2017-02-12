@@ -44,10 +44,10 @@ public class CartController {
 		return cart;
 	}
 
-
 	@RequestMapping(value = "/add/{productId}/c/{qty}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
-	public void addItem(@PathVariable(value="productId") int productId,  @PathVariable(value="qty") int qty,@AuthenticationPrincipal User activeUser) {
+	public void addItem(@PathVariable(value = "productId") int productId, @PathVariable(value = "qty") int qty,
+			@AuthenticationPrincipal User activeUser) {
 		System.out.println("Quantity entered is " + qty);
 		System.out.println("Product Id is " + productId);
 		Customer customer = customerService.getCustomerByuserName(activeUser.getUsername());
@@ -62,6 +62,7 @@ public class CartController {
 				cartItem.setQty(cartItem.getQty() + qty);
 				cartItem.setItemTotal(product.getProductPrice() * cartItem.getQty());
 				cartItemService.addCartItem(cartItem);
+				cartService.updateCart(cart.getCartId(), cart);
 				return;
 			}
 		}
@@ -70,17 +71,20 @@ public class CartController {
 		cartItem.setQty(qty);
 		cartItem.setItemTotal(product.getProductPrice() * cartItem.getQty());
 		cartItem.setCart(cart);
-	//	cartService.updateCart(cart.getCartId(), cart);
 		cartItemService.addCartItem(cartItem);
+		cartService.updateCart(cart.getCartId(), customer.getCart());
 	}
 
 	@RequestMapping(value = "/remove/{productId}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
-	public void removeItem(@PathVariable(value = "productId") int productId) {
+	public void removeItem(@PathVariable(value = "productId") int productId, @AuthenticationPrincipal User activeUser) {
 		System.out.println("--------------- remove function called ---------------------");
-		CartItem cartItem = cartItemService.getCartItemByProductId(productId);
-	//	cartService.updateCart(cart.getCartId(), cart);
+		Customer customer = customerService.getCustomerByuserName(activeUser.getUsername());
+		int cartId = customer.getCart().getCartId();
+		CartItem cartItem = cartItemService.getCartItemByProductId(productId, cartId);
+
 		cartItemService.removeCartItem(cartItem);
+		// cartService.updateCart(cartId, customer.getCart());
 	}
 
 	@RequestMapping(value = "/{cartId}", method = RequestMethod.DELETE)
@@ -90,5 +94,4 @@ public class CartController {
 		cartItemService.removeAllCartItems(cart);
 	}
 
-  
 }
