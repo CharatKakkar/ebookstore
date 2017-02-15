@@ -22,6 +22,8 @@
                 <a href="<spring:url value="/order/${cartId}"/>"
                    class="btn btn-success pull-right"><span class="glyphicon-shopping-cart glyphicon"></span> Check out
                 </a>
+                
+      
             </div>
 
             <table  class="display nowrap dataTable dtr-inline collapsed" cellspacing="0" role="grid" style="width:100%;">
@@ -32,6 +34,7 @@
                     <th>Price</th>
                     <th>Action</th>
                 </tr>
+              
                 <tr ng-repeat = "item in cart.cartItems">
                     <td>{{item.product.productName}}</td>
                     <td>{{item.product.productPrice}}</td>

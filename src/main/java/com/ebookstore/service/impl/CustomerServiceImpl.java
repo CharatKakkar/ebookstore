@@ -34,6 +34,9 @@ public class CustomerServiceImpl implements CustomerService {
 
 	}
 
+	public Customer getCurrentUser(){
+		return customerDao.getCurrentCustomer();
+	}
 	@Override
 	public void modifyCustomer(Customer customer) {
 		customerDao.modifyCustomer(customer);

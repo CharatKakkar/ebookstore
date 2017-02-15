@@ -6,6 +6,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,6 +44,13 @@ public class CustomerDaoImpl implements CustomerDao {
 
 	}
 
+	public Customer getCurrentCustomer(){
+		
+		 Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	   //  String name = auth.getName(); //get logged in username
+	    return getCustomerByuserName(auth.getName());
+		
+	}
 	@Override
 	public void addCustomer(Customer customer) {
 		// TODO Auto-generated method stub
@@ -128,8 +137,6 @@ public class CustomerDaoImpl implements CustomerDao {
 		Query query = session.createQuery("from Customer where username = ?").setString(0, userName);
 		Customer customer = (Customer) query.uniqueResult();
 		session.flush();
-		System.out.println("From Save new details");
-		System.out.println(customer.getUserName());
 		return customer;
 	}
 

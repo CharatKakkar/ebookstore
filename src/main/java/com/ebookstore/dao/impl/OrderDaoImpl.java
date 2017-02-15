@@ -27,7 +27,10 @@ public class OrderDaoImpl implements OrderDao {
 	SessionFactory sessionFactory;
 	@Override
 	public void saveOrder(Orders order) {
-	
+		System.out.println("CUSTOMER ID IS "+order.getCart().getCustomer().getCustomerId());
+		order.setBillingAddress(order.getCart().getCustomer().getBillingAddress());
+		order.setShippingAddress(order.getCart().getCustomer().getShippingAddress());
+		order.setCustomer(order.getCart().getCustomer());
 		Session session = sessionFactory.getCurrentSession();
 		session.saveOrUpdate(order);
 		session.flush();
@@ -39,6 +42,7 @@ public class OrderDaoImpl implements OrderDao {
 	public Orders getOrder(int orderId) {
 		Session session = sessionFactory.getCurrentSession();
 		Orders order = (Orders) session.get(Orders.class,orderId);
+		session.flush();
 		return order;
 	}
 

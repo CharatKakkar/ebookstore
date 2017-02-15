@@ -46,10 +46,9 @@ public class OrderController {
 		myOrder.setBillingAddress(myCart.getCustomer().getBillingAddress());
 		myOrder.setShippingAddress(myCart.getCustomer().getShippingAddress());
 		//orderService.saveOrder(myOrder);
-		// model.addAttribute("myOrder", myOrder);
-		// return "customerDetails";
 		System.out.println("Customer id that is being passed" + myCart.getCustomer().getCustomerId());
-		return "redirect:/orderCheckout?customerId=" + myCart.getCustomer().getCustomerId();
+		//return "redirect:/orderCheckout?customerId=" + myCart.getCustomer().getCustomerId();
+		return "redirect:/orderCheckout";
 
 	}
 
@@ -80,5 +79,12 @@ public class OrderController {
 	//
 	// }
 	//
+	
+	private void saveOrder(Orders order){
+		//orderService.saveOrder(order);
+		System.out.println("Order id is " + order.getOrderId());
+		return ;
+		
+	}
 
 }

@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ebookstore.dao.ProductDao;
+import com.ebookstore.dao.impl.CustomerDaoImpl;
 import com.ebookstore.model.Customer;
 import com.ebookstore.service.CustomerService;
 
@@ -32,7 +33,7 @@ public class HomeController {
 
     @RequestMapping("/")
     public String home() {
-    	       
+    //	System.out.println(customerService.getCurrentUser().getCustomerId());
         return "home";
     }
 //

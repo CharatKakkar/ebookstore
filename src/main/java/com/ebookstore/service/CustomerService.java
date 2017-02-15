@@ -20,6 +20,8 @@ public interface CustomerService {
 	
 	boolean isCustomerExists(String userName);
 	
+	public Customer getCurrentUser();
+	
 	List <Customer> getAllCustomers();
     
    }

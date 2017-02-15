@@ -19,6 +19,9 @@ public class Helper {
 
 	WebDriver driver;	
 	
+	@Autowired
+	OrderController orderController;
+	
 	//private static Helper setUp1;
 	
 	public  WebDriver getDriver() {

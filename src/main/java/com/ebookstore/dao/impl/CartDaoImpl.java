@@ -21,6 +21,7 @@ public class CartDaoImpl implements CartDao {
 	@Override
 	public void deleteCart(int cartId) {
 		// TODO Auto-generated method stub
+		System.out.println("Cart id" + cartId);
 		Session session = sessionFactory.getCurrentSession();
 		Cart cart = (Cart) session.get(Cart.class, cartId);
 		session.delete(cart);
