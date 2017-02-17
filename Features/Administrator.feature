@@ -1,6 +1,6 @@
 Feature: Administrator Rights
 
-@Admin
+
 	Scenario Outline: Add a product into the product Catalog
 	Given Login URL
 	And Login Credentials for Admin

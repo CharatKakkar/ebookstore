@@ -32,12 +32,12 @@ public class TestLogin {
 		loginPageObject = new LoginPageObject(driver);
 		productsPageObject = new ProductsPageObject(driver);
 		homePageObject = new HomePageObject(driver);
-//
-//		Runtime.getRuntime().addShutdownHook(new Thread() {
-//			public void run() {
-//				driver.quit();
-//			}
-//		});
+
+		Runtime.getRuntime().addShutdownHook(new Thread() {
+			public void run() {
+				driver.quit();
+			}
+		});
 		
 	}
 
@@ -63,7 +63,7 @@ public class TestLogin {
 
 	@Then("^the login credentials should be valid$")
 	public void the_login_credentials_should_be_validated() throws Throwable {
-		if (loginPageObject.errorMessage().contains("Invalid Credentials")) {
+		if (loginPageObject.getErrorMessage().contains("Invalid Credentials")) {
 			error = true;
 			errstr = "Invalid credentials have been passed";
 		}
@@ -86,7 +86,7 @@ public class TestLogin {
 
 	@Then("^invalid credentials message should be passed$")
 	public void invalid_credentials_message_should_be_passed() throws Throwable {
-		if (loginPageObject.errorMessage() == "") {
+		if (loginPageObject.getErrorMessage() == "") {
 			error = Boolean.TRUE;
 			errstr = "Invalid Credentials were accepted";
 		}

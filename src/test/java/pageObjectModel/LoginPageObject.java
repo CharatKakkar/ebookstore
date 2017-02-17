@@ -3,6 +3,8 @@
  */
 package pageObjectModel;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -32,8 +34,8 @@ public class LoginPageObject extends BaseClass {
 	@FindBy(name = "password")
 	WebElement password;
 
-	@FindBys(value = { @FindBy(className = "error") })
-	WebElement error;
+	@FindBy(className = "error")
+	List<WebElement> error;
 
 	@FindBy(xpath = "//*[@type='submit']")
 	WebElement login;
@@ -52,11 +54,13 @@ public class LoginPageObject extends BaseClass {
 		login.click();
 	}
 
-	public String errorMessage() {
-		String rtn = "";
-		if (wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.className("error"), 0)) != null) {
-			rtn = error.getAttribute("innerHTML");
+	public String getErrorMessage() {
+		String errorMessage = "";
+		if (error.size() > 0) {
+			for (WebElement err : error) {
+				errorMessage = err.getAttribute("innerHTML");
+			}
 		}
-		return rtn;
+		return errorMessage;
 	}
 }
