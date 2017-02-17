@@ -34,6 +34,7 @@ public class TestLogin {
 		homePageObject = new HomePageObject(driver);
 
 		Runtime.getRuntime().addShutdownHook(new Thread() {
+			@Override
 			public void run() {
 				driver.quit();
 			}

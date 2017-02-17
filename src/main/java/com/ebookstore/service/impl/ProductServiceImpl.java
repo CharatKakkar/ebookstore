@@ -17,11 +17,13 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductDao productDao;
 
-    public Product getProductById (int productId) {
+    @Override
+	public Product getProductById (int productId) {
         return productDao.getProductById(productId);
     }
 
-    public List<Product> getProductList () {
+    @Override
+	public List<Product> getProductList () {
         return productDao.getProductList();
     }
 

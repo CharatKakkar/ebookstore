@@ -44,6 +44,7 @@ public class CustomerDaoImpl implements CustomerDao {
 
 	}
 
+	@Override
 	public Customer getCurrentCustomer(){
 		
 		 Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -64,12 +65,12 @@ public class CustomerDaoImpl implements CustomerDao {
 		customer.setPassword(passwordEncoder.encode(customer.getPassword()));
 
 		// Setting the billingAddress
-		BillingAddress billingAddress = (BillingAddress) customer.getBillingAddress();
+		BillingAddress billingAddress = customer.getBillingAddress();
 		billingAddress.setCustomer(customer);
 		session.saveOrUpdate(billingAddress);
 
 		// Setting the shippingAddress
-		ShippingAddress shippingAddress = (ShippingAddress) customer.getShippingAddress();
+		ShippingAddress shippingAddress = customer.getShippingAddress();
 		if (shippingAddress.getState().equals("") || shippingAddress.getCountry().equals("")) {
 			System.out.println("Setting shipping address from billing address");
 			shippingAddress.setApartmentNumber(billingAddress.getApartmentNumber());
@@ -176,7 +177,7 @@ public class CustomerDaoImpl implements CustomerDao {
 		Customer myCustomer = getCustomerByuserName(customer.getUserName());
 		myCustomer.setConfirmPassword(myCustomer.getPassword());
 		//myCustomer.getBillingAddress().setState(customer.getBillingAddress().getState());
-		BillingAddress billingAddress = (BillingAddress) myCustomer.getBillingAddress();
+		BillingAddress billingAddress = myCustomer.getBillingAddress();
 		
 		billingAddress.setApartmentNumber(customer.getBillingAddress().getApartmentNumber());
 		billingAddress.setStreetAddress(customer.getBillingAddress().getStreetAddress());
@@ -186,7 +187,7 @@ public class CustomerDaoImpl implements CustomerDao {
 		billingAddress.setZipCode(customer.getBillingAddress().getZipCode());		
 		
 		
-		ShippingAddress shippingAddress = (ShippingAddress) myCustomer.getShippingAddress();
+		ShippingAddress shippingAddress = myCustomer.getShippingAddress();
 		
 		
 		shippingAddress.setApartmentNumber(customer.getShippingAddress().getApartmentNumber());

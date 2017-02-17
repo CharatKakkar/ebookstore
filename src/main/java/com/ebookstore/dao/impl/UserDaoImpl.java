@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ebookstore.dao.UserDao;
-import com.ebookstore.model.Customer;
 import com.ebookstore.model.Users;
 
 /**

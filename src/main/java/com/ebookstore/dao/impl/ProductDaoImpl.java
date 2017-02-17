@@ -20,14 +20,16 @@ public class ProductDaoImpl implements ProductDao {
     @Autowired
     private SessionFactory sessionFactory;
 
-    public Product getProductById (int id) {
+    @Override
+	public Product getProductById (int id) {
         Session session = sessionFactory.getCurrentSession();
         Product product = (Product) session.get(Product.class, id);
         session.flush();
         return product;
     }
 
-    public List<Product> getProductList() {
+    @Override
+	public List<Product> getProductList() {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("from Product");
         List<Product> productList = query.list();
@@ -68,7 +70,7 @@ public class ProductDaoImpl implements ProductDao {
 	public List<String> getAllCategories() {
 		Session session = sessionFactory.getCurrentSession();
 		Query query =session.createQuery("select distinct productCategory from Product");
-		List<String> result = (List<String>) query.list();
+		List<String> result = query.list();
 		return result;
 	}
 	

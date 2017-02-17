@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.ebookstore.model.BillingAddress;
 import com.ebookstore.model.Cart;
 import com.ebookstore.model.Customer;
 import com.ebookstore.model.Orders;

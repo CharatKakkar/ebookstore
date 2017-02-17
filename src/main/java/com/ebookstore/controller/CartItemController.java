@@ -20,7 +20,7 @@ public class CartItemController {
 	CustomerService customerService;	
 	@RequestMapping
 	public String get(@AuthenticationPrincipal User activeUser) {
-		Customer customer = (Customer) customerService.getCustomerByuserName(activeUser.getUsername());
+		Customer customer = customerService.getCustomerByuserName(activeUser.getUsername());
 		int cartId = customer.getCart().getCartId();
 		return "redirect:/cart/" + cartId;
 	}
