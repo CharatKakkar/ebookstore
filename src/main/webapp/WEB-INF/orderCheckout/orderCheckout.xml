@@ -10,22 +10,25 @@
 
 
 	<action-state id="getCustomerInfo">
-		<evaluate expression="customerDaoImpl.getCurrentCustomer()"	result="customer" />
+		<evaluate expression="customerDaoImpl.getCurrentCustomer()"
+			result="customer" />
 		<transition to="showCustomerInfo"></transition>
 	</action-state>
 
-	<view-state id="showCustomerInfo" view="showCustomerInfo.jsp" model="customer">
+	<view-state id="showCustomerInfo" view="showCustomerInfo.jsp"
+		model="customer">
 		<transition on="next" to="getCart"></transition>
 		<transition on="edit" to="editCustomerInfo"></transition>
 	</view-state>
 
 	<view-state id="editCustomerInfo" view="editCustomerInfo3.jsp"
 		model="customer">
-	<transition to="getCustomerInfo"></transition>
+		<transition to="getCustomerInfo"></transition>
 	</view-state>
 
 	<action-state id="getCart">
-		<evaluate expression="cartDaoImpl.getCartById(customer.cart.cartId)" result="order.cart" />
+		<evaluate expression="cartDaoImpl.getCartById(customer.cart.cartId)"
+			result="order.cart" />
 		<transition to="orderSummary"></transition>
 	</action-state>
 
@@ -37,23 +40,20 @@
 		<transition on="backToShowCustomerInfo" to="getCustomerInfo"></transition>
 		<transition on="cancel" to="returnToHome"></transition>
 	</view-state>
-	
-<!-- 	<action-state id="finalizeOrder"> -->
-<!-- 		<evaluate expression="orderDaoImpl.saveOrder(order)"/> -->
-<!-- 		<transition to="thankyou"></transition> -->
-<!-- 	</action-state> -->
-	
-		<action-state id="finalizeOrder">		
+
+
+	<action-state id="finalizeOrder">
 		<evaluate expression="orderDaoImpl.saveOrder(order)" />
 		<transition to="clearCart"></transition>
-		</action-state>
-		
-		<action-state id="clearCart">
-	<evaluate expression="cartItemDaoImpl.removeAllCartItems(order.cart)"/>		
+	</action-state>
+
+	<action-state id="clearCart">
+		<evaluate expression="cartItemDaoImpl.removeAllCartItems(order.cart)" />
 		<transition to="thankyou"></transition>
+
 	</action-state>
 	<view-state id="thankyou" model="order">
-	</view-state>	
+	</view-state>
 
 
 </flow>

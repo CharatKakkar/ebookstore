@@ -98,6 +98,7 @@ public void click_on_cart_and_verify_the_total()  {
 	@Then("^Submit the order Verify that Order ID is display at thank you page$")
 	public void submit_the_order_Verify_that_Order_ID_is_display_at_thank_you_page() {
 
+		orderCheckoutPageObject.fillCreditCardInfo();
 		orderCheckoutPageObject.submitClick();
 	}
 

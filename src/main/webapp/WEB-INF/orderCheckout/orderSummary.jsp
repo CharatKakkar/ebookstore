@@ -7,10 +7,10 @@
 <div class="container-wrapper">
 	<div class="container">
 		<div class="page-header">
-			<h1>Order</h1>
+			<h1>One Final Step </h1>
 
 
-			<p class="lead">Order confirmation</p>
+			<p class="lead"></p>
 		</div>
 
 		<div class="container">
@@ -82,7 +82,7 @@
 
 									<tr>
 										<td class="table col-md-1" style="text-align: center"><strong>Grand Total:$ </strong></td>
-										<td class="table col-md-2" style="text-align: right" ><strong> ${order.cart.grandTotal}</strong></td>
+										<td class="table col-md-2" style="text-align: right"   color: red ><strong > ${order.cart.grandTotal}</strong></td>
 									</tr>
 								</tbody>
 
@@ -91,62 +91,27 @@
 						<table class="form-address-table">
 							<tbody>
 								<tr>
-									<th colspan="2" style="text-align: center;" id="ccTitle7">
-										Credit Card Details</th>
-								</tr>
-								<tr>
-									<td width="50%"><span class="form-sub-label-container"
-										style="vertical-align: top;"> <label
-											class="form-sub-label" for="input_7_cc_firstName"
-											id="sublabel_cc_firstName"
-											style="min-height: 13px; margin: 0 0 3px 0;"> First
-												Name </label> <input type="text" id="input_7_cc_firstName"
-											
-											class="form-textbox cc_firstName" size="20" value=""
-											data-component="cc_firstName">
-									</span></td>
-									</tr>
-									<tr>
+									<th colspan="2" style="text-align: center;" id="ccTitle">	<font size="5">Credit Card Details</font></th>
 									
-									<td width="50%"> <label
-											class="form-sub-label" for="input_7_cc_lastName"
-											id="sublabel_cc_lastName"
-											style="min-height: 13px; margin: 0 0 3px 0;"> Last
-												Name </label> <input type="text" id="input_7_cc_lastName"
-											
-											class="form-textbox cc_lastName" size="20" value=""
-											data-component="cc_lastName">
-									</td>
 								</tr>
+								<tr>
+									<td colspan="6"><span class="form-sub-label-container"style="vertical-align: top;"> 
+									<label class="form-sub-label" id="sublabel_cc_number" > Credit Card Number </label>
+									<input type="number" id="ccnumber" class="form-textbox cc_number"   required="" value="" data-component="cc_number"> -</span> 
+									<span class="form-sub-label-container" style="vertical-align: top;">
+									<label class="form-sub-label" id="sublabel_cc_ccv">Security Code </label> 
+									<input type="number" id="ccv" class="form-textbox cc_ccv"   value="" required="" data-component="cc_ccv">
+									</span></td><br>
+								</tr>
+								
 								<tr>
 									<td colspan="2"><span class="form-sub-label-container"
 										style="vertical-align: top;"> <label
-											class="form-sub-label" for="input_7_cc_number"
-											id="sublabel_cc_number"
-											style="min-height: 13px; margin: 0 0 3px 0;"> Credit
-												Card Number </label> <input type="number" id="input_7_cc_number"
-											
-											class="form-textbox cc_number" autocomplete="off" size="20"
-											value="" data-component="cc_number"> -
-									</span> <span class="form-sub-label-container"
-										style="vertical-align: top;"> <label
-											class="form-sub-label" for="input_7_cc_ccv"
-											id="sublabel_cc_ccv"
-											style="min-height: 13px; margin: 0 0 3px 0;">
-												Security Code </label> <input type="number" id="input_7_cc_ccv"
-										 class="form-textbox cc_ccv"
-											autocomplete="off" style="width: 52px;" value=""
-											data-component="cc_ccv">
-									</span></td>
-								</tr>
-								<tr>
-									<td colspan="2"><span class="form-sub-label-container"
-										style="vertical-align: top;"> <label
-											class="form-sub-label" for="input_7_cc_exp_month"
+											class="form-sub-label" 
 											id="sublabel_cc_exp_month"
-											style="min-height: 13px; margin: 0 0 3px 0;">
+											style="min-height: 13px; margin: 0 0 9px 0;">
 												Expiration Month </label> <select class="form-dropdown cc_exp_month"
-											 id="input_7_cc_exp_month"
+											 id="exp_month" required=""
 											data-component="cc_exp_month">
 												<option></option>
 												<option value="1">January</option>
@@ -162,13 +127,14 @@
 												<option value="11">November</option>
 												<option value="12">December</option>
 										</select> /
-									</span> <span class="form-sub-label-container"
+									</span>
+									 <span class="form-sub-label-container"
 										style="vertical-align: top;"> <label
 											class="form-sub-label" for="input_7_cc_exp_year"
 											id="sublabel_cc_exp_year"
 											style="min-height: 13px; margin: 0 0 3px 0;">
 												Expiration Year </label> <select class="form-dropdown cc_exp_year"
-											name="exp_year" id="input_7_cc_exp_year"
+											name="exp_year" id="input_7_cc_exp_year" required=""
 											data-component="cc_exp_year">
 												<option></option>
 												<option value="2017">2017</option>
@@ -197,12 +163,12 @@
 							</tbody>
 						</table>
 
-
+<div style="text-align: center">
 						<input type="hidden" name="_flowExecutionKey" /> <br> <br>
-						<button id="back" class="btn btn-default"
-							name="_eventId_backToShowCustomerInfo">Back</button>
+						<button id="back"  name="_eventId_backToShowCustomerInfo" class="btn btn-warning" >Back</button>
 						<button id="submit" name="_eventId_next" class="btn btn-success">Submit</button>
-						<button id="cancel" name="_eventId_cancel" class="btn btn-warning">Cancel</button>
+						<button id="cancel" name="_eventId_cancel" class="btn btn-danger">Cancel</button>
+						</div>
 					</div>
 				</form:form>
 			</div>

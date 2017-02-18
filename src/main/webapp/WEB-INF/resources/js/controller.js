@@ -50,10 +50,10 @@ cartApp.controller("cartCtrl", function ($scope, $http){
     };
     
     $scope.$watch(function() {
-    	if ($scope.grandTotal()==0){ 
-    		$scope.ShowSave = false;
-    	}else{
+    	if ($scope.grandTotal()!=0){ 
     		$scope.ShowSave = true;
+    	}else{
+    		$scope.ShowSave = false;
     	 }
     });
 
