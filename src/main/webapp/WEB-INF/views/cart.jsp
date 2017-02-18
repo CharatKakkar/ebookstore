@@ -19,7 +19,7 @@
                 <a id="clearCart" class="btn btn-danger pull-left" ng-click="clearCart()"><span
                         class="glyphicon glyphicon-remove-sign"></span>Clear Cart</a>
                         
-                <a id="checkOut"href="<spring:url value="/order/${cartId}"/>"
+                <a id="checkOut" ng-show="ShowSave == true " href="<spring:url value="/order/${cartId}"/>"
                    class="btn btn-success pull-right"><span class="glyphicon-shopping-cart glyphicon"></span> Check out
                 </a>
                 

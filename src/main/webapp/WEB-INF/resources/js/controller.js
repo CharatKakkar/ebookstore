@@ -48,5 +48,13 @@ cartApp.controller("cartCtrl", function ($scope, $http){
         }
         return grandTotal;             
     };
+    
+    $scope.$watch(function() {
+    	if ($scope.grandTotal()==0){ 
+    		$scope.ShowSave = false;
+    	}else{
+    		$scope.ShowSave = true;
+    	 }
+    });
 
 });
