@@ -20,7 +20,7 @@ public class LoginPageObject extends BaseClass {
 	WebDriverWait wait;
 
 	public LoginPageObject(WebDriver driver) {
-		super(driver);
+		super.pageFactoryInit(driver);
 		wait = new WebDriverWait(driver, 20);
 	}
 

@@ -33,7 +33,7 @@ $(document).ready(function() {
                 <th>Info</th>
             </tr>
             </thead>
-            <c:forEach items="${products}" var="product">
+            <c:forEach items="${products}" var="product" varStatus="loop">
                 <tr>
                     <td align="center" ><a href="<spring:url value="/product/viewProduct/${product.productId}" />"
                     > <img src="<c:url value="/resources/productImages/${product.productId}.png"  />" alt="image"
@@ -43,7 +43,7 @@ $(document).ready(function() {
                     <td>${product.productCategory}</td>
                     <td>${product.productCondition}</td>
                     <td>${product.productPrice}</td>
-                    <td><a href="<spring:url value="/product/viewProduct/${product.productId}" />"
+                    <td ><a id="itemnum${loop.count}" href="<spring:url value="/product/viewProduct/${product.productId}" />"
                     >&nbsp&nbsp&nbsp&nbsp<span class="glyphicon glyphicon-info-sign"></span></a></td>
                 </tr>                   
             </c:forEach>

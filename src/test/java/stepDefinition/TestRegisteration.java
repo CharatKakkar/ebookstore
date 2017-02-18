@@ -9,13 +9,14 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import pageObjectModel.BaseClass;
 import pageObjectModel.HomePageObject;
 import pageObjectModel.LoginPageObject;
 import pageObjectModel.ProductsPageObject;
 import pageObjectModel.RegisterPageObject;
 
-public class TestRegisteration {
-	
+public class TestRegisteration extends BaseClass{
+
 	private WebDriver driver;
 	private Boolean error = Boolean.FALSE;
 	private String errstr = "";
@@ -30,12 +31,7 @@ public class TestRegisteration {
 		loginPageObject = new LoginPageObject(driver);
 		homePageObject = new HomePageObject(driver);
 		registerPageObject = new RegisterPageObject(driver);
-
-		// Runtime.getRuntime().addShutdownHook(new Thread() {
-		// public void run() {
-		// driver.quit();
-		// }
-		// });
+		super.shutdownHook(driver);
 
 	}
 

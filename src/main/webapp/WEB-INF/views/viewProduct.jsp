@@ -43,6 +43,7 @@
 								data-ng-model="qty">
 								<option value="2">2</option>
 								<option value="3">3</option>
+								<option value="4">4</option>
 								<option value="5">5</option>
 								<option value="6">6</option>
 								<option value="7">7</option>
@@ -67,7 +68,7 @@
 							<c:if test="${pageContext.request.userPrincipal.name !=null}">
 								<c:if test="${pageContext.request.userPrincipal.name !='admin'}">
 
-									<a href="#" class="btn btn-warning btn-large"
+									<a id="ordernow" href="#" class="btn btn-warning btn-large"
 										ng-click="addToCart('${product.productId}','${product.productName}')"><span
 										class="glyphicon glyphicon-shopping-cart"></span>Order Now</a>
 									<a href="<spring:url value="/cart" />" class="btn btn-default"><span

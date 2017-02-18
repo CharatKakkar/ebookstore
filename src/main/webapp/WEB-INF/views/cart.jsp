@@ -16,10 +16,10 @@
         <section class="container" ng-app="cartApp">
             <div ng-controller = "cartCtrl" ng-init="initCartId('${cartId}')">
             <div>
-                <a class="btn btn-danger pull-left" ng-click="clearCart()"><span
+                <a id="clearCart" class="btn btn-danger pull-left" ng-click="clearCart()"><span
                         class="glyphicon glyphicon-remove-sign"></span>Clear Cart</a>
                         
-                <a href="<spring:url value="/order/${cartId}"/>"
+                <a id="checkOut"href="<spring:url value="/order/${cartId}"/>"
                    class="btn btn-success pull-right"><span class="glyphicon-shopping-cart glyphicon"></span> Check out
                 </a>
                 

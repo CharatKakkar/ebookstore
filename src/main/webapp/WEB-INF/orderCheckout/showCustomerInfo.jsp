@@ -35,8 +35,8 @@
 				<form:input type="text" id="provinceS" path ="shippingAddress.state" name="provinceS" placeholder="Province" class="form-control" readonly="true" />
 				<form:input type="text" id="countryS" path ="shippingAddress.country" name="countryS" placeholder="Country" class="form-control" readonly="true" />
 				<form:input type="text" id="zipCodeS" path ="shippingAddress.zipCode" name="zipCodeS" placeholder="Zip Code" class="form-control" readonly="true" />			
-				<button class="btn btn-default" name="_eventId_edit">Edit</button>
-						<button class="btn btn-default" name="_eventId_next">Next</button>
+				<button id="editDetails" class="btn btn-default" name="_eventId_edit">Edit</button>
+						<button id="Next" class="btn btn-default" name="_eventId_next">Next</button>
 				</form:form>
 				</section>
 			</div>

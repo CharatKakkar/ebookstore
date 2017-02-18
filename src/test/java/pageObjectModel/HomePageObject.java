@@ -4,10 +4,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class HomePageObject {
+public class HomePageObject extends BaseClass {
 
 	WebDriver driver;
+	WebDriverWait wait;
+
+	public HomePageObject(WebDriver driver) {
+		super.pageFactoryInit(driver);
+		wait = new WebDriverWait(driver, 20);
+	}
 
 	@FindBy(xpath = "//*[@id='navbar']/ul[1]/li[1]/a")
 	WebElement homeButton;
@@ -20,12 +27,6 @@ public class HomePageObject {
 
 	@FindBy(id = "register")
 	WebElement registerationButton;
-
-	public HomePageObject(WebDriver driver) {
-		// TODO Auto-generated constructor stub
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
-	}
 
 	public void loginLink() {
 		loginLink.click();

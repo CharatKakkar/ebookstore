@@ -10,11 +10,12 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import pageObjectModel.BaseClass;
 import pageObjectModel.HomePageObject;
 import pageObjectModel.LoginPageObject;
 import pageObjectModel.ProductsPageObject;
 
-public class TestLogin {
+public class TestLogin extends BaseClass {
 
 	private WebDriver driver;
 
@@ -32,14 +33,7 @@ public class TestLogin {
 		loginPageObject = new LoginPageObject(driver);
 		productsPageObject = new ProductsPageObject(driver);
 		homePageObject = new HomePageObject(driver);
-
-		Runtime.getRuntime().addShutdownHook(new Thread() {
-			@Override
-			public void run() {
-				driver.quit();
-			}
-		});
-		
+		super.shutdownHook(driver);
 	}
 
 	@Given("^Login URL$")
@@ -75,7 +69,7 @@ public class TestLogin {
 	public void products_tab_should_be_clicked() throws Throwable {
 		homePageObject.productPageClick();
 		productsPageObject.selectProductTableDropdown("25");
-		productsPageObject.productTable();
+		productsPageObject.firstProductClick();
 	}
 
 	@Then("^Logout should be clicked$")

@@ -199,10 +199,10 @@
 
 
 						<input type="hidden" name="_flowExecutionKey" /> <br> <br>
-						<button class="btn btn-default"
+						<button id="back" class="btn btn-default"
 							name="_eventId_backToShowCustomerInfo">Back</button>
-						<button name="_eventId_next" class="btn btn-success">Next</button>
-						<button name="_eventId_cancel" class="btn btn-success">Cancel</button>
+						<button id="submit" name="_eventId_next" class="btn btn-success">Submit</button>
+						<button id="cancel" name="_eventId_cancel" class="btn btn-warning">Cancel</button>
 					</div>
 				</form:form>
 			</div>

@@ -9,7 +9,7 @@ public class RegisterPageObject extends BaseClass {
 	WebDriver driver;
 
 	public RegisterPageObject(WebDriver driver) {
-		super(driver);
+		super.pageFactoryInit(driver);
 	}
 
 	@FindBy(id = "userName")

@@ -12,10 +12,20 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class BaseClass {
 
-	WebDriver driver;
+	private WebDriver driver;
 
-	public BaseClass(WebDriver driver) {
+	public void pageFactoryInit(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
+	}	
+
+	public void shutdownHook(WebDriver driver ){
+		
+//		Runtime.getRuntime().addShutdownHook(new Thread() {
+//			@Override
+//			public void run() {
+//				driver.quit();
+//			}
+//		});
 	}
 }

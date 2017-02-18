@@ -101,14 +101,14 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="<c:url value="/" /> ">eBookStore</a>
+						<a id="ebookstore" class="navbar-brand" href="<c:url value="/" /> ">eBookStore</a>
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
-							<li><a href="<c:url value="/" /> ">Home</a></li>
-							<li><a href="<c:url value="/product/productList/all" />">Products</a></li>
+							<li><a id="home" href="<c:url value="/" /> ">Home</a></li>
+							<li><a id="products" href="<c:url value="/product/productList/all" />">Products</a></li>
 							<li><a href="<c:url value="/passwordValidator" />">Password</a></li>
-							<li><a href="<c:url value="/about" />">About Us</a></li>
+							<li><a id="aboutUs" href="<c:url value="/about" />">About Us</a></li>
 
 						</ul>
 
@@ -117,12 +117,12 @@
 							<c:if test="${pageContext.request.userPrincipal.name != null}">
 								<li><a> Hello ${pageContext.request.userPrincipal.name }</a></li>
 								<c:if test="${pageContext.request.userPrincipal.name =='admin'}">
-								<li><a href="<c:url value="/admin/productInventory" />">Modify Inventory</a></li>
+								<li><a id="modifyInventory"href="<c:url value="/admin/productInventory" />">Modify Inventory</a></li>
 							</c:if>
 								<c:if test="${pageContext.request.userPrincipal.name !='admin'}">
-								<li><a href=" <c:url value="/cart"/>">Cart </a></li>
+								<li><a id="cart" href=" <c:url value="/cart"/>">Cart </a></li>
 								</c:if>
-								<li><a href="<c:url value="/j_spring_security_logout"/>">Logout</a></li>								
+								<li><a id="logout" href="<c:url value="/j_spring_security_logout"/>">Logout</a></li>								
 							</c:if>							
 							<c:if test="${pageContext.request.userPrincipal.name == null}">
 								<li><a href="<c:url value="/login" />">Login</a></li>
