@@ -30,6 +30,9 @@ public class LoginPageObject extends BaseClass {
 	@FindBy(name = "password")
 	WebElement password;
 
+	@FindBy(id = "forgotPassword")
+	WebElement forgotPasswordLink;
+
 	@FindBy(className = "error")
 	List<WebElement> error;
 
@@ -48,6 +51,10 @@ public class LoginPageObject extends BaseClass {
 
 	public void clickLogin() {
 		login.click();
+	}
+
+	public void forgotPasswordLinkClick() {
+		forgotPasswordLink.click();
 	}
 
 	public String getErrorMessage() {

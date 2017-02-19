@@ -46,8 +46,8 @@ public class ForgotPassword {
 			if (customer.getSecurityPhrase()
 					.equals(customerService.getCustomerByuserName(customer.getUserName()).getSecurityPhrase())) {
 				myCustomer = customerService.getCustomerByuserName(customer.getUserName());
-				myCustomer.setPassword(myCustomer.getPassword());
-				myCustomer.setConfirmPassword(myCustomer.getPassword());
+				myCustomer.setPassword(customer.getPassword());
+				myCustomer.setConfirmPassword(customer.getConfirmPassword());
 				customerService.modifyCustomer(myCustomer);
 				model.addAttribute("msg", "Password for the " + customer.getUserName() + " has been reset successfully");
 				returnPoint = "login";

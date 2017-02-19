@@ -2,13 +2,13 @@ Feature: Forgot Password Functionality
 
   @ForgotPasswordTest
   Scenario Outline: Successfully Reset Password
-    Given Login URL and login credentials "<username>" "<password>"
-    Then Add some products into the cart
-    And Click on cart and verify the total
-    And Click on check out
-    Then Verify the details are present for Shipping and Billing Address
-    And Submit the order Verify that Order ID is display at thank you page
+    Given Login URL
+    Then Click on Forgot Password
+    And Fill in the details "<username>" "<Secret Phrase>" "<New Password>" "<Email Id>"
+    Then Click Reset Password button
+    Then Verify that Success message is received
+    And Login with new credentials "<username>" "<New Password>"
 
     Examples: 
-      | username |  | password |
-      | Charat12 |  | password |
+      | username |  | New Password |  | Secret Phrase |  | Email Id               |
+      | Charat13 |  | password     |  |phrase|  | charatkakkar@gmail.com |

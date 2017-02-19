@@ -27,7 +27,7 @@
 						<input type='password' name='password' placeholder="Password" class="form-control input-lg" required="" />
 						<button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Sign in</button>
 			<div>	<a href="<c:url value="/registration/register"/>">Create account</a> &nbsp&nbsp&nbsp 
-				<a href="<c:url value="/forgotPassword"/>">Forgot password?</a></div>
+				<a id="forgotPassword" href="<c:url value="/forgotPassword"/>">Forgot password?</a></div>
 	
 						<!-- 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />  -->
 					</form>

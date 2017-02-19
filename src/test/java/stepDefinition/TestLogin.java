@@ -81,7 +81,7 @@ public class TestLogin extends BaseClass {
 
 	@Then("^invalid credentials message should be passed$")
 	public void invalid_credentials_message_should_be_passed() throws Throwable {
-		if (loginPageObject.getErrorMessage() == "") {
+		if (loginPageObject.getErrorMessage().equals("")) {
 			error = Boolean.TRUE;
 			errstr = "Invalid Credentials were accepted";
 		}

@@ -120,14 +120,18 @@ public class CustomerDaoImpl implements CustomerDao {
 	public void modifyCustomer(Customer customer) {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
+	
+		session.saveOrUpdate(customer);
 		Users myUser = userDao.getUserbyUsername(customer.getUserName());
-		myUser.setPassword(customer.getPassword());
+		myUser.setPassword(passwordEncoder.encode(customer.getPassword()));
+		
+		//customer.setConfirmPassword(passwordEncoder.encode(customer.getConfirmPassword()));
 		// BillingAddress billingAddress = (BillingAddress)
 		// customer.getBillingAddress();
 		// billingAddress.setCustomer(customer);
 		// session.saveOrUpdate(billingAddress);
 		session.saveOrUpdate(myUser);
-		session.saveOrUpdate(customer);
+		
 		session.flush();
 	}
 

@@ -31,9 +31,11 @@ public class Customer implements Serializable {
 	@Size(min = 6, message = "Please enter a username with at least 6 Characters")
 	private String userName;
 
+	@Transient
 	@Size(min = 6, message = "Please enter a password with at least 6 Characters")
 	private String password;
 
+	
 	@Transient
 	private String confirmPassword;
 
