@@ -4,6 +4,7 @@
 package stepDefinition;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 import com.utility.TestHelper;
 
@@ -76,7 +77,10 @@ public class ForgotPasswordTest {
 
 	@Then("^Verify that Success message is received$")
 	public void verify_that_Success_message_is_received() {
-
+		System.out.println("message is " + loginPageObject.getMessage());
+		if ( !loginPageObject.getMessage().contains("has been reset successfully")){
+			Assert.assertFalse(true, "Password reset functionality failed");;
+		}
 	}
 
 	@Then("^Login with new credentials \"([^\"]*)\" \"([^\"]*)\"$")

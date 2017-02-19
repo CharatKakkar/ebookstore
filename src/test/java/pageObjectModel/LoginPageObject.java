@@ -35,6 +35,9 @@ public class LoginPageObject extends BaseClass {
 
 	@FindBy(className = "error")
 	List<WebElement> error;
+	
+	@FindBy(className = "msg")
+	List<WebElement> messages;
 
 	@FindBy(xpath = "//*[@type='submit']")
 	WebElement login;
@@ -66,4 +69,16 @@ public class LoginPageObject extends BaseClass {
 		}
 		return errorMessage;
 	}
+	
+	public String getMessage() {
+		String msg = "";
+		if (messages.size() > 0) {
+			for (WebElement mssg : messages) {
+				msg = mssg.getAttribute("innerHTML");
+			}
+		}
+		return msg;
+	}
+	
+	
 }

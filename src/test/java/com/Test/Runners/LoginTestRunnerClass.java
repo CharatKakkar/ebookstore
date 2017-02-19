@@ -5,7 +5,7 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.*;;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "Features", glue = "stepDefinition", tags = { "@Login" })
+@CucumberOptions(features = "Features", glue = "stepDefinition", tags = { "@ForgotPasswordTest" })
 public class LoginTestRunnerClass {
 
 }

@@ -60,7 +60,7 @@ public class TestRegisteration extends BaseClass{
 
 
 	@Given("^user Response on Shipping/Billing Address$")
-	public void user_Response_on_Shipping_Billing_Address() throws Throwable {
+	public void user_Response_on_Shipping_Billing_Address() {
 		// Write code here that turns the phrase above into concrete actions
 		registerPageObject.answerIsNoButton();
 	}
@@ -76,22 +76,22 @@ public class TestRegisteration extends BaseClass{
 //	}
 
 	@When("^I click on Go Button$")
-	public void i_click_on_Go_Button() throws Throwable {
+	public void i_click_on_Go_Button()  {
 		registerPageObject.signUp();
 	}
 
 	@Then("^should get the successful message$")
-	public void should_get_the_successful_message() throws Throwable {
+	public void should_get_the_successful_message() {
 
-		if (!registerPageObject.getMessage().contains("successful")) {
-			errstr = "Registeration was unsuccessful";
-			error = Boolean.TRUE;
-		}
-		Assert.assertTrue(errstr, !error);
+			if (!registerPageObject.getMessage().contains("successful")) {
+				errstr = "Registeration was unsuccessful";
+				error = Boolean.TRUE;
+			}
+			Assert.assertTrue(errstr, !error);
 	}
 
 	@Then("^should be able to login with the credentials \"([^\"]*)\" \"([^\"]*)\"$")
-	public void should_be_able_to_login_with_the_credentials(String arg1, String arg2) throws Throwable {
+	public void should_be_able_to_login_with_the_credentials(String arg1, String arg2) {
 		loginPageObject.enterUsername(arg1);
 		loginPageObject.enterPassword(arg2);
 		loginPageObject.clickLogin();
