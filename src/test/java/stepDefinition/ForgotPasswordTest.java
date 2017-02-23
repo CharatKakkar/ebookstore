@@ -1,23 +1,19 @@
+
+
 /**
  * 
  */
 package stepDefinition;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 
 import com.utility.TestHelper;
 
 import cucumber.api.java.Before;
-import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import pageObjectModel.CartPageObject;
 import pageObjectModel.ForgotPasswordPageObject;
-import pageObjectModel.HeaderPageObject;
-import pageObjectModel.HomePageObject;
 import pageObjectModel.LoginPageObject;
-import pageObjectModel.OrderCheckoutPageObject;
-import pageObjectModel.ProductsPageObject;
 
 /**
  * @author charat
@@ -28,22 +24,12 @@ public class ForgotPasswordTest {
 	private WebDriver driver;
 
 	private LoginPageObject loginPageObject;
-	private ProductsPageObject productsPageObject;
-	private HomePageObject homePageObject;
-	private HeaderPageObject headerPageObject;
-	private CartPageObject cartPageObject;
-	private OrderCheckoutPageObject orderCheckoutPageObject;
 	private ForgotPasswordPageObject forgotPasswordPageObject;
 
 	@Before
 	public void setUp() {
 		driver = TestHelper.getSetUp().getDriver();
 		loginPageObject = new LoginPageObject(driver);
-		productsPageObject = new ProductsPageObject(driver);
-		homePageObject = new HomePageObject(driver);
-		headerPageObject = new HeaderPageObject(driver);
-		cartPageObject = new CartPageObject(driver);
-		orderCheckoutPageObject = new OrderCheckoutPageObject(driver);
 		forgotPasswordPageObject = new ForgotPasswordPageObject(driver);
 
 		// super.shutdownHook(driver);
@@ -79,7 +65,7 @@ public class ForgotPasswordTest {
 	public void verify_that_Success_message_is_received() {
 		System.out.println("message is " + loginPageObject.getMessage());
 		if ( !loginPageObject.getMessage().contains("has been reset successfully")){
-			Assert.assertFalse(true, "Password reset functionality failed");;
+			Assert.assertFalse("Password reset functionality failed", true);;
 		}
 	}
 
