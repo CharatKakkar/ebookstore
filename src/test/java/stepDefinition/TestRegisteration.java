@@ -39,13 +39,14 @@ public class TestRegisteration extends BaseClass{
 	}
 
 	@Given("^Registeration URl$")
-	public void registeration_URl() throws Throwable {
+	public void registeration_URl() throws InterruptedException  {
 		// Write code here that turns the phrase above into concrete actions
 		homePageObject.registerButton();
+		Thread.sleep(2500);
 	}
 	
 	@Given("^User Details \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\"$")
-	public void user_Details(String arg1, String arg2, String arg3, String arg4, String arg5, String arg6, String arg7, String arg8, String arg9, String arg10) throws Throwable {
+	public void user_Details(String arg1, String arg2, String arg3, String arg4, String arg5, String arg6, String arg7, String arg8, String arg9, String arg10) throws InterruptedException {
 	    // Write code here that turns the phrase above into concrete actions
 		registerPageObject.userName(arg1);
 		registerPageObject.password(arg2);
@@ -58,37 +59,42 @@ public class TestRegisteration extends BaseClass{
 		registerPageObject.provinceBilling(arg8);
 		registerPageObject.countryBilling(arg9);
 		registerPageObject.zipCodeBilling(arg10);
+		Thread.sleep(2500);
 	}
 
 
 
 	@Given("^user Response on Shipping/Billing Address$")
-	public void user_Response_on_Shipping_Billing_Address() {
+	public void user_Response_on_Shipping_Billing_Address() throws InterruptedException {
 		// Write code here that turns the phrase above into concrete actions
 		registerPageObject.answerIsNoButton();
+		Thread.sleep(2500);
 	}
 
 	@When("^I click on Go Button$")
-	public void i_click_on_Go_Button()  {
+	public void i_click_on_Go_Button() throws InterruptedException  {
 		registerPageObject.signUp();
+		Thread.sleep(2500);
 	}
 
 	@Then("^should get the successful message$")
-	public void should_get_the_successful_message() {
+	public void should_get_the_successful_message() throws InterruptedException {
 
 			if (!registerPageObject.getMessage().contains("successful")) {
 				errstr = "Registeration was unsuccessful";
 				error = Boolean.TRUE;
 			}
 			Assert.assertTrue(errstr, !error);
+			Thread.sleep(2500);
 	}
 
 	@Then("^should be able to login with the credentials \"([^\"]*)\" \"([^\"]*)\"$")
-	public void should_be_able_to_login_with_the_credentials(String arg1, String arg2) {
+	public void should_be_able_to_login_with_the_credentials(String arg1, String arg2) throws InterruptedException {
 		loginPageObject.enterUsername(arg1);
 		loginPageObject.enterPassword(arg2);
 		loginPageObject.clickLogin();
 		headerPageObject.logoutButtonClick();
+		Thread.sleep(2500);
 
 	}
 		

@@ -107,7 +107,7 @@
 						<ul class="nav navbar-nav">
 							<li><a id="home" href="<c:url value="/" /> ">Home</a></li>
 							<li><a id="products" href="<c:url value="/product/productList/all" />">Products</a></li>
-							<li><a href="<c:url value="/passwordValidator" />">Password</a></li>
+<%-- 							<li><a href="<c:url value="/passwordValidator" />">Password</a></li> --%>
 							<li><a id="aboutUs" href="<c:url value="/about" />">About Us</a></li>
 
 						</ul>

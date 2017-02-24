@@ -37,45 +37,50 @@ public class TestLogin extends BaseClass {
 	}
 
 	@Given("^Login URL$")
-	public void loginURL() throws Throwable {
+	public void loginURL() throws InterruptedException {
 		// Write code here that turns the phrase above into concrete actions
 		// driver.findElement(By.linkText("Login")).click();
 		homePageObject.loginLink();
+		Thread.sleep(2500);
 	}
 
 	@Given("^Login Credentials \"([^\"]*)\" and \"([^\"]*)\"$")
-	public void login_Credentials_and(String arg1, String arg2) throws Throwable {
+	public void login_Credentials_and(String arg1, String arg2) throws InterruptedException  {
 		// Write code here that turns the phrase above into concrete actions
 		loginPageObject.enterUsername(arg1);
 		loginPageObject.enterPassword(arg2);
+		Thread.sleep(2500);
 	}
 
 	@When("^I click Login Button$")
-	public void i_click_Login_Button() throws Throwable {
+	public void i_click_Login_Button() throws InterruptedException {
 		// Write code here that turns the phrase above into concrete actions
 		loginPageObject.clickLogin();
+		Thread.sleep(2500);
 	}
 
 	@Then("^the login credentials should be valid$")
-	public void the_login_credentials_should_be_validated() throws Throwable {
+	public void the_login_credentials_should_be_validated() throws InterruptedException  {
 		if (loginPageObject.getErrorMessage().contains("Invalid Credentials")) {
 			error = true;
 			errstr = "Invalid credentials have been passed";
 		}
 		Assert.assertTrue(errstr, !error);
+		Thread.sleep(2500);
 	}
 
 	@Then("^Products tab should be clicked$")
-	public void products_tab_should_be_clicked() throws Throwable {
+	public void products_tab_should_be_clicked()  {
 		homePageObject.productPageClick();
 		productsPageObject.selectProductTableDropdown("25");
 		productsPageObject.firstProductClick();
 	}
 
 	@Then("^Logout should be clicked$")
-	public void logout_should_be_clicked() throws Throwable {
+	public void logout_should_be_clicked() throws InterruptedException  {
 		// Write code here that turns the phrase above into concrete actions
 		driver.findElement(By.linkText("Logout")).click();
+		Thread.sleep(2500);
 
 	}
 
@@ -86,6 +91,7 @@ public class TestLogin extends BaseClass {
 			errstr = "Invalid Credentials were accepted";
 		}
 		Assert.assertTrue(errstr, !error);
+		Thread.sleep(2500);
 	}
 
 }

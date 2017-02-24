@@ -49,6 +49,9 @@
 					<form:option value="Fiction" />
 					<form:option value="AutoBiography" />
 					<form:option value="Encyclopedia" />
+					<form:option value="Science" />
+					<form:option value="Health" />
+					<form:option value="Other" />
 				</form:select>
 			</div>
 

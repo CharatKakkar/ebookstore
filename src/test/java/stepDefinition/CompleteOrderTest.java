@@ -51,11 +51,12 @@ public class CompleteOrderTest {
 	}
 
 	@Given("^Login URL and login credentials \"([^\"]*)\" \"([^\"]*)\"$")
-	public void login_URL_and_login_credentials(String arg1, String arg2) {
+	public void login_URL_and_login_credentials(String arg1, String arg2) throws InterruptedException {
 		homePageObject.loginLink();
 		loginPageObject.enterUsername(arg1);
 		loginPageObject.enterPassword(arg2);
 		loginPageObject.clickLogin();
+		Thread.sleep(2500);
 	}
 
 	@Then("^Add some products into the cart$")
@@ -74,32 +75,38 @@ public class CompleteOrderTest {
 		productsPageObject.orderNowButtonClick();
 		Thread.sleep(2000);
 		alert.accept();
+		Thread.sleep(2500);
 
 	}
 	
 
 @Then("^Click on cart and verify the total$")
-public void click_on_cart_and_verify_the_total()  {
+public void click_on_cart_and_verify_the_total() throws InterruptedException  {
 	headerPageObject.cartButtonClick();
+	Thread.sleep(2500);
 }
 
 
 	@Then("^Click on check out$")
-	public void click_on_check_out() {
+	public void click_on_check_out() throws InterruptedException {
 		cartPageObject.checkoutButtonClick();
+		Thread.sleep(2500);
 	}
 
 	@Then("^Verify the details are present for Shipping and Billing Address$")
-	public void verify_the_details_are_present_for_Shipping_and_Billing_Address() {
+	public void verify_the_details_are_present_for_Shipping_and_Billing_Address() throws InterruptedException {
 
 		orderCheckoutPageObject.nextDetailsClick();
+		Thread.sleep(2500);
 	}
 
 	@Then("^Submit the order Verify that Order ID is display at thank you page$")
-	public void submit_the_order_Verify_that_Order_ID_is_display_at_thank_you_page() {
+	public void submit_the_order_Verify_that_Order_ID_is_display_at_thank_you_page() throws InterruptedException {
 
 		orderCheckoutPageObject.fillCreditCardInfo();
 		orderCheckoutPageObject.submitClick();
+		Thread.sleep(2500);
+		
 	}
 
 }
