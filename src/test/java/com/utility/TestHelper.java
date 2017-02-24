@@ -11,7 +11,8 @@ public class TestHelper {
 
 	public TestHelper() {
 		driver = new ChromeDriver();
-		baseUrl = "http://localhost:8080/";
+	    baseUrl = "http://localhost:8080/";
+		//baseUrl="http://myubuntu.com:8080";
 		driver.get(baseUrl + "/ebookstore/");
 	}
 

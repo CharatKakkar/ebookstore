@@ -10,6 +10,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import pageObjectModel.BaseClass;
+import pageObjectModel.HeaderPageObject;
 import pageObjectModel.HomePageObject;
 import pageObjectModel.LoginPageObject;
 import pageObjectModel.ProductsPageObject;
@@ -24,6 +25,7 @@ public class TestRegisteration extends BaseClass{
 	private ProductsPageObject productsPageObject;
 	private HomePageObject homePageObject;
 	private RegisterPageObject registerPageObject;
+	private HeaderPageObject headerPageObject;
 
 	@Before
 	public void setUp() {
@@ -31,6 +33,7 @@ public class TestRegisteration extends BaseClass{
 		loginPageObject = new LoginPageObject(driver);
 		homePageObject = new HomePageObject(driver);
 		registerPageObject = new RegisterPageObject(driver);
+		headerPageObject = new HeaderPageObject(driver);
 		super.shutdownHook(driver);
 
 	}
@@ -65,16 +68,6 @@ public class TestRegisteration extends BaseClass{
 		registerPageObject.answerIsNoButton();
 	}
 
-//	@Given("^user Response on Shipping/Billing Address \"([^\"]*)\"$")
-//	public void user_Response_on_Shipping_Billing_Address(String arg1) throws Throwable {
-//		if (arg1.contains("Yes")) {
-//			registerPageObject.answerIsYesButton();
-//		} else {
-//			registerPageObject.answerIsNoButton();
-//		}
-//
-//	}
-
 	@When("^I click on Go Button$")
 	public void i_click_on_Go_Button()  {
 		registerPageObject.signUp();
@@ -95,6 +88,7 @@ public class TestRegisteration extends BaseClass{
 		loginPageObject.enterUsername(arg1);
 		loginPageObject.enterPassword(arg2);
 		loginPageObject.clickLogin();
+		headerPageObject.logoutButtonClick();
 
 	}
 		

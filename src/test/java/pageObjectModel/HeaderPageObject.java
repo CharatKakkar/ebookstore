@@ -33,11 +33,19 @@ public class HeaderPageObject extends BaseClass {
 
 	@FindBy(id = "products")
 	WebElement productsButton;
+	
+	@FindBy(id="logout")
+	WebElement logoutButton;
 
 	public void ebookstoreLogoClick() {
 		ebookstoreLogo.click();
 
 	}
+	
+	public void logoutButtonClick() {
+		logoutButton.click();
+
+	}	
 
 	public void homeButtonClick() {
 		homeButton.click();

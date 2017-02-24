@@ -9,5 +9,6 @@ Feature: Registeration  Functionality
     And should be able to login with the credentials "<username>" "<password>"
 
     Examples: 
-      | username     |  | password |  | EmailId      |  | securityPhrase |  | unitNumberBilling |  | streetNumberBilling |  | cityBilling |  | provinceBilling |  | countryBilling |  | zipCodeBilling |
-      | Nikhi55l2211 |  | password |  | ck@gmail.com |  | myPassword     |  |                90 |  | carling             |  | ottawa      |  | on              |  | Canada         |  | k1g3r4         |
+      | username    |  | password |  | EmailId      |  | securityPhrase |  | unitNumberBilling |  | streetNumberBilling |  | cityBilling |  | provinceBilling |  | countryBilling |  | zipCodeBilling |
+      | NAeAiki5211 |  | password |  | ck@gmail.com |  | myPassword     |  |                90 |  | carling             |  | ottawa      |  | on              |  | Canada         |  | k1g3r4         |
+      | SAAPeih625l |  | password |  | ck@gmail.com |  | myPassword     |  |                90 |  | carling             |  | ottawa      |  | on              |  | Canada         |  | k1g3r4         |
