@@ -10,5 +10,5 @@ Feature: Registeration  Functionality
 
     Examples: 
       | username    |  | password |  | EmailId      |  | securityPhrase |  | unitNumberBilling |  | streetNumberBilling |  | cityBilling |  | provinceBilling |  | countryBilling |  | zipCodeBilling |
-      | NAeAiki5211 |  | password |  | ck@gmail.com |  | myPassword     |  |                90 |  | carling             |  | ottawa      |  | on              |  | Canada         |  | k1g3r4         |
-      | SAAPeih625l |  | password |  | ck@gmail.com |  | myPassword     |  |                90 |  | carling             |  | ottawa      |  | on              |  | Canada         |  | k1g3r4         |
+      | NAeAwiki5211 |  | password |  | ck@gmail.com |  | myPassword     |  |                90 |  | carling             |  | ottawa      |  | on              |  | Canada         |  | k1g3r4         |
+      | SAAPseih625l |  | password |  | ck@gmail.com |  | myPassword     |  |                90 |  | carling             |  | ottawa      |  | on              |  | Canada         |  | k1g3r4         |
