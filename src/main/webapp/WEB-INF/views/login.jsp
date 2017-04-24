@@ -29,7 +29,7 @@
 			<div>	<a href="<c:url value="/registration/register"/>">Create account</a> &nbsp&nbsp&nbsp 
 				<a id="forgotPassword" href="<c:url value="/forgotPassword"/>">Forgot password?</a></div>
 	
-						<!-- 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />  -->
+<%-- 							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />   --%>
 					</form>
 				</section>
 			<%@include file="/WEB-INF/views/template/footer.jsp"%>		
