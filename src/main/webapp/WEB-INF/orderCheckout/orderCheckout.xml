@@ -21,7 +21,7 @@
 		<transition on="edit" to="editCustomerInfo"></transition>
 	</view-state>
 
-	<view-state id="editCustomerInfo" view="editCustomerInfo3.jsp"
+	<view-state id="editCustomerInfo" view="editCustomerInfo.jsp"
 		model="customer">
 		<transition to="getCustomerInfo"></transition>
 	</view-state>

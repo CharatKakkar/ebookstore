@@ -2,6 +2,7 @@ package com.utility;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class TestHelper {
 
@@ -13,7 +14,7 @@ public class TestHelper {
 		driver = new ChromeDriver();
 	    baseUrl = "http://localhost:8080/";
 		//baseUrl="http://myubuntu.com:8080";
-		driver.get(baseUrl + "/ebookstore/");
+		driver.get(baseUrl + "ebookstore/");
 	}
 
 	public WebDriver getDriver() {
